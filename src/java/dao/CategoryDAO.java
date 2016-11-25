@@ -5,19 +5,17 @@
  */
 package dao;
 
-import connect.DBConnect;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Brand;
+import model.Category;
 
 /**
  *
  * @author tuan
  */
-public interface BrandDAO {
-    //get danh sach cac brand
-    public ArrayList<Brand> getBrandList(String input);
+public interface CategoryDAO {
+    public ArrayList<Category> getCategoryList(String input);
+    public ArrayList<Category> getCategoryListByBrand(Brand brand);
+    public Boolean checkMin(Category category);
+    public String trimAllWhiteSpace(String string);
 }
