@@ -15,7 +15,8 @@ import model.Category;
  */
 public interface CategoryDAO {
     public ArrayList<Category> getCategoryList(String input);
-    public ArrayList<Category> getCategoryListByBrand(Brand brand);
+    public ArrayList<Category> getCategoryListByBrand(String brand, String input);
+    public String getBrandIDByCategoryID(String input);
     public Boolean checkMin(Category category);
     public String trimAllWhiteSpace(String string);
 }

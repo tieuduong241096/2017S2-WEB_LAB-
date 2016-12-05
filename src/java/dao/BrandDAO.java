@@ -20,4 +20,7 @@ import model.Brand;
 public interface BrandDAO {
     //get danh sach cac brand
     public ArrayList<Brand> getBrandList(String input);
+    
+    public String getBrandNameByBrandID(String brand);
+    
 }

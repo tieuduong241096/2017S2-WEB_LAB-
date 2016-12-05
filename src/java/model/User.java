@@ -18,28 +18,28 @@ public class User {
     private String fullName;
     private boolean status;
     private int age;
-    private Date dob;
     private boolean gender;
     private String address;
     private String email;
     private String phone;
 
-    public User() {
-    }
-
-    public User(long userID, String userName, String password, String fullName, boolean status, int age, Date dob, boolean gender, String address, String email, String phone) {
+    public User(String userName, String password, String fullName, boolean status, int age, boolean gender, String address, String email, String phone) {
         this.userID = userID;
         this.userName = userName;
         this.password = password;
         this.fullName = fullName;
         this.status = status;
         this.age = age;
-        this.dob = dob;
         this.gender = gender;
         this.address = address;
         this.email = email;
         this.phone = phone;
     }
+
+    public User() {
+    }
+
+    
 
     public long getUserID() {
         return userID;
@@ -89,13 +89,7 @@ public class User {
         this.age = age;
     }
 
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
+    
 
     public boolean isGender() {
         return gender;

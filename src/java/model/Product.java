@@ -9,7 +9,7 @@ package model;
  *
  * @author tuan
  */
-public class Product {
+public class Product implements Comparable<Product>{
     private long productID;
     private String productName;
     private double productPrice;
@@ -105,6 +105,11 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    @Override
+    public int compareTo(Product p) {
+        return (int) this.productID - (int)p.productID;
     }
 
     

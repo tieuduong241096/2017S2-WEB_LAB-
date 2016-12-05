@@ -150,6 +150,39 @@ public class ProductDAOImpl implements ProductDAO{
         }
         return Integer.toString(count);
     }
+
+    @Override
+    public Product getProductDetailByProductID(String product) {
+        Product p = new Product();
+        try {
+            Connection connection = DBConnect.getConnection();
+            String sql = "SELECT * FROM product WHERE productid= " + product;
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                
+                p.setProductID(rs.getInt("productid"));
+                p.setProductName(rs.getString("productname"));
+                p.setProductPrice(rs.getDouble("productprice"));
+                p.setProductImage(rs.getString("productimage"));
+                p.setProductQuantity(rs.getInt("productquantity"));
+                p.setDescription(rs.getString("description"));
+                p.setDiscount(rs.getDouble("discount"));
+                p.setBrand(new Brand(rs.getInt("brandid"), ""));
+                p.setCategory(new Category(rs.getInt("categoryid"), "", new Brand()));
+                
+                
+            }
+            
+            connection.close();
+            
+        } catch (SQLException ex) {
+            
+            System.err.println("NO PRODUCT DETAIL FOUND");
+        }
+        return p;
+    }
  }
     
 

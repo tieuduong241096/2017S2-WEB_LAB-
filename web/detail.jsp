@@ -4,31 +4,58 @@
     Author     : tuan
 --%>
 
+<%@page import="dao.BrandDAOImpl"%>
+<%@page import="model.Product"%>
+<%@page import="dao.ProductDAOImpl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PRODUCT DETAIL</title>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+        <link href="resources/css/font-awesome.min.css" rel="stylesheet">
+        <link href="resources/css/prettyPhoto.css" rel="stylesheet">
+        <link href="resources/css/price-range.css" rel="stylesheet">
+        <link href="resources/css/animate.css" rel="stylesheet">
+        <link href="resources/css/main.css" rel="stylesheet">
+        <link href="resources/css/responsive.css" rel="stylesheet">
+
+
+        <script src="resources/js/html5shiv.js"></script>
+
+
+        <script src="resources/js/jquery.js"></script>
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/jquery.scrollUp.min.js"></script>
+        <script src="resources/js/price-range.js"></script>
+        <script src="resources/js/jquery.prettyPhoto.js"></script>
+        <script src="resources/js/main.js"></script>
     </head>
     <body>
         <!--HEADER-->
         <jsp:include page="header.jsp"></jsp:include>
 
-            <!--SLIDER-->
-        <jsp:include page="slider.jsp"></jsp:include>
+        <%
+            ProductDAOImpl pro = new ProductDAOImpl();
+            BrandDAOImpl bra = new BrandDAOImpl();
+            
+            
+            Product pr = new Product();
+             pr = pro.getProductDetailByProductID(request.getParameter("productid"));
+        %>
 
-            <!--MAIN CONTENT + CATEGORY MENU-->
-            <section>
-                <div class="container">
-                    <div class="row">
+        <!--MAIN CONTENT + CATEGORY MENU-->
+        <section>
+            <div class="container">
+                <div class="row">
                     <jsp:include page="menu.jsp"></jsp:include>
 
                         <div class="col-sm-9 padding-right">
                             <div class="product-details"><!--product-details-->
                                 <div class="col-sm-5">
                                     <div class="view-product">
-                                        <img src="images/product-details/1.jpg" alt="" />
+                                        <img src="resources/images/user/<%= pr.getProductImage()%>" alt="">
                                         <h3>ZOOM</h3>
                                     </div>
                                     <div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -65,12 +92,11 @@
                                 </div>
                                 <div class="col-sm-7">
                                     <div class="product-information"><!--/product-information-->
-                                        <img src="images/product-details/new.jpg" class="newarrival" alt="" />
-                                        <h2>Anne Klein Sleeveless Colorblock Scuba</h2>
-                                        <p>Web ID: 1089772</p>
-                                        <img src="images/product-details/rating.png" alt="" />
+                                        <img src="resources/images/product-details/new.jpg" class="newarrival" alt="" />
+                                        <h2><%= pr.getProductName()%></h2>
+
                                         <span>
-                                            <span>US $59</span>
+                                            <span>US $<%= new Double(pr.getProductPrice()).intValue()  %></span>
                                             <label>Quantity:</label>
                                             <input type="text" value="3" />
                                             <button type="button" class="btn btn-fefault cart">
@@ -78,10 +104,10 @@
                                                 Add to cart
                                             </button>
                                         </span>
-                                        <p><b>Availability:</b> In Stock</p>
-                                        <p><b>Condition:</b> New</p>
-                                        <p><b>Brand:</b> E-SHOPPER</p>
-                                        <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+                                        <p><b>Availability: </b> In Stock</p>
+                                        <p><b>Condition: </b> New</p>
+                                        <p><b>Brand: </b><%= bra.getBrandNameByBrandID(Long.toString(pr.getBrand().getBrandID()))%></p>
+
                                     </div><!--/product-information-->
                                 </div>
                             </div><!--/product-details-->
@@ -89,166 +115,18 @@
                             <div class="category-tab shop-details-tab"><!--category-tab-->
                                 <div class="col-sm-12">
                                     <ul class="nav nav-tabs">
-                                        <li><a href="#details" data-toggle="tab">Details</a></li>
-                                        <li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li>
-                                        <li><a href="#tag" data-toggle="tab">Tag</a></li>
-                                        <li class="active"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
+                                        
+                                        
+                                        
+                                        <li class="active"><a href="#reviews" data-toggle="tab">Reviews</a></li>
                                     </ul>
                                 </div>
                                 <div class="tab-content">
-                                    <div class="tab-pane fade" id="details" >
-                                        <div class="col-sm-3">
-                                            <div class="product-image-wrapper">
-                                                <div class="single-products">
-                                                    <div class="productinfo text-center">
-                                                        <img src="images/home/gallery1.jpg" alt="" />
-                                                        <h2>$56</h2>
-                                                        <p>Easy Polo Black Edition</p>
-                                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="product-image-wrapper">
-                                                <div class="single-products">
-                                                    <div class="productinfo text-center">
-                                                        <img src="images/home/gallery2.jpg" alt="" />
-                                                        <h2>$56</h2>
-                                                        <p>Easy Polo Black Edition</p>
-                                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="product-image-wrapper">
-                                                <div class="single-products">
-                                                    <div class="productinfo text-center">
-                                                        <img src="images/home/gallery3.jpg" alt="" />
-                                                        <h2>$56</h2>
-                                                        <p>Easy Polo Black Edition</p>
-                                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="product-image-wrapper">
-                                                <div class="single-products">
-                                                    <div class="productinfo text-center">
-                                                        <img src="images/home/gallery4.jpg" alt="" />
-                                                        <h2>$56</h2>
-                                                        <p>Easy Polo Black Edition</p>
-                                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
+                                    
 
-                                    <div class="tab-pane fade" id="companyprofile" >
-                                        <div class="col-sm-3">
-                                            <div class="product-image-wrapper">
-                                                <div class="single-products">
-                                                    <div class="productinfo text-center">
-                                                        <img src="images/home/gallery1.jpg" alt="" />
-                                                        <h2>$56</h2>
-                                                        <p>Easy Polo Black Edition</p>
-                                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="product-image-wrapper">
-                                                <div class="single-products">
-                                                    <div class="productinfo text-center">
-                                                        <img src="images/home/gallery3.jpg" alt="" />
-                                                        <h2>$56</h2>
-                                                        <p>Easy Polo Black Edition</p>
-                                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="product-image-wrapper">
-                                                <div class="single-products">
-                                                    <div class="productinfo text-center">
-                                                        <img src="images/home/gallery2.jpg" alt="" />
-                                                        <h2>$56</h2>
-                                                        <p>Easy Polo Black Edition</p>
-                                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="product-image-wrapper">
-                                                <div class="single-products">
-                                                    <div class="productinfo text-center">
-                                                        <img src="images/home/gallery4.jpg" alt="" />
-                                                        <h2>$56</h2>
-                                                        <p>Easy Polo Black Edition</p>
-                                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="tab-pane fade" id="tag" >
-                                        <div class="col-sm-3">
-                                            <div class="product-image-wrapper">
-                                                <div class="single-products">
-                                                    <div class="productinfo text-center">
-                                                        <img src="images/home/gallery1.jpg" alt="" />
-                                                        <h2>$56</h2>
-                                                        <p>Easy Polo Black Edition</p>
-                                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="product-image-wrapper">
-                                                <div class="single-products">
-                                                    <div class="productinfo text-center">
-                                                        <img src="images/home/gallery2.jpg" alt="" />
-                                                        <h2>$56</h2>
-                                                        <p>Easy Polo Black Edition</p>
-                                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="product-image-wrapper">
-                                                <div class="single-products">
-                                                    <div class="productinfo text-center">
-                                                        <img src="images/home/gallery3.jpg" alt="" />
-                                                        <h2>$56</h2>
-                                                        <p>Easy Polo Black Edition</p>
-                                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="product-image-wrapper">
-                                                <div class="single-products">
-                                                    <div class="productinfo text-center">
-                                                        <img src="images/home/gallery4.jpg" alt="" />
-                                                        <h2>$56</h2>
-                                                        <p>Easy Polo Black Edition</p>
-                                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                   
+                                    <!--Review-->
                                     <div class="tab-pane fade active in" id="reviews" >
                                         <div class="col-sm-12">
                                             <ul>
@@ -281,99 +159,62 @@
 
                                 <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
-                                        <div class="item active">	
-                                            <div class="col-sm-4">
-                                                <div class="product-image-wrapper">
-                                                    <div class="single-products">
-                                                        <div class="productinfo text-center">
-                                                            <img src="images/home/recommend1.jpg" alt="" />
-                                                            <h2>$56</h2>
-                                                            <p>Easy Polo Black Edition</p>
-                                                            <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                        </div>
+                                        <div class="item active">
+                                        <% for (Product p : pro.getProductList("ORDER BY productid DESC LIMIT 3")) {%>
+                                        <div class="col-sm-4">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <a href="detail.jsp?productid=<%= p.getProductID()%>"><img src="resources/images/user/<%= p.getProductImage()%>" alt=""/></a>
+                                                        <h2>$<%= new Double(p.getProductPrice()).intValue()%></h2>
+                                                        <p><%= p.getProductName()%></p>
+                                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="product-image-wrapper">
-                                                    <div class="single-products">
-                                                        <div class="productinfo text-center">
-                                                            <img src="images/home/recommend2.jpg" alt="" />
-                                                            <h2>$56</h2>
-                                                            <p>Easy Polo Black Edition</p>
-                                                            <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="product-image-wrapper">
-                                                    <div class="single-products">
-                                                        <div class="productinfo text-center">
-                                                            <img src="images/home/recommend3.jpg" alt="" />
-                                                            <h2>$56</h2>
-                                                            <p>Easy Polo Black Edition</p>
-                                                            <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">	
-                                            <div class="col-sm-4">
-                                                <div class="product-image-wrapper">
-                                                    <div class="single-products">
-                                                        <div class="productinfo text-center">
-                                                            <img src="images/home/recommend1.jpg" alt="" />
-                                                            <h2>$56</h2>
-                                                            <p>Easy Polo Black Edition</p>
-                                                            <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="product-image-wrapper">
-                                                    <div class="single-products">
-                                                        <div class="productinfo text-center">
-                                                            <img src="images/home/recommend2.jpg" alt="" />
-                                                            <h2>$56</h2>
-                                                            <p>Easy Polo Black Edition</p>
-                                                            <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="product-image-wrapper">
-                                                    <div class="single-products">
-                                                        <div class="productinfo text-center">
-                                                            <img src="images/home/recommend3.jpg" alt="" />
-                                                            <h2>$56</h2>
-                                                            <p>Easy Polo Black Edition</p>
-                                                            <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-                                        <i class="fa fa-angle-left"></i>
-                                    </a>
-                                    <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>			
-                                </div>
-                            </div><!--/recommended_items-->
 
-                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <%}%>
+
+
+                                    </div>
+
+
+                                    <div class="item">
+                                        <% for (Product p : pro.getProductList("LIMIT 3")) {%>
+                                        <div class="col-sm-4">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <a href="detail.jsp?productid=<%= p.getProductID()%>"><img src="resources/images/user/<%= p.getProductImage()%>" alt=""></a>
+                                                        <h2>$<%= new Double(p.getProductPrice()).intValue()%></h2>
+                                                        <p><%= p.getProductName()%></p>
+                                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <%}%>
+
+                                    </div>
+                                </div>
+                                <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
+                                <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+                                    <i class="fa fa-angle-right"></i>
+                                </a>			
+                            </div>
+                        </div><!--/recommended_items-->
+
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!--FOOTER-->
+        <!--FOOTER-->
         <jsp:include page="footer.jsp"></jsp:include>
-        <a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647;"><i class="fa fa-angle-up"></i></a>
+        
     </body>
 </html>

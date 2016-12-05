@@ -25,4 +25,6 @@ public interface ProductDAO {
     public String countNumberOfProductByCategory(Category category);
     
     public String countNumberOfProductByBrand(Brand brand);
+    
+    public Product getProductDetailByProductID(String product);
 }

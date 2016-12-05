@@ -42,5 +42,29 @@ public class BrandDAOImpl implements BrandDAO{
         }
         return list;
     }
+
+    @Override
+    public String getBrandNameByBrandID(String brand) {
+        Brand brand1 = new Brand();
+        try {
+            Connection connection = DBConnect.getConnection();
+            String sql = "SELECT brandname FROM brand where brandid = " + brand;
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                
+                brand1.setBrandName(rs.getString("brandname"));
+                
+                
+            }
+            connection.close();
+        } catch (SQLException ex) {
+            System.err.println("ERROR LOADING BRANDID BY CATEGORYID");
+        }
+        return brand1.getBrandName();
+    }
+
+    
     
 }

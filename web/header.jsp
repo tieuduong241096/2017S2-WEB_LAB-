@@ -4,6 +4,9 @@
     Author     : tuan
 --%>
 
+<%@page import="java.util.TreeMap"%>
+<%@page import="model.Product"%>
+<%@page import="model.Cart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
@@ -13,29 +16,53 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>header</title>
 
-<!--        CSS
-        <link href="/resources/css/animate.css" rel="stylesheet">
-        <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/resources/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/resources/css/main.css" rel="stylesheet">
-        <link href="/resources/css/prettyPhoto.css"  rel="stylesheet">
-        <link href="/resources/css/price-range.css"  rel="stylesheet">
-        <link href="/resources/css/responsive.css"  rel="stylesheet">
+        <!--        CSS
+                <link href="/resources/css/animate.css" rel="stylesheet">
+                <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 
-
-
-        Script
-        <script src="/resources/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="/resources/js/contact.js" type="text/javascript"></script>
-        <script src="/resources/js/gmaps.js" type="text/javascript"></script>
-        <script src="/resources/js/html5shiv.js" type="text/javascript"></script>
-        <script src="/resources/js/jquery.js" type="text/javascript"></script>
-        <script src="/resources/js/jquery.prettyPhoto.js" type="text/javascript"></script>
-        <script src="/resources/js/jquery.scrollUp.min.js" type="text/javascript"></script>
-        <script src="/resources/js/main.js" type="text/javascript"></script>
-        <script src="/resources/js/price-range.js" type="text/javascript"></script>-->
+                <link href="/resources/css/main.css" rel="stylesheet">
+                <link href="/resources/css/prettyPhoto.css"  rel="stylesheet">
+                <link href="/resources/css/price-range.css"  rel="stylesheet">
+                <link href="/resources/css/responsive.css"  rel="stylesheet">
+        
+        
+        
+                Script
+                <script src="/resources/js/bootstrap.min.js" type="text/javascript"></script>
+                <script src="/resources/js/contact.js" type="text/javascript"></script>
+                <script src="/resources/js/gmaps.js" type="text/javascript"></script>
+                <script src="/resources/js/html5shiv.js" type="text/javascript"></script>
+                <script src="/resources/js/jquery.js" type="text/javascript"></script>
+                <script src="/resources/js/jquery.prettyPhoto.js" type="text/javascript"></script>
+                <script src="/resources/js/jquery.scrollUp.min.js" type="text/javascript"></script>
+                <script src="/resources/js/main.js" type="text/javascript"></script>
+                <script src="/resources/js/price-range.js" type="text/javascript"></script>-->
+        <!--        <link href="resources/css/style.css" rel="stylesheet" type="text/css" media="all" />
+                <link href="/resources/css/font-awesome.min.css" rel="stylesheet">-->
     </head>
     <body>
+        <%
+            
+            TreeMap<Product, Integer> list = null;
+            if (session.getAttribute("cart") != null) {
+                Cart cart = (Cart) session.getAttribute("cart");
+                if (cart == null) {
+                    cart = new Cart();
+                    session.setAttribute("cart", cart);
+                }
+
+                list = cart.getList();
+            }
+
+            if (session.getAttribute("cart") == null) {
+                Cart cart = new Cart();
+
+                list = null;
+            }
+            
+            int num = list==null?0:list.size();
+        
+        %>
         <header id="header"><!--header-->
             <div class="header_top"><!--header_top-->
                 <div class="container">
@@ -70,36 +97,18 @@
                             <div class="logo pull-left">
                                 <a href="index.jsp"><img src="images/home/logo.png" alt="" /></a>
                             </div>
-<!--                            <div class="btn-group pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                        USA
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Canada</a></li>
-                                        <li><a href="#">UK</a></li>
-                                    </ul>
-                                </div>
+                            
 
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                        DOLLAR
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Canadian Dollar</a></li>
-                                        <li><a href="#">Pound</a></li>
-                                    </ul>
-                                </div>
-                            </div>-->
-                             
                         </div>
                         <div class="col-sm-8">
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
                                     <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-                                    <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                    <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i><span style="color: red"> <%= num%></span></a>
+
+
+
+                                    </li>
                                     <li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
                                 </ul>
                             </div>

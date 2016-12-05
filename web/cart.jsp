@@ -4,6 +4,11 @@
     Author     : tuan
 --%>
 
+
+<%@page import="java.util.Map"%>
+<%@page import="java.util.TreeMap"%>
+<%@page import="model.Product"%>
+<%@page import="model.Cart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,7 +25,7 @@
 
 
         <script src="resources/js/html5shiv.js"></script>
-        
+
 
         <script src="resources/js/jquery.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>
@@ -30,6 +35,27 @@
         <script src="resources/js/main.js"></script>
     </head>
     <body>
+        <%
+            TreeMap<Product, Integer> list = null;
+            if (session.getAttribute("cart") != null) {
+                Cart cart = (Cart) session.getAttribute("cart");
+                if (cart == null) {
+                    cart = new Cart();
+                    session.setAttribute("cart", cart);
+                }
+
+                list = cart.getList();
+            }
+
+            if (session.getAttribute("cart") == null) {
+                Cart cart = new Cart();
+
+                list = null;
+            }
+
+        %>
+
+
         <!--HEADER-->
         <jsp:include page="header.jsp"></jsp:include>
 
@@ -54,169 +80,124 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="cart_product">
-                                        <a href=""><img src="images/cart/one.png" alt=""></a>
-                                    </td>
-                                    <td class="cart_description">
-                                        <h4><a href="">Colorblock Scuba</a></h4>
-                                        <p>Web ID: 1089772</p>
-                                    </td>
-                                    <td class="cart_price">
-                                        <p>$59</p>
-                                    </td>
-                                    <td class="cart_quantity">
-                                        <div class="cart_quantity_button">
-                                            <a class="cart_quantity_up" href=""> + </a>
-                                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                            <a class="cart_quantity_down" href=""> - </a>
-                                        </div>
-                                    </td>
-                                    <td class="cart_total">
-                                        <p class="cart_total_price">$59</p>
-                                    </td>
-                                    <td class="cart_delete">
-                                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
+                            <%                                for (Map.Entry<Product, Integer> ds : list.entrySet()) {
+                            %>
+                            <tr>
+                                <td class="cart_product">
+                                    <a href=""><img src="resources/images/user/<%= ds.getKey().getProductImage()%>" alt=""></a>
+                                </td>
+                                <td class="cart_description">
+                                    <h4><a href=""><%= ds.getKey().getProductName()%></a></h4>
 
-                                <tr>
-                                    <td class="cart_product">
-                                        <a href=""><img src="images/cart/two.png" alt=""></a>
-                                    </td>
-                                    <td class="cart_description">
-                                        <h4><a href="">Colorblock Scuba</a></h4>
-                                        <p>Web ID: 1089772</p>
-                                    </td>
-                                    <td class="cart_price">
-                                        <p>$59</p>
-                                    </td>
-                                    <td class="cart_quantity">
-                                        <div class="cart_quantity_button">
-                                            <a class="cart_quantity_up" href=""> + </a>
-                                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                            <a class="cart_quantity_down" href=""> - </a>
-                                        </div>
-                                    </td>
-                                    <td class="cart_total">
-                                        <p class="cart_total_price">$59</p>
-                                    </td>
-                                    <td class="cart_delete">
-                                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="cart_product">
-                                        <a href=""><img src="images/cart/three.png" alt=""></a>
-                                    </td>
-                                    <td class="cart_description">
-                                        <h4><a href="">Colorblock Scuba</a></h4>
-                                        <p>Web ID: 1089772</p>
-                                    </td>
-                                    <td class="cart_price">
-                                        <p>$59</p>
-                                    </td>
-                                    <td class="cart_quantity">
-                                        <div class="cart_quantity_button">
-                                            <a class="cart_quantity_up" href=""> + </a>
-                                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                            <a class="cart_quantity_down" href=""> - </a>
-                                        </div>
-                                    </td>
-                                    <td class="cart_total">
-                                        <p class="cart_total_price">$59</p>
-                                    </td>
-                                    <td class="cart_delete">
-                                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                </td>
+                                <td class="cart_price">
+                                    <p>$<%= new Double(ds.getKey().getProductPrice()).intValue()%></p>
+                                </td>
+                                <td class="cart_quantity">
+                                    <div class="cart_quantity_button">
+                                        <a class="cart_quantity_up" href="CartServlet?command=plus&productid=<%=ds.getKey().getProductID()%>&cartID=<%=System.currentTimeMillis()%>"> + </a>
+                                        <input class="cart_quantity_input" type="text" value="<%=ds.getValue()%> " autocomplete="off" size="2" disabled="">
+                                        <a class="cart_quantity_down" href="CartServlet?command=minus&productid=<%=ds.getKey().getProductID()%>&cartID=<%=System.currentTimeMillis()%>"> - </a>
+                                    </div>
+                                </td>
+                                <td class="cart_total">
+                                    <p class="cart_total_price"><%= new Double(ds.getValue() * ds.getKey().getProductPrice()).intValue()%></p>
+                                </td>
+                                <td class="cart_delete">
+                                    <a class="cart_quantity_delete" href="CartServlet?command=deleteall&productid=<%=ds.getKey().getProductID()%>&cartID=<%=System.currentTimeMillis()%>"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                            <%}%>
+
+
+
+                        </tbody>
+                    </table>
                 </div>
-            </section> <!--/#cart_items-->
+            </div>
+        </section> <!--/#cart_items-->
 
-            <section id="do_action">
-                <div class="container">
-                    <div class="heading">
-                        <h3>What would you like to do next?</h3>
-                        <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="chose_area">
-                                <ul class="user_option">
-                                    <li>
-                                        <input type="checkbox">
-                                        <label>Use Coupon Code</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox">
-                                        <label>Use Gift Voucher</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox">
-                                        <label>Estimate Shipping & Taxes</label>
-                                    </li>
-                                </ul>
-                                <ul class="user_info">
-                                    <li class="single_field">
-                                        <label>Country:</label>
-                                        <select>
-                                            <option>United States</option>
-                                            <option>Bangladesh</option>
-                                            <option>UK</option>
-                                            <option>India</option>
-                                            <option>Pakistan</option>
-                                            <option>Ucrane</option>
-                                            <option>Canada</option>
-                                            <option>Dubai</option>
-                                        </select>
+        <section id="do_action">
+            <div class="container">
+                <div class="heading">
+                    <h3>What would you like to do next?</h3>
+                    <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="chose_area">
+                            <ul class="user_option">
+                                <li>
+                                    <input type="checkbox">
+                                    <label>Use Coupon Code</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <label>Use Gift Voucher</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <label>Estimate Shipping & Taxes</label>
+                                </li>
+                            </ul>
+                            <ul class="user_info">
+                                <li class="single_field">
+                                    <label>Country:</label>
+                                    <select>
+                                        <option>United States</option>
+                                        <option>Bangladesh</option>
+                                        <option>UK</option>
+                                        <option>India</option>
+                                        <option>Pakistan</option>
+                                        <option>Ucrane</option>
+                                        <option>Canada</option>
+                                        <option>Dubai</option>
+                                    </select>
 
-                                    </li>
-                                    <li class="single_field">
-                                        <label>Region / State:</label>
-                                        <select>
-                                            <option>Select</option>
-                                            <option>Dhaka</option>
-                                            <option>London</option>
-                                            <option>Dillih</option>
-                                            <option>Lahore</option>
-                                            <option>Alaska</option>
-                                            <option>Canada</option>
-                                            <option>Dubai</option>
-                                        </select>
+                                </li>
+                                <li class="single_field">
+                                    <label>Region / State:</label>
+                                    <select>
+                                        <option>Select</option>
+                                        <option>Dhaka</option>
+                                        <option>London</option>
+                                        <option>Dillih</option>
+                                        <option>Lahore</option>
+                                        <option>Alaska</option>
+                                        <option>Canada</option>
+                                        <option>Dubai</option>
+                                    </select>
 
-                                    </li>
-                                    <li class="single_field zip-field">
-                                        <label>Zip Code:</label>
-                                        <input type="text">
-                                    </li>
-                                </ul>
-                                <a class="btn btn-default update" href="">Get Quotes</a>
-                                <a class="btn btn-default check_out" href="">Continue</a>
-                            </div>
+                                </li>
+                                <li class="single_field zip-field">
+                                    <label>Zip Code:</label>
+                                    <input type="text">
+                                </li>
+                            </ul>
+                            <a class="btn btn-default update" href="">Get Quotes</a>
+                            <a class="btn btn-default check_out" href="">Continue</a>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="total_area">
-                                <ul>
-                                    <li>Cart Sub Total <span>$59</span></li>
-                                    <li>Eco Tax <span>$2</span></li>
-                                    <li>Shipping Cost <span>Free</span></li>
-                                    <li>Total <span>$61</span></li>
-                                </ul>
-                                <a class="btn btn-default update" href="">Update</a>
-                                <a class="btn btn-default check_out" href="">Check Out</a>
-                            </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="total_area">
+                            <ul>
+                                <li>Cart Sub Total <span>$59</span></li>
+                                <li>Eco Tax <span>$2</span></li>
+                                <li>Shipping Cost <span>Free</span></li>
+                                <li>Total <span>$61</span></li>
+                            </ul>
+                            <a class="btn btn-default update" href="">Update</a>
+                            <a class="btn btn-default check_out" href="">Check Out</a>
                         </div>
                     </div>
                 </div>
-            </section><!--/#do_action-->
+            </div>
+        </section><!--/#do_action-->
 
-            
 
-                <!--FOOTER-->
-            <jsp:include page="footer.jsp"></jsp:include>
-            <a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647;"><i class="fa fa-angle-up"></i></a>
+
+        <!--FOOTER-->
+        <jsp:include page="footer.jsp"></jsp:include>
+        
     </body>
 </html>

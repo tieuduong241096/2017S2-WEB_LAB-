@@ -45,7 +45,7 @@
                         <div id="<%=brand.getBrandID()%>" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <ul>
-                                    <% for(Category cate : cat.getCategoryListByBrand(brand)){ %>
+                                    <% for(Category cate : cat.getCategoryListByBrand(Long.toString(brand.getBrandID()),"")){ %>
                                     <li><a href="index.jsp?category=c<%= cate.getCategoryID()%>"> <span class="pull-right">(<%=pro.countNumberOfProductByCategory(cate)%>)</span><%= cate.getCategoryName()%></a></li>
                                     <%}%>
                                 </ul>

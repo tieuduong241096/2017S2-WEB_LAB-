@@ -22,11 +22,11 @@ import model.Category;
 public class CategoryDAOImpl implements CategoryDAO{
 
     @Override
-    public ArrayList<Category> getCategoryListByBrand(Brand brand) {
+    public ArrayList<Category> getCategoryListByBrand(String brand, String input) {
         ArrayList<Category> list = new ArrayList<>();
         try {
             Connection connection = DBConnect.getConnection();
-            String sql = "SELECT * FROM category WHERE brandid='"+brand.getBrandID()+"'";
+            String sql = "SELECT * FROM category WHERE brandid='"+brand+"' "+input;
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             
@@ -95,5 +95,25 @@ public class CategoryDAOImpl implements CategoryDAO{
         
         return temp.replaceAll("\\s+","");
     }
-    
+    @Override
+    public String getBrandIDByCategoryID(String category) {
+        Brand brand = new Brand();
+        try {
+            Connection connection = DBConnect.getConnection();
+            String sql = "SELECT brandid FROM category where categoryid = " + category;
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                
+                brand.setBrandID(rs.getInt("brandid"));
+                
+                
+            }
+            connection.close();
+        } catch (SQLException ex) {
+            System.err.println("ERROR LOADING BRANDID BY CATEGORYID");
+        }
+        return Long.toString(brand.getBrandID());
+    }
 }
