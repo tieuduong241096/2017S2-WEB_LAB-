@@ -33,7 +33,7 @@
         <!--HEADER-->
         <jsp:include page="header.jsp"></jsp:include>
         <%
-            String username_err = "",password_err="",email_err="",fullname_err="",age_err="",address_err="",phone_err="";
+            String username_err = "",password_err="",email_err="",fullname_err="",age_err="",address_err="",phone_err="",email_login_err="",login_err="";
             if (request.getAttribute("username_err")!=null) {
                    username_err =  (String)request.getAttribute("username_err");
             }
@@ -75,6 +75,13 @@
             if (request.getAttribute("phone")!=null) {
                    phone =  (String)request.getAttribute("phone");
             }
+            
+            if (request.getAttribute("email_login_err")!=null) {
+                   email_login_err =  (String)request.getAttribute("email_login_err");
+            }
+            if (request.getAttribute("login_err")!=null) {
+                   login_err =  (String)request.getAttribute("login_err");
+            }
         
         %>
 
@@ -86,13 +93,16 @@
                         <div class="col-sm-4 col-sm-offset-1">
                             <div class="login-form"><!--login form-->
                                 <h2>Login to your account</h2>
-                                <form action="#">
-                                    <input type="text" placeholder="Name" />
-                                    <input type="email" placeholder="Email Address" />
+                                <form action="AccountController" method="post">
+                                    <p style="color: red"><%= email_login_err%></p>
+                                    <input type="text" placeholder="Email Address" name ="email" />
+                                    <input type="password" placeholder="Password" name="password" />
+                                    <p style="color: red"><%= login_err%></p>
                                     <span>
-                                        <input type="checkbox" class="checkbox"> 
+                                        <input type="checkbox" class="checkbox" name="remember"> 
                                         Keep me signed in
                                     </span>
+                                    <input type="hidden" name="action" value="login" />
                                     <button type="submit" class="btn btn-default">Login</button>
                                 </form>
                             </div><!--/login form-->
@@ -103,7 +113,7 @@
                         <div class="col-sm-4">
                             <div class="signup-form"><!--sign up form-->
                                 <h2>Sign Up!</h2>
-                                <form action="SignUpServlet" method="post" >
+                                <form action="AccountController" method="post" >
                                     <p style="color: red"><%= username_err%></p>
                                     <input type="text" placeholder="User Name" name="username" value="<%= username %>"/>
                                     <p style="color: red"><%= password_err%></p>
@@ -122,7 +132,7 @@
                                     <input type="text" placeholder="Address" name="address" value="<%= address %>"/>
                                     <p style="color: red"><%= phone_err%></p>
                                     <input type="text" placeholder="Phone" name="phone" value="<%= phone %>"/>
-
+                                    <input type="hidden" name="action" value="signup"/>
                                     <button type="submit" class="btn btn-default">Sign Up</button>
                                 </form>
                             </div><!--/sign up form-->

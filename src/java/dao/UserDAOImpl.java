@@ -55,4 +55,61 @@ public class UserDAOImpl implements UserDAO{
             System.err.println(e.getMessage());
         }
     }
+
+    @Override
+    public boolean checkLogin(String email, String password) {
+        Connection cons = DBConnect.getConnection();
+        String sql = "select username from user where email='"+email+"' AND password='"+password+"'";
+        try {
+            PreparedStatement ps = cons.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                return true;
+            }
+            cons.close();
+        } catch (Exception e) {
+            System.err.println("ERROR CHECKING LOGIN");
+        }
+        return false;
+    }
+
+    @Override
+    public String getUserNameFromEmail(String email) {
+        Connection cons = DBConnect.getConnection();
+        String sql = "select username from user where email='"+email+"'";
+        String username = "";
+        try {
+            PreparedStatement ps = cons.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                username = rs.getString("username");
+            }
+            cons.close();
+        } catch (Exception e) {
+            System.err.println("ERROR CHECKING LOGIN");
+        }
+        
+        return username;
+    }
+
+    @Override
+    public boolean checkAccountExistBaseOnEmailAndPassword(String email, String password) {
+        Connection cons = DBConnect.getConnection();
+        String sql = "select username from user where email='"+email+"' and password='"+password+"'";
+        try {
+            PreparedStatement ps = cons.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                return true;
+            }
+            cons.close();
+        } catch (Exception e) {
+            System.err.println("ERROR CHECKING EXIST");
+        }
+        return false;
+    }
+
+   
+    
+    
 }

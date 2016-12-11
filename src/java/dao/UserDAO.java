@@ -14,4 +14,7 @@ import model.User;
 public interface UserDAO {
     public boolean checkAccountExist(String username);
     public void insertAccount(User user);
+    public boolean checkLogin(String email, String password);
+    public String getUserNameFromEmail(String email);
+    public boolean checkAccountExistBaseOnEmailAndPassword(String email,String password);
 }
