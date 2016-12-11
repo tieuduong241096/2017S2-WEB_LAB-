@@ -1689,7 +1689,7 @@ h3.future:after,h2.products-in:after,h2.contact-in:after,h2.account-in:after {
   padding: 4.5em 0 0;
 }
 .etalage_source_image{
-	display:none !important:
+	display:none !important;
 }
 }
 @media(max-width:480px){
@@ -1959,4 +1959,5 @@ h2.contact-in,h2.products-in {
 }
 .contact-top input[type="submit"]{
 	width:30%;
+}
 }
