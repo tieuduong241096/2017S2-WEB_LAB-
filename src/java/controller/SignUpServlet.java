@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.User;
 
 /**
@@ -31,16 +32,19 @@ public class SignUpServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
-        String fullname = request.getParameter("fullname");
+        String username = request.getParameter("username").trim();
+        String password = request.getParameter("password").trim();
+        String email = request.getParameter("email").trim();
+        String fullname = request.getParameter("fullname").trim();
         boolean status = true;
-        String age = request.getParameter("age");
+        String age = request.getParameter("age").trim();
         boolean gender = request.getParameter("gender").equals("male");
-        String address = request.getParameter("address");
-        String phone = request.getParameter("phone");
-
+        String address = request.getParameter("address").trim();
+        String phone = request.getParameter("phone").trim();
+        
+        
+        String username_err = "err",password_err="err",email_err="err",fullname_err="err",age_err="err",address_err="err",phone_err="err";
+        
         final String secretKey = "secretkeysecretkey";
 
         if (username.equals("")) {
@@ -51,6 +55,7 @@ public class SignUpServlet extends HttpServlet {
             request.setAttribute("username_err", "the length is 6 to 20, no space, no special character");
         } else {
             request.setAttribute("username", username);
+            username_err = "";
         }
 
         if (password.equals("")) {
@@ -69,6 +74,9 @@ public class SignUpServlet extends HttpServlet {
                 request.setAttribute("password_err", "the length is 6 to 30, at least 1 lowercase letter, 1 uppercase letter, 1 special character, 1 number!");
 
             }
+            else{
+                password_err = "";
+            }
         }
 
         if (email.equals("")) {
@@ -85,6 +93,7 @@ public class SignUpServlet extends HttpServlet {
         }
         else {
             request.setAttribute("email", email);
+            email_err = "";
         }
 
         if (fullname.equals("")) {
@@ -93,10 +102,15 @@ public class SignUpServlet extends HttpServlet {
 
         } else if (fullname.length() < 2 || fullname.length() > 50) {
             request.setAttribute("fullname_err", "the length is 2 to 50 character");
-
-        } else if (!fullname.matches("\"\\s*\\[A-Za-z]+(\\s\\[A-Za-z]+)?\\s*\"")) {
+            
+        
+        } else if (!fullname.matches("^[a-zA-Z_]+( [a-zA-Z_]+)*$")) {
             request.setAttribute("fullname_err", "no more than 2 spaces, no special characters, no number");
 
+        }
+        else{
+            request.setAttribute("fullname",fullname);
+            fullname_err = "";
         }
 
         if (age.equals("")) {
@@ -110,6 +124,7 @@ public class SignUpServlet extends HttpServlet {
         }
         else {
             request.setAttribute("age", age);
+            age_err = "";
         }
 
         if (address.equals("")) {
@@ -123,6 +138,7 @@ public class SignUpServlet extends HttpServlet {
     }
         else {
             request.setAttribute("address", address);
+            address_err = "";
         }
 
         if (phone.equals("")) {
@@ -137,11 +153,12 @@ public class SignUpServlet extends HttpServlet {
     }
         else {
             request.setAttribute("phone", phone);
+            phone_err = "";
         }
 
         String url = "";
 
-        if (username.equals("") || password.equals("") || email.equals("") || fullname.equals("") || age.equals("") || address.equals("") || phone.equals("")) {
+        if (!username_err.equals("") || !password_err.equals("") || !email_err.equals("") || !fullname_err.equals("") || !age_err.equals("") || !address_err.equals("") || !phone_err.equals("")) {
             url = "/login.jsp";
 
         } else {
@@ -149,6 +166,10 @@ public class SignUpServlet extends HttpServlet {
             String encryptedPassword = AES.encrypt(password, secretKey);
             User u = new User(username, encryptedPassword, fullname, status, Integer.parseInt(age), gender, address, email, phone);
             new UserDAOImpl().insertAccount(u);
+            
+            HttpSession s = request.getSession();
+            s.setAttribute("username",username);
+            s.setAttribute("email",email);
         }
 
         RequestDispatcher rd = getServletContext().getRequestDispatcher(url);

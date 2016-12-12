@@ -17,7 +17,7 @@
 		<li><a href="index.html">Home</a></li>
 		<li><a href="tabel.html">Product</a></li>
 		<li><a href="form.html">Brand</a></li>
-                <li><a href="form.html">Category</a></li>
+                <li><a href="manageCategory.jsp">Category</a></li>
                 <li><a href="form.html">Receipt</a></li>
                 <li><a href="form.html">User</a></li>
 	</ul>

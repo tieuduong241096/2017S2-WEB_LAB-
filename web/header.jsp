@@ -61,6 +61,19 @@
             }
             
             int num = list==null?0:list.size();
+            
+            //session
+            HttpSession s = request.getSession();
+            
+
+//            //cookie
+//            Cookie[] cookies = request.getCookies();
+//            String c = "";
+//            for(Cookie cookie: cookies){
+//                if(cookie.getName().equalsIgnoreCase("username")){
+//                    c = cookie.getName();
+//                }
+//            }
         
         %>
         <header id="header"><!--header-->
@@ -103,13 +116,21 @@
                         <div class="col-sm-8">
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+                                    <%if(s.getAttribute("username")!=null){%>
+                                        <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+                                    <%}%>
+                                    
                                     <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i><span style="color: red"> <%= num%></span></a>
 
 
 
                                     </li>
+                                    <%if(s.getAttribute("username")!=null){%>
+                                        <li><a href="AccountController?action=signout"><i class="fa fa-sign-out"></i> Sign out</a></li>
+                                    <%}%>
+                                    <%if(s.getAttribute("username")==null){%>
                                     <li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
+                                    <%}%>
                                 </ul>
                             </div>
                         </div>
