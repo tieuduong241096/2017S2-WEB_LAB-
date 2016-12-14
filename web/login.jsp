@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>ACCOUNT</title>
+        <title>Account | S-LAB</title>
         <link href="resources/css/bootstrap.min.css" rel="stylesheet">
         <link href="resources/css/font-awesome.min.css" rel="stylesheet">
         <link href="resources/css/prettyPhoto.css" rel="stylesheet">
@@ -85,10 +85,17 @@
         
         %>
 
-
+            
             <!--MAIN CONTENT + CATEGORY MENU-->
             <section id="form"><!--form-->
+                
                 <div class="container">
+                    <div class="breadcrumbs">
+                        <ol class="breadcrumb">
+                            <li><a href="#">Home</a></li>
+                            <li class="active">Login & Signup</li>
+                        </ol>
+            </div>
                     <div class="row">
                         <div class="col-sm-4 col-sm-offset-1">
                             <div class="login-form"><!--login form-->

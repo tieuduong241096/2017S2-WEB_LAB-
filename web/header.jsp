@@ -108,7 +108,7 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="logo pull-left">
-                                <a href="index.jsp"><img src="images/home/logo.png" alt="" /></a>
+                                <a href="index.jsp"><img src="resources/images/home/Logomakr_2HHT9q.png" alt="" /></a>
                             </div>
                             
 
@@ -127,6 +127,7 @@
                                     </li>
                                     <%if(s.getAttribute("username")!=null){%>
                                         <li><a href="AccountController?action=signout"><i class="fa fa-sign-out"></i> Sign out</a></li>
+                                        <li><a href="AccountController?action=signout"><i class="fa fa-comments-o"></i> Feedback</a></li>
                                     <%}%>
                                     <%if(s.getAttribute("username")==null){%>
                                     <li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
@@ -138,7 +139,7 @@
                 </div>
             </div><!--/header-middle-->
 
-            <div class="header-bottom"><!--header-bottom-->
+<!--            <div class="header-bottom">header-bottom
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-9">
@@ -180,7 +181,7 @@
                         </div>
                     </div>
                 </div>
-            </div><!--/header-bottom-->
+            </div>/header-bottom-->
         </header><!--/header-->
     </body>
 </html>

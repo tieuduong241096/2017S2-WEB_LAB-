@@ -45,7 +45,7 @@
                 
                     <% if(request.getParameter("category").startsWith("c")){%>
                         
-                    <% for(Product p : pro.getProductListByCategory(request.getParameter("category").substring(1),"LIMIT 6")){ %>
+                    <% for(Product p : pro.getProductListByCategory(request.getParameter("category").substring(1),"")){ %>
                     <div class="col-sm-4">
                     <div class="product-image-wrapper">
                         <div class="single-products">
@@ -80,7 +80,7 @@
                 
                     <% if(request.getParameter("brand").startsWith("b")){%>
                        
-                    <% for(Product p : pro.getProductListByBrand(request.getParameter("brand").substring(1),"LIMIT 6")){ %>
+                    <% for(Product p : pro.getProductListByBrand(request.getParameter("brand").substring(1),"")){ %>
                      <div class="col-sm-4">
                         <div class="product-image-wrapper">
                         <div class="single-products">

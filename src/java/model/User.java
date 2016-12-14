@@ -39,7 +39,18 @@ public class User {
     public User() {
     }
 
-    
+    public User(long userID,String userName, String password, String fullName, boolean status, int age, boolean gender, String address, String email, String phone) {
+        this.userID = userID;
+        this.userName = userName;
+        this.password = password;
+        this.fullName = fullName;
+        this.status = status;
+        this.age = age;
+        this.gender = gender;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
+    }
 
     public long getUserID() {
         return userID;

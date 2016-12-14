@@ -109,6 +109,25 @@ public class UserDAOImpl implements UserDAO{
         return false;
     }
 
+    @Override
+    public String getUserNameFromUserID(String id) {
+        Connection cons = DBConnect.getConnection();
+        String sql = "select username from user where userid='"+id+"'";
+        String username = "";
+        try {
+            PreparedStatement ps = cons.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                username = rs.getString("username");
+            }
+            cons.close();
+        } catch (Exception e) {
+            System.err.println("ERROR GET USERNAME");
+        }
+        
+        return username;
+    }
+
    
     
     

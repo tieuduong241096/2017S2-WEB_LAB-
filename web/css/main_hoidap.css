@@ -1,0 +1,416 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0px;padding: 0px
+}
+body {
+    min-width: 1024px;
+	background:#FFF
+}
+img {
+    border: 0;
+	margin: 0px;
+	padding: 0px
+}
+a {
+    text-decoration: none
+}
+ul, ol {
+    list-style: none
+}
+.clr {
+    clear: both
+}
+p {
+    -webkit-margin-before: 0; -webkit-margin-after: 0; -webkit-margin-start: 0; -webkit-margin-end: 0;
+    text-rendering: geometricPrecision
+}
+body, input, button, option, textarea, label, legend, h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    font: 14px / 18px arial,
+    sans-serif;color: #333;
+	outline:none
+}
+section {
+    max-width: 1200 px;
+    width: 100% ;
+    min-width: 980 px;
+    margin: 65px auto 0
+}
+header
+{
+	position:absolute;
+	top:0;
+	min-width:1024px;
+	background:#FF0;
+	width: 100% ;
+	height: 55px
+}
+
+#search-site {
+            float: left;
+			width: 220px;
+			height: 35px;
+			margin: 10px 10px 0 0;
+			background: #fff;
+			position: relative;
+			border-radius: 4px
+        }
+.wrap-main {
+    max-width: 1200px;
+   min-width: 1024px;
+    width: 100% ;
+    height: 55px;
+    background: #000;
+	margin:auto;
+	position:relative;
+	display:block}
+.logo{
+	float:left;
+	width:165px;
+	display:block;
+	/*margin:12px auto 0;*/
+	/*margin-left:10px*/
+	}
+.topinput {
+    float: left;
+	width: 162px;
+	margin-left: 8px;
+	padding-top: 3px;
+	border: 0;position: relative;
+	background: #fff;
+	height: 30px;
+	text-indent: 10px;
+	font-size: 13px
+}
+
+.btntop {
+            float: right;
+			width: 40px;
+			height:35 px;
+			border: 0;
+			background: none
+        }
+#search-site:hover.btntop {
+            background: #ffd401;
+			border-radius: 0 4px 4px 0
+        }
+		
+
+nav {
+	width: 795 px;
+	background: #000;
+	margin:0;
+	padding:0;
+	display:table;
+	*display:block;
+	*float:none
+}
+nav a{
+	display:table-cell;
+	*float:left;
+	width:90px;
+	height:33px;
+	padding:19px 0 3px;
+	color:#000;
+	background:#FF0;
+	font-size: 12px;
+	text-align: center;
+	text-transform: uppercase;
+	position: relative
+}
+
+nav a:hover 
+{       
+	background-color: #fdd504        
+}
+
+ nav a.actmenu {
+            background: #fdd504
+        }
+		
+.breadcrumb {
+	float:left;
+	margin-left:5.5%;
+	width:91.2%;
+	display: block;
+    background: #f7f7f7;
+    border: 2px solid #B7B790;
+	color:#09F;
+	margin-bottom:0.7%
+}
+.breadcrumb a {
+	color:#321D0A;
+}
+.breadcrumb a:hover {
+	color:#09F;
+}
+.breadcrumb ul li {
+	float:left;
+	padding:20px 10px;
+}
+
+.breadcrumb ul li ul li{
+	float:left;
+	padding:13px 10px;
+	
+}
+
+.breadcrumb span {
+	padding-left:15px;
+	font-size:24px;
+	color:#36F
+}
+
+/*form*/
+#form_register
+{
+	width:30%;
+	height:auto;
+	margin-left:35%
+}
+#form_register #register h1 {
+	font-family:Arial, Helvetica, sans-serif;
+	margin:auto;
+	text-align:center;
+	height: 50px;
+  	width: 108%;
+  	font-size: 30px;
+	padding-top:5%;
+ 	background: #FFFF00;
+  	color: black;
+  	border-radius: 3px 3px 0 0;
+  	box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
+}
+table {
+	box-sizing: border-box;
+	margin-bottom:2%;
+  	width: 108%;
+  	margin: auto;
+ 	padding-bottom: 5%;
+	border:2px solid #BBB;
+ 	border-radius: 3px;
+}
+#form_register #register input {
+	border:0px;
+    padding: 10px;
+}
+ 
+#form_register #register input:focus {
+  box-shadow: 0px 0px 6px 0px #396;
+  transition:0.7s;
+}
+
+#form_register #register input {
+  background:white;
+  border-radius: 5px;
+}
+#form_register #register select {
+	border:0px;
+    padding: 10px;
+}
+#form_register #register select:focus {
+	outline-width:0.5px;
+  box-shadow: 0px 0px 6px 0px #396;
+  transition:0.7s;
+}
+
+#email {
+	width:300px;
+}
+/*#box{
+	margin-left:110px;
+}*/
+#form_register #register #button {
+  border: none;
+  background: #FFFF00;
+  border-radius: 5px;
+  width: 100px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+#form_register #register #button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+/*kết thúc form đăng ký*/
+
+/*phần hỏi đáp*/
+.lefttask {
+    float: left;
+	margin-left:5.5%;
+	overflow: hidden;
+	width: 71.667%
+}
+.colleftask {
+    float: left;width: 30.234% ;margin: 20px 0
+}
+
+.asklot {
+    display: block;margin-bottom: 20px;border: 1px solid #ededed;border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px
+}
+
+.asklot strong {
+    display: block;
+	padding: 10px;
+	background: #fafafa;
+	font-size: 16px;color: #666;
+	text-transform:uppercase;
+	line-height:1.3em;
+	border-radius:3px 3px 0 0;
+	-webkit-border-radius:3px 3px 0 0;
+	-moz-border-radius:3px 3px 0 0;
+	border-bottom:1px solid #ededed
+}
+
+.asklot ul {
+    display: block;overflow: visible;
+	margin: 5px 5px 15px
+}
+.asklot li {
+    display: block;overflow: hidden;border-bottom: 1px dashed #dcdcdc;padding: 5px 0 10px;margin-bottom: 5px;padding-bottom: 15px
+}
+
+.asklot li.linkimg {
+    float: left;overflow: hidden
+}.asklot li img {
+    float: left;width: 50px;height: auto;margin-right: 10px
+}.asklot li.linktitle {
+    display: block;overflow: hidden
+}.asklot li h3 {
+    display: block;overflow: hidden;line-height: 1.3em;font-size: 14px;color: #444;font-weight:600;margin-bottom:5px}
+	.asklot li .linktitle:hover h3{color:#288ad6
+}
+
+.asklot li a.link {
+    font-size: 12 px;
+    color: #9a9a9a;padding:0 5px 0 0;display:inline-block
+	}
+.asklot li a.link:hover{
+	color:#288ad6;
+    text-decoration: underline
+}
+.asklot li:last-child {
+    position: relative;border: 0
+}
+
+.filview {
+    display: block;overflow: hidden;background: #fafafa;border-radius: 4px  px 0 0; -webkit-border-radius: 4px 4px 0 0; -moz-border-radius: 4px 4px 0 0;border-bottom: 1px solid #dedede
+}
+.filview a {
+    float: left;padding: 10px;font-size: 13px;color: #666;text-transform:uppercase}
+	.filview span{float:left;padding:10px;font-size:15px;color:#999
+}
+.filview a:hover {
+    color: #288ad6}
+.filview a.current{color:#288ad6;font-weight: 600
+}
+
+.listask {
+    display: block;overflow: hidden;margin: 10px
+}.listask li {
+    display: block;overflow: hidden;border-bottom: 1px solid #efefef;padding: 0 0 10px;margin-bottom: 10px
+}.listask li div {
+    display: block;line-height: 18px;color: #444;font-size:14px}
+.listask li div a{display:inline-flex;color:#288ad6
+}
+.listask li img {
+    float: left;width: 95px;height: 55px;margin-right: 10px
+}
+.listask li h3 {
+    display: block;overflow: hidden;line-height: 1.3em;color: #444;font-size:14px;font-weight:600;margin-bottom:5px}
+	.listask li .info{display:block;overflow:hidden;font-size:12px;color:#999;margin-top: 5px
+}
+.listask li .info i {
+    float: left;margin-right: 10px
+}
+.listask li.info span {
+    float: left;margin-right: 10px
+}
+.listask li.link {
+    font-size: 12px;
+    color: #999}
+	
+	.listask li.link:hover{color:#288ad6
+}
+.listask li:last-child {
+    border-bottom: 0
+}
+.listask li.product {
+    display: block;overflow: hidden
+}
+.listask li.product a {
+    display: inline-block;vertical-align: middle;width: 48% ;overflow: hidden
+}
+.listask li.product a img {
+    width: 50px;height: 50px
+}.listask li.product a strong {
+    color: red
+}.listask li.product a :hover h3 {
+    color: #288ad6}
+	.listask li.product div{float:right;vertical-align:middle;width:47%;padding-top:10px}
+	.listask li.product div a{width:auto;margin-left:5px}
+	.titletopic{display:block;overflow:hidden;background:#fafafa;border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; -moz-border-radius: 4px 4px 0 0;border-bottom: 1px solid #dedede;text-transform: uppercase;padding: 10px;font-size: 16px;color: #666}
+	.listtopic{display:block;overflow:hidden;margin:0 5px}
+	.listtopic li{width:100%;display:table;border-bottom:1px dashed #989898
+}
+.colcenterask {
+	float:left;
+    display: block;overflow: hidden;padding: 10px 0;width: 95% ;margin: 10px auto;background:#fff;border: 1px solid #288ad6;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px}
+	.colcenterask:hover{background:#288ad6;color: #fff
+}
+.colcenterask b {
+    width: 0;height: 0;border-top: 6px solid #288ad6;border-left:6px solid transparent;border-right:6px solid transparent;display:inline-flex;position:relative;top:-1px;margin-left:5px}
+	.colcenterask:hover b{border-top:6px solid #fff
+}
+
+.rightask {
+    float: right;width: 22.834% ;overflow: hidden;
+}
+
+.writepostask {
+    display: block;overflow: hidden;padding: 10 px;background: #288ad6;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;font-size:16px;color:#fff;text-transform: uppercase;text-align: center;cursor: pointer;font-weight: 600
+}
+.postask {
+    display: block;overflow: visible;border: 1px solid #ededed;border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px;position: relative
+}
+.postask .titlepostask {
+    display: block;overflow: hidden;text-align: center;padding: 10px;background: #288ad6;border-radius:4px 4px 0 0;-webkit-border-radius:4px 4px 0 0;-moz-border-radius:4px 4px 0 0}
+	.postask .titlepostask strong{font-size:16px;margin-right:5px;color:#fff;text-transform: uppercase
+}
+.postask .titlepostask span {
+    display: block;font-size: 12px;color: #fff
+}
+.postask textarea {
+    display: block;padding: 10px;width: 93% ;background: #fff;border: 0;font-size: 13px;color: #9c9c9c}
+	
+	.postask .addandsend{display:block;overflow:hidden;padding:5px;border-top:1px solid #ededed;border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; -moz-border-radius: 0 0 4px 4px
+}
+.postask .addandsend span {
+    float: left;padding: 8px;cursor: pointer
+}
+.postask button {
+    float: right;padding: 8px 16px;font-size: 12px;color: #444;text-transform:uppercase;border:1px solid #ededed;border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px;background: #fff;font-weight: 600;cursor: pointer
+}
+.postask button:hover {
+    background: #288ad6;color:#fff;border: 1px solid #288ad6}
+	
+/*Hết hồi đáp*/
+
+footer
+{
+	position:relative;
+	bottom:0;
+	margin-top:0.6%;
+	padding-top:10px;
+	width:100%;
+	height:60px;
+	text-align:center;
+	background-color:#FF0;
+		
+}
+footer pre{
+	font-weight:bold;
+	color:#222;
+	font-family:Arial, Helvetica, sans-serif
+}
+

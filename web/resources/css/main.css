@@ -49,7 +49,7 @@ a#scrollUp {
   bottom: 0px;
   right: 10px;
   padding: 5px 10px;
-  background: #FE980F;
+  background: #FF0000;
   color: #FFF;
   -webkit-animation: bounce 2s ease infinite;
   animation: bounce 2s ease infinite;
@@ -212,7 +212,7 @@ a#scrollUp i{
 
 
 .shop-menu ul li a:hover {
-	color:#fe980f;
+	color:#FF0000;
 	background:#fff;
 }
 
@@ -246,7 +246,7 @@ a#scrollUp i{
 
 .mainmenu ul li a:hover, .mainmenu ul li a.active,  .shop-menu ul li a.active{
 	background:none;
-	color:#fdb45e;
+	color:#FF0000;
 }
 
 .search_box input {
@@ -364,7 +364,7 @@ ul.sub-menu {
 }
 
 .companyinfo h2  span{
-  color:#FE980F;
+  color:#FF0000;
 }
 
 .companyinfo p {
@@ -574,7 +574,7 @@ ul.sub-menu {
 }
 
 .carousel-indicators li.active {
-	  background: #FE980F;
+	  background: #000;
 }
 
 .item {
@@ -600,7 +600,7 @@ ul.sub-menu {
 }
 
 .item h1 span {
-	color:#FE980F;
+	color:#FF0000;
 }
 
 .item h2 {
@@ -620,7 +620,7 @@ ul.sub-menu {
 }
 
 .get {
-  background: #FE980F;
+  background: #000;
   border: 0 none;
   border-radius: 0;
   color: #FFFFFF;
@@ -631,9 +631,7 @@ ul.sub-menu {
 }
 
 
-.item button:hover {
-  background: #FE980F;
-}
+
 
 .control-carousel {
   position: absolute;
@@ -643,7 +641,7 @@ ul.sub-menu {
 }
 
 .control-carousel:hover{
-  color: #FE980F ;
+  color: #000 ;
 }
 
 .right {
@@ -651,13 +649,13 @@ ul.sub-menu {
 }
 
 .category-products {
-  border: 1px solid #F7F7F0;
+  
   margin-bottom: 35px;
   padding-bottom: 20px;
   padding-top: 15px;
 }
 .left-sidebar h2, .brands_products h2 {
-  color: #FE980F;
+  color: #FF0000;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 700;
@@ -671,7 +669,7 @@ ul.sub-menu {
 .left-sidebar h2:after, h2.title:after{
 	content: " ";
 	position: absolute;
-	border: 1px solid #f5f5f5;
+	border: 1px solid black;
 	bottom:8px;
 	left: 0;
 	width: 100%;
@@ -758,7 +756,7 @@ h2.title:before{
 }
 
 .brands-name {
-  border: 1px solid #F7F7F0;
+  
   padding-bottom: 20px;
   padding-top: 15px;
 }
@@ -832,7 +830,7 @@ h2.title:before{
 
 
 h2.title {
-  color: #FE980F;
+  color: #FF0000;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 700;
@@ -843,7 +841,7 @@ h2.title {
 }
 
 .product-image-wrapper{
-	border:1px solid #F7F7F5;
+	border:2px solid #F7F7F5;
 	overflow: hidden;
 	margin-bottom:30px;
 }
@@ -859,7 +857,7 @@ h2.title {
 }
 
 .productinfo h2{
-	color: #FE980F;
+	color: #FF0000;
 	font-family: 'Roboto', sans-serif;
 	font-size: 24px;
 	font-weight: 700;
@@ -964,7 +962,7 @@ h2.title {
 }
 
 .add-to-cart:hover {
-  background: #FE980F;
+  background: #FF0000;
   color: #FFFFFF;
 }
 
@@ -986,7 +984,7 @@ h2.title {
 
 .choose ul li a:hover{
 	background:none;
-	color:#FE980F;
+	color:#FF0000;
 }
 
 .category-tab {
@@ -994,8 +992,8 @@ h2.title {
 }
 
 .category-tab ul {
-  background: #40403E;
-  border-bottom: 1px solid #FE980F;
+  background: black;
+  border-bottom: 1px solid black;
   list-style: none outside none;
   margin: 0 0 30px;
   padding: 0;
@@ -1005,7 +1003,7 @@ h2.title {
 .category-tab ul li a {
   border: 0 none;
   border-radius: 0;
-  color: #B3AFA8;
+  color: whitesmoke;
   display: block;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -1013,7 +1011,7 @@ h2.title {
 }
 
 .category-tab ul  li  a:hover{
-	background:#FE980F;
+	background:#FF0000;
 	color:#fff;
 }
 
@@ -1022,7 +1020,7 @@ h2.title {
   -moz-border-left-colors: none;
   -moz-border-right-colors: none;
   -moz-border-top-colors: none;
-  background-color: #FE980F;
+  background-color: #FF0000;
   border:0px;
   color: #FFFFFF;
   cursor: default;
@@ -1051,7 +1049,7 @@ h2.title {
 }
 
 .recommended-item-control i {
-  background: none repeat scroll 0 0 #FE980F;
+  background: none repeat scroll 0 0 #FF0000;
   color: #FFFFFF;
   font-size: 20px;
   padding: 4px 10px;
@@ -1170,21 +1168,22 @@ h2.title {
 
 .view-product img {
   border: 1px solid #F7F7F0;
-  height: 380px;
-  width: 100%;
+  margin-left: 55px;
+   margin-top: 30px;
 }
 
 .view-product h3 {
-  background: #FE980F;
-  bottom: 0;
+  background: #FF0000;
+  
   color: #FFFFFF;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 700;
-  margin-bottom: 0;
+  
   padding: 8px 20px;
   position: absolute;
-  right: 0;
+  top:11px;
+  left:55px;
 }
 
 #similar-product .carousel-inner .item{
@@ -1201,7 +1200,7 @@ h2.title {
   top: 35%;
 }
 .item-control i {
-  background: #FE980F;
+  background: #FF0000;
   color: #FFFFFF;
   font-size: 20px;
   padding: 5px 10px;
@@ -1246,7 +1245,7 @@ h2.title {
 }
 
 .product-information span span {
-  color: #FE980F;
+  color: #FF0000;
   float: left;
   font-family: 'Roboto', sans-serif;
   font-size: 30px;
@@ -1279,7 +1278,7 @@ h2.title {
 
 
 .cart {
-  background: #FE980F;
+  background: #FF0000;
   border: 0 none;
   border-radius: 0;
   color: #FFFFFF;
@@ -1477,7 +1476,7 @@ h2.title {
 }
 
 .login-form form button, .signup-form form button {
-  background: #FE980F;
+  background: #FF0000;
   border: medium none;
   border-radius: 0;
   color: #FFFFFF;
@@ -1502,7 +1501,7 @@ h2.title {
 
 
 .or{
-	background: #FE980F;
+	background: #FF0000;
 	border-radius: 40px;
 	color: #FFFFFF;
 	font-family: 'Roboto', sans-serif;
