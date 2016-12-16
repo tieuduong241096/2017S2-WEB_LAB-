@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="connect.Controller"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,7 +26,7 @@
         <div id="wrapper">
         <jsp:include page="menu.jsp"></jsp:include>
        <div id="rightContent">
-	<h3>Tabel</h3>
+	        <h1>Category's Info</h1>
 	
 	<div class="informasi">
 	ini adalah notifikasi pertanda informasi
@@ -37,207 +39,60 @@
 	<div class="sukses">
 	ini adalah notifikasi pertanda sukses
 	</div>
-		<table class="data">
-			<tr class="data">
-				<th class="data" width="30px">No</th>
-				<th class="data">Nama</th>
-				<th class="data">Email</th>
-				<th class="data">Telepon</th>
-				<th class="data" width="75px">Pilihan</th>
-			</tr>
-			<tr class="data">
-				<td class="data" width="30px">1</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data" width="75px">
-				<center>
-				<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-				<a href="#"><img src="mos-css/img/detail.png"></a>
-				</center>
-				</td>
-			</tr>
-			<tr class="data">
-				<td class="data" width="30px">2</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data" width="75px">
-				<center>
-				<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-				<a href="#"><img src="mos-css/img/detail.png"></a>
-				</center>
-				</td>
-			</tr>
-			<tr class="data">
-				<td class="data" width="30px">3</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data" width="75px">
-				<center>
-				<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-				<a href="#"><img src="mos-css/img/detail.png"></a>
-				</center>
-				</td>
-			</tr>
-			<tr class="data">
-				<td class="data" width="30px">4</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data" width="75px">
-				<center>
-				<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-				<a href="#"><img src="mos-css/img/detail.png"></a>
-				</center>
-				</td>
-			</tr>
-			<tr class="data">
-				<td class="data" width="30px">5</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data" width="75px">
-				<center>
-				<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-				<a href="#"><img src="mos-css/img/detail.png"></a>
-				</center>
-				</td>
-			</tr>
-			<tr class="data">
-				<td class="data" width="30px">6</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data" width="75px">
-				<center>
-				<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-				<a href="#"><img src="mos-css/img/detail.png"></a>
-				</center>
-				</td>
-			</tr>
-			<tr class="data">
-				<td class="data" width="30px">7</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data" width="75px">
-				<center>
-				<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-				<a href="#"><img src="mos-css/img/detail.png"></a>
-				</center>
-				</td>
-			</tr>
-			<tr class="data">
-				<td class="data" width="30px">8</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data" width="75px">
-				<center>
-				<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-				<a href="#"><img src="mos-css/img/detail.png"></a>
-				</center>
-				</td>
-			</tr>
-			<tr class="data">
-				<td class="data" width="30px">9</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data" width="75px">
-				<center>
-				<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-				<a href="#"><img src="mos-css/img/detail.png"></a>
-				</center>
-				</td>
-			</tr>
-			<tr class="data">
-				<td class="data" width="30px">10</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data" width="75px">
-				<center>
-				<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-				<a href="#"><img src="mos-css/img/detail.png"></a>
-				</center>
-				</td>
-			</tr>
-			<tr class="data">
-				<td class="data" width="30px">11</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data" width="75px">
-				<center>
-				<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-				<a href="#"><img src="mos-css/img/detail.png"></a>
-				</center>
-				</td>
-			</tr>
-			<tr class="data">
-				<td class="data" width="30px">12</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data" width="75px">
-				<center>
-				<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-				<a href="#"><img src="mos-css/img/detail.png"></a>
-				</center>
-				</td>
-			</tr>
-			<tr class="data">
-				<td class="data" width="30px">13</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data" width="75px">
-				<center>
-				<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-				<a href="#"><img src="mos-css/img/detail.png"></a>
-				</center>
-				</td>
-			</tr>
-			<tr class="data">
-				<td class="data" width="30px">14</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data" width="75px">
-				<center>
-				<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-				<a href="#"><img src="mos-css/img/detail.png"></a>
-				</center>
-				</td>
-			</tr>
-			<tr class="data">
-				<td class="data" width="30px">15</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data" width="75px">
-				<center>
-				<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-				<a href="#"><img src="mos-css/img/detail.png"></a>
-				</center>
-				</td>
-			</tr>
-			<tr class="data">
-				<td class="data" width="30px">16</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data">Data Anda</td>
-				<td class="data" width="75px">
-				<center>
-				<a href="#"><img src="mos-css/img/oke.png"></a>&nbsp;&nbsp;&nbsp;
-				<a href="#"><img src="mos-css/img/detail.png"></a>
-				</center>
-				</td>
-			</tr>
-		</table>
+		<%
+
+            String query = "Select * from user";
+
+            ResultSet rs = Controller.queryExecute(query);
+            out.println("<table class='data' border=1>");
+            out.println("<tr class='data'>");
+            out.println("<th class='data'><b><center>User ID</center></b></th>");
+            out.println("<th class='data'><b><center>User name</center></b></th>");
+            out.println("<th class='data'>||</th>");
+            out.println("<th class='data'><b><center>Password</center></b></th>");
+            out.println("<th class='data'><b><center>Full name</center></b></th>");
+            out.println("<th class='data'><b><center>Status</center></b></th>");
+            out.println("<th class='data'><b><center>Age</center></b></th>");
+            out.println("<th class='data'><b><center>Gender</center></b></th>");
+            out.println("<th class='data'><b><center>Address</center></b></th>");
+            out.println("<th class='data'><b><center>Email</center></b></th>");
+            out.println("<th class='data'><b><center>Phone</center></b></th>");
+            out.println("<th class='data'><b>Action</b></th>");
+            out.println("</tr>");
+
+            while (rs.next()) {
+                String uid = rs.getString("userid");
+                String un = rs.getString("username");
+                String pass = rs.getString("password");
+                String fn = rs.getString("fullname");
+                String s = rs.getString("status");
+                String age = rs.getString("age");
+                String g = rs.getString("gender");
+                String a = rs.getString("address");
+                String e = rs.getString("email");
+                String p = rs.getString("phone");
+                out.println("<tr><td align=center>" + uid + "</td>");
+                out.println("<td align=left>" + un + "</a></td>");
+                out.println("<td><td align=left>" + pass + "</td>");
+                out.println("<td align=left>" + fn + "</a></td>");
+                out.println("<td align=left>" + s + "</a></td>");
+                out.println("<td align=left>" + age + "</a></td>");
+                out.println("<td align=left>" + g + "</a></td>");
+                out.println("<td align=left>" + a + "</a></td>");
+                out.println("<td align=left>" + e + "</a></td>");
+                out.println("<td align=left>" + p + "</a></td>");
+                out.println("<td><a href=\"../Action/edit.jsp?id=" + uid + "\">Edit</a> | ");
+                out.println("<a href=\"../Action/delete.jsp?id=" + uid + "\">Delete</a></td>");
+                out.println("</tr>");
+
+            }
+            out.println("</table>");
+
+            rs.close();
+        %>
+        <br>
+        <a href="../Action/add.jsp">New User</a><br/>
+        <hr>
 	</div>
         <div class="clear"></div>
         <jsp:include page="footer.jsp"></jsp:include>

@@ -16,9 +16,10 @@
     </head>
     <body>
        <%
-            String id = (request.getParameter("cid"));
-            out.println("<h1>" + id + "</h1>");
-            String query = "delete from category where categoryid = " + id;
+            String cid = (request.getParameter("cid"));
+            String bid = (request.getParameter("bid"));
+            out.println("<h1>" + cid + "</h1>");
+            String query = "delete from category where categoryid = " + cid;
             Controller.updateExecute(query);
             response.sendRedirect("../admin/manageCategory.jsp");
         %>        

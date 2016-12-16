@@ -70,7 +70,7 @@
             rs.close();
         %>
         <br>
-        <a href="../Action/add.jsp">New Staff</a><br/>
+        <a href="../Action/add.jsp">New Category</a><br/>
         <hr>
 	</div>
         <div class="clear"></div>
