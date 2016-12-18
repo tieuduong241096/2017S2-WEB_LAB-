@@ -17,4 +17,5 @@ import model.ReceiptDetail;
 public interface ReceiptDetailDAO {
     public ArrayList<ReceiptDetail> getReceiptDetailListByReceipt(Receipt receipt);
     public ArrayList<ReceiptDetail> getReceiptDetailListByProduct(Product product);
+    public boolean insertReceiptDetail(ReceiptDetail rcdt);
 }

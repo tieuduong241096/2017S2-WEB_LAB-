@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import model.Receipt;
 import model.User;
@@ -34,10 +35,10 @@ public class ReceiptDAOImpl implements ReceiptDAO{
                         rs.getInt("receiptid"), 
                         rs.getTimestamp("bookdate"), 
                         rs.getString("paymode"), 
-                        rs.getTimestamp("shipdate"), 
+                        
                         rs.getString("shipaddress"), 
                         user, 
-                        rs.getString("status"));
+                        rs.getInt("status"));
                 
                 
                 list.add(r);
@@ -48,6 +49,50 @@ public class ReceiptDAOImpl implements ReceiptDAO{
             System.err.println("ERROR LOADiNG RECEIPT FROM USER");
         }
         return list;
+    }
+
+    @Override
+    public boolean insertReceipt(Receipt rc) {
+        Connection cons = DBConnect.getConnection();
+        String sql = "INSERT INTO RECEIPT(receipt.bookdate,receipt.paymode,receipt.shipaddress,receipt.userid,receipt.status) values(?,?,?,?,?)";
+        try {
+            int userid = new UserDAOImpl().getUserIDFromEmail(rc.getUser().getEmail());
+            PreparedStatement ps = cons.prepareCall(sql);
+            ps.setTimestamp(1, rc.getBookDate());
+            ps.setString(2, rc.getPayMode());
+            ps.setString(3, rc.getShipAddress());
+            if(userid==0)
+                ps.setNull(4, java.sql.Types.INTEGER);
+            else
+                ps.setInt(4, userid);
+            ps.setInt(5,rc.getStatus());
+            
+            ps.executeUpdate();
+            cons.close();
+            return true;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        
+        return false;
+    }
+
+    @Override
+    public int getLatestReceiptID() {
+        int max=0;
+        try {
+            Connection connection = DBConnect.getConnection();
+            String sql = "SELECT MAX(receiptid) as max FROM receipt";
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                max = rs.getInt("max");
+            }
+        } catch (SQLException ex) {
+            System.err.println("ERROR FINDING MIN FROM CATEGORY");
+        }
+        
+        return max;
     }
     
 }

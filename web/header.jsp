@@ -117,7 +117,7 @@
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
                                     <%if(s.getAttribute("username")!=null){%>
-                                        <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+                                    <li><a href="#"><i class="fa fa-user"></i> <%=s.getAttribute("email")%></a></li>
                                     <%}%>
                                     
                                     <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i><span style="color: red"> <%= num%></span></a>
@@ -131,6 +131,7 @@
                                     <%}%>
                                     <%if(s.getAttribute("username")==null){%>
                                     <li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
+                                    <li><a href="checkout.jsp"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                     <%}%>
                                 </ul>
                             </div>

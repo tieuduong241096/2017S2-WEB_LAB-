@@ -20,7 +20,7 @@
 
 
         <script src="resources/js/html5shiv.js"></script>
-
+        <script src="javascript/validateAccount.js"></script>
 
         <script src="resources/js/jquery.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>
@@ -102,7 +102,9 @@
                                 <h2>Login to your account</h2>
                                 <form action="AccountController" method="post">
                                     <p style="color: red"><%= email_login_err%></p>
-                                    <input type="text" placeholder="Email Address" name ="email" />
+                                    <p id="err8" style="color: red"></p>
+                                    <input type="text" placeholder="Email Address" name ="email1" id="email1" oninput="checkEmail_login()" />
+                                    
                                     <input type="password" placeholder="Password" name="password" />
                                     <p style="color: red"><%= login_err%></p>
                                     <span>
@@ -122,23 +124,36 @@
                                 <h2>Sign Up!</h2>
                                 <form action="AccountController" method="post" >
                                     <p style="color: red"><%= username_err%></p>
-                                    <input type="text" placeholder="User Name" name="username" value="<%= username %>"/>
+                                    <p id="err1" style="color: red"></p>
+                                    <input type="text" placeholder="User Name" name="username" id="username" value="<%= username %>" oninput="checkUsername()"/>
+                                    
                                     <p style="color: red"><%= password_err%></p>
-                                    <input type="password" placeholder="Password" name="password"/>
+                                    <p id="err2" style="color: red"></p>
+                                    <input type="password" placeholder="Password" id="password" name="password" oninput="checkPassword()"/>
+                                    
                                     <p style="color: red"><%= email_err%></p>
-                                    <input type="text" placeholder="Email" name="email" value="<%= email %>"/>
+                                    <p id="err3" style="color: red"></p>
+                                    <input type="text" placeholder="Email" name="email" id="email" value="<%= email %>" oninput="checkEmail()"/>
+                                    
                                     <p style="color: red"><%= fullname_err%></p>
-                                    <input type="text" placeholder="Full Name" name="fullname" value="<%= fullname %>"/>
+                                    <p id="err4" style="color: red"></p>
+                                    <input type="text" placeholder="Full Name" name="fullname" id="fullname" value="<%= fullname %>" oninput="checkFullname()"/>
+                                    
                                     <p style="color: red"><%= age_err%></p>
-                                    <input type="number" placeholder="Age" name="age" min="18" max="30" style="width: 20%" value="<%= age %>"/>
+                                    <p id="err5" style="color: red"></p>
+                                    <input type="number" placeholder="Age" name="age" id="age" min="18" max="30" style="width: 20%" value="<%= age %>" oninput="checkAge()"/>
                                     <div>
                                         Male<input type="radio" name="gender" value="male" checked="checked" style="height: 15px;width:20%"/>
                                         Female<input type="radio" name="gender" value="female" style="height: 15px;width: 20%"/>
                                     </div>
+                                    
                                     <p style="color: red"><%= address_err%></p>
-                                    <input type="text" placeholder="Address" name="address" value="<%= address %>"/>
+                                    <p id="err6" style="color: red"></p>
+                                    <input type="text" placeholder="Address" name="address" id="address" value="<%= address %>" oninput="checkAddress()"/>
+                                    
                                     <p style="color: red"><%= phone_err%></p>
-                                    <input type="text" placeholder="Phone" name="phone" value="<%= phone %>"/>
+                                    <p id="err7" style="color: red"></p>
+                                    <input type="text" placeholder="Phone" name="phone" id="phone" value="<%= phone %>" oninput="checkPhone()"/>
                                     <input type="hidden" name="action" value="signup"/>
                                     <button type="submit" class="btn btn-default">Sign Up</button>
                                 </form>

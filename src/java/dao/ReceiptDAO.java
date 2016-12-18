@@ -14,5 +14,7 @@ import model.User;
  * @author tuan
  */
 public interface ReceiptDAO {
-    public ArrayList<Receipt> getReceiptListByUser(User user); 
+    public ArrayList<Receipt> getReceiptListByUser(User user);
+    public boolean insertReceipt(Receipt rc);
+    public int getLatestReceiptID();
 }

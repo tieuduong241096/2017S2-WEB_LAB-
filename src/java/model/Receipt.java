@@ -17,23 +17,23 @@ public class Receipt {
     private long receiptID;
     private Timestamp bookDate;
     private String payMode;
-    private Timestamp shipDate;
     private String shipAddress;
     private User user;
-    private String status;
+    private int status;
 
     public Receipt() {
     }
 
-    public Receipt(long receiptID, Timestamp bookDate, String payMode, Timestamp shipDate, String shipAddress, User user, String status) {
+    public Receipt(long receiptID, Timestamp bookDate, String payMode, String shipAddress, User user, int status) {
         this.receiptID = receiptID;
         this.bookDate = bookDate;
         this.payMode = payMode;
-        this.shipDate = shipDate;
         this.shipAddress = shipAddress;
         this.user = user;
         this.status = status;
     }
+
+    
 
     public long getReceiptID() {
         return receiptID;
@@ -59,13 +59,7 @@ public class Receipt {
         this.payMode = payMode;
     }
 
-    public Timestamp getShipDate() {
-        return shipDate;
-    }
-
-    public void setShipDate(Timestamp shipDate) {
-        this.shipDate = shipDate;
-    }
+   
 
     public String getShipAddress() {
         return shipAddress;
@@ -83,13 +77,15 @@ public class Receipt {
         this.user = user;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
+
+    
     
     
 }

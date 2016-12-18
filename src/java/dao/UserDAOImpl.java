@@ -128,6 +128,29 @@ public class UserDAOImpl implements UserDAO{
         return username;
     }
 
+    @Override
+    public int getUserIDFromEmail(String email) {
+        int userid = 0;
+        if(!email.equals("")){
+        Connection cons = DBConnect.getConnection();
+        String sql = "select userid from user where email='"+email+"'";
+        
+        try {
+            PreparedStatement ps = cons.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                userid = rs.getInt("userid");
+            }
+            cons.close();
+        } catch (Exception e) {
+            System.err.println("ERROR GET USERID");
+        }
+        return userid;
+        }
+        
+        return userid;
+    }
+
    
     
     

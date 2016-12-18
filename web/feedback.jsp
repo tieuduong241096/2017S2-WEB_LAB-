@@ -38,6 +38,8 @@
         <script src="resources/js/price-range.js"></script>
         <script src="resources/js/jquery.prettyPhoto.js"></script>
         <script src="resources/js/main.js"></script>
+        
+        
     </head>
     <body>
         <!--HEADER-->
@@ -46,6 +48,7 @@
             <%
                 FeedbackDAOImpl fb = new FeedbackDAOImpl();
                 UserDAOImpl udi = new UserDAOImpl();
+                
             %>
             
             <div class="clr"></div>

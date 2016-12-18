@@ -80,6 +80,28 @@ public class ReceiptDetailDAOImpl implements ReceiptDetailDAO{
         }
         return list;
     }
+
+    @Override
+    public boolean insertReceiptDetail(ReceiptDetail rcdt) {
+        Connection cons = DBConnect.getConnection();
+        String sql = "INSERT INTO receiptdetail(receiptdetail.quantity,receiptdetail.price,receiptdetail.receiptid,receiptdetail.productid) values(?,?,?,?)";
+        try {
+            PreparedStatement ps = cons.prepareCall(sql);
+            ps.setInt(1, rcdt.getQuantity());
+            ps.setDouble(2, rcdt.getPrice());
+            ps.setInt(3, (int) rcdt.getReceipt().getReceiptID());
+            ps.setInt(4, (int) rcdt.getProduct().getProductID()); //status
+            
+            
+            ps.executeUpdate();
+            cons.close();
+            return true;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        
+        return false;
+    }
     }
 
     

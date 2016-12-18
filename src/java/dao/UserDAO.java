@@ -18,4 +18,5 @@ public interface UserDAO {
     public String getUserNameFromEmail(String email);
     public boolean checkAccountExistBaseOnEmailAndPassword(String email,String password);
     public String getUserNameFromUserID(String id);
+    public int getUserIDFromEmail(String email);
 }

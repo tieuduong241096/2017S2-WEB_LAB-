@@ -35,14 +35,14 @@ public class AccountController extends HttpServlet {
 
                 //khong check remember me, nghia la khong luu cookie trong browser
                 session.removeAttribute("username");
-                
+                session.removeAttribute("email");
                 
                 request.getRequestDispatcher("index.jsp").forward(request, response);
 
             } else {//check remeber me, nghia la co luu cookie trong browser
                 if (new UserDAOImpl().checkLogin(user.getEmail(), user.getPassword())) {
                     session.setAttribute("username", new UserDAOImpl().getUserNameFromEmail(user.getEmail()));
-
+                    session.setAttribute("email", user.getEmail());
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
             }
@@ -102,7 +102,7 @@ public class AccountController extends HttpServlet {
         if (action.equals("login")) {
             // <editor-fold defaultstate="collapsed" desc="Login Action">
             final String secretKey = "secretkeysecretkey";
-            String email = request.getParameter("email");
+            String email = request.getParameter("email1");
             String password = request.getParameter("password");
             boolean rememberMe = request.getParameter("remember") != null;
             String encryptedPassword = AES.encrypt(password, secretKey);
@@ -136,7 +136,8 @@ public class AccountController extends HttpServlet {
                 url = "/index.jsp";
                 HttpSession s = request.getSession();
                 s.setAttribute("username", username);
-
+                s.setAttribute("email", email);
+                
                 if (rememberMe) {
                     Cookie c = new Cookie("email", email);
                     c.setMaxAge(3600);
@@ -206,7 +207,7 @@ public class AccountController extends HttpServlet {
                 request.setAttribute("email_err", "email exists");
 
             } else if (!email.matches("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")) {
-                request.setAttribute("email_err", "Wrong email format!");
+                request.setAttribute("email_err", "Invalid email format!");
 
             } else {
                 request.setAttribute("email", email);
@@ -232,8 +233,8 @@ public class AccountController extends HttpServlet {
 
                 request.setAttribute("age_err", "Please input your age!");
 
-            } else if (!age.matches("^\\d+$") || age.length() != 2) {
-                request.setAttribute("age_err", "Number only");
+            } else if (!age.matches("^\\d+$") || age.length() != 2 || Integer.parseInt(age) < 18 || Integer.parseInt(age) > 30) {
+                request.setAttribute("age_err", "age from 18 to 30 only");
 
             } else {
                 request.setAttribute("age", age);
@@ -256,10 +257,15 @@ public class AccountController extends HttpServlet {
 
                 request.setAttribute("phone_err", "Please input your phone number!");
 
-            } else if (phone.length() < 10 || phone.length() > 15 || !phone.matches("^\\d+$")) {
-                request.setAttribute("phone_err", "Appropriate phone format is +84 968621423");
+            } else if (phone.length() < 10 || phone.length() > 15) {
+                request.setAttribute("phone_err", "10 to 15 numbers required");
 
-            } else {
+            }
+            else if (!phone.matches("^(?=\\d{10,11}$)(098|097|096|0169|0168|0167|0166|0165|0164|0163|0162|091|094|0123|0124|0125|0127|0129|090|093|0120|0121|0122|0126|0128|092|0188|0993|0994|0995|0996|099|095)\\d+")) {
+                request.setAttribute("phone_err", "Appropriate phone carriers are Viettel, Vinaphone, Mobifone, Vietnamobile, Beeline,S fone");
+
+            } 
+            else {
                 request.setAttribute("phone", phone);
                 phone_err = "";
             }
@@ -277,7 +283,7 @@ public class AccountController extends HttpServlet {
 
                 HttpSession s = request.getSession();
                 s.setAttribute("username", username);
-
+                s.setAttribute("email", email);
             }
 
             RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
