@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-sm-2">
                             <div class="companyinfo">
-                                <h2><span>D</span>-LAB</h2>
+                                <h2><span>S</span>-LAB</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
                             </div>
                         </div>
