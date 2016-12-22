@@ -7,7 +7,7 @@
 <%@page import="dao.BrandDAOImpl"%>
 <%@page import="model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <%@page import="dao.ProductDAO"%>
 <%@page import="dao.ProductDAOImpl"%>
@@ -18,8 +18,8 @@
 
         <title>CATEGORY MENU</title>        
 
-        <c:set var="root" value="${pageContext.request.contextPath}"/>
-        <link href="${root}/resources/css/mos-style.css" rel='stylesheet' type='text/css' />
+        
+        <link href="../resources/css/mos-style.css" rel='stylesheet' type='text/css' />
 
 
     </head>
@@ -73,10 +73,11 @@
                         <td><%=product.getDiscount()%></td>
                         <td><%=braDAO.getBrandNameByBrandID(new Long(product.getBrand().getBrandID()).toString())%></td>
                         <td><%=product.getProductID()%></td>
-                        <td><a href="????">edit</a> | <a href="????">delete</a></td>
+                        <td><a href="handleProduct.jsp?id=<%=product.getProductID()%>">edit</a> | <a href="ProductServlet?action=delete">delete</a></td>
                     </tr>
                     <%}%>
                     <div class="clear"></div>
+                    <p><a href="handleProduct.jsp?id=empty">Add new Product</a></p>
                     <jsp:include page="footer.jsp"></jsp:include>
             </div>
     </body>

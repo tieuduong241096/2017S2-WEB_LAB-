@@ -178,7 +178,7 @@ nav a.actmenu {
 	font-size:24px;
 	color:#36F
 }
-//CSS Tạo Menu Cấp 2
+/*
 #menu li ul a{
 background:#444;
 }
@@ -300,7 +300,7 @@ display:block;
 						.homenews .movenews:hover {} .homenews .movenews strong {
                             border: solid 1px #288ad6;color:#288ad6;font-size: 11 px;padding: 2px 7px; -moz-border-radius: 3px; -webkit-border-radius: 3px;border-radius: 3px;background-color: #fff
                         }
-						.homenews .movenews: hover strong {
+						.homenews .movenews:hover strong {
                             text-decoration: none
                         }
 
@@ -341,7 +341,7 @@ display:block;
                         }
 						.homeproduct li span {
                             display: block;font-size: 14 px;color: #797979;text-decoration:line-through;margin-bottom:5px}
-						.homeproduct li div{display:block;font-size:12px;color:# 797979;margin: 0px 9px
+						.homeproduct li div{display:block;font-size:12px;color:#797979;margin: 0px 9px
                         }
 						.homeproduct li div b {
                             color: #333}
@@ -358,7 +358,7 @@ display:block;
 								font-size:14px;
 								color:#288ad6
                         }
-						.homeproduct li button: hover {
+						.homeproduct li button:hover {
                             background: #288ad6;color:#fff
                         }
 						.homeproduct li label {
@@ -395,7 +395,7 @@ display:block;
                         }
 						.homeproduct li .bginfo div {
                             padding: 0 0 10px;border-bottom: 1px solid #ddd;margin-bottom: 10px
-                        }.homeproduct li .bginfo h3: hover {
+                        }.homeproduct li .bginfo h3:hover {
                             cursor: pointer;color: #288ad6}
 							.homeproduct li .bginfo span{display:block;color:#666;padding: 2px 6px;text-decoration: none;margin: 0 0 0 5px;font-size: 13px;line-height: 18px
                         }.homeproduct li .bginfo span .hisp {

@@ -14,9 +14,9 @@
     <body>
        <div id="leftBar">
 	<ul>
-		<li><a href="index.html">Home</a></li>
-		<li><a href="tabel.html">Product</a></li>
-		<li><a href="form.html">Brand</a></li>
+		<li><a href="index.jsp">Home</a></li>
+                <li><a href="manageProduct.jsp">Product</a></li>
+                <li><a href="manageBrand.jsp">Brand</a></li>
                 <li><a href="manageCategory.jsp">Category</a></li>
                 <li><a href="manageReceipt.jsp">Receipt</a></li>
                 <li><a href="manageUser.jsp">User</a></li>

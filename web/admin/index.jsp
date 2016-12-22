@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,8 +12,8 @@
         <title>JSP Page</title>
         
 
-<c:set var="root" value="${pageContext.request.contextPath}"/>
-<link href="${root}/resources/css/mos-style.css" rel='stylesheet' type='text/css' />
+
+        <link href="../resources/css/mos-style.css" rel='stylesheet' type='text/css' />
 
         
     </head>
