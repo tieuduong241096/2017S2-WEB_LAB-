@@ -27,8 +27,4 @@ public interface ProductDAO {
     public String countNumberOfProductByBrand(Brand brand);
     
     public Product getProductDetailByProductID(String product);
-    
-    public Product getProductDetailByProductName(String product);
-    
-    public String getMin();
 }

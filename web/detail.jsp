@@ -16,9 +16,7 @@
             BrandDAOImpl bra = new BrandDAOImpl();
 
             Product pr = new Product();
-            String id = request.getParameter("productid").equals("undefined")?pro.getMin():request.getParameter("productid");
-            
-            pr = pro.getProductDetailByProductID(id);
+            pr = pro.getProductDetailByProductID(request.getParameter("productid"));
         %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PRODUCT DETAIL</title>
@@ -30,9 +28,8 @@
         <link href="resources/css/main.css" rel="stylesheet">
         <link href="resources/css/responsive.css" rel="stylesheet">
 
-
         <script src="resources/js/html5shiv.js"></script>
-        
+
 
         <script src="resources/js/jquery.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>
@@ -41,7 +38,7 @@
         <script src="resources/js/jquery.prettyPhoto.js"></script>
         <script src="resources/js/main.js"></script>
 
-        
+        <script src="resources/js/jquery_1.js" type="text/javascript"></script>
         <script src="resources/js/jquery.imageLens.js" type="text/javascript"></script>
 
 
@@ -153,7 +150,7 @@
                                                 <input type="email" placeholder="Email Address"/>
                                             </span>
                                             <textarea name="" ></textarea>
-                                            
+                                            <b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
                                             <button type="button" class="btn btn-default pull-right">
                                                 Submit
                                             </button>

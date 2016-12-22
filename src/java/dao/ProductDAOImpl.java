@@ -14,28 +14,26 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.xml.bind.JAXBException;
 import model.Brand;
 import model.Category;
 import model.Product;
-import utils.JAXBUtils;
 
 /**
  *
  * @author tuan
  */
-public class ProductDAOImpl implements ProductDAO {
+public class ProductDAOImpl implements ProductDAO{
 
     @Override
-    public ArrayList<Product> getProductList(String input) {
+    public ArrayList<Product> getProductList(String input){
         ArrayList<Product> list = new ArrayList<>();
         try {
             Connection connection = DBConnect.getConnection();
             String sql = "SELECT * FROM product " + input;
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
+            
+            while(rs.next()){
                 Product p = new Product();
                 p.setProductID(rs.getInt("productid"));
                 p.setProductName(rs.getString("productname"));
@@ -46,30 +44,28 @@ public class ProductDAOImpl implements ProductDAO {
                 p.setDiscount(rs.getDouble("discount"));
                 p.setBrand(new Brand(rs.getInt("brandid"), ""));
                 p.setCategory(new Category(rs.getInt("categoryid"), "", new Brand()));
-
+                
                 list.add(p);
             }
             connection.close();
             
-            
-            
         } catch (SQLException ex) {
-
+            
             System.err.println("NO PRODUCT FOUND");
-        } 
+        }
         return list;
     }
 
     @Override
-    public ArrayList<Product> getProductListByBrand(String brand, String input) {
+    public ArrayList<Product> getProductListByBrand(String brand, String input){
         ArrayList<Product> list = new ArrayList<>();
         try {
             Connection connection = DBConnect.getConnection();
-            String sql = "SELECT * FROM product WHERE brandid='" + brand + "' " + input;
+            String sql = "SELECT * FROM product WHERE brandid='"+brand+"' "+input;
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
+            
+            while(rs.next()){
                 Product p = new Product();
                 p.setProductID(rs.getInt("productid"));
                 p.setProductName(rs.getString("productname"));
@@ -80,11 +76,11 @@ public class ProductDAOImpl implements ProductDAO {
                 p.setDiscount(rs.getDouble("discount"));
                 p.setBrand(new Brand());
                 p.setCategory(new Category(rs.getInt("categoryid"), "", new Brand()));
-
+                
                 list.add(p);
             }
             connection.close();
-
+            
         } catch (SQLException ex) {
             System.err.println("ERROR LOADiNG PRODUCT FROM BRAND");
         }
@@ -96,11 +92,11 @@ public class ProductDAOImpl implements ProductDAO {
         ArrayList<Product> list = new ArrayList<>();
         try {
             Connection connection = DBConnect.getConnection();
-            String sql = "SELECT * FROM product WHERE categoryid= " + category + " " + input;
+            String sql = "SELECT * FROM product WHERE categoryid= "+category+" "+input;
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
+            
+            while(rs.next()){
                 Product p = new Product();
                 p.setProductID(rs.getInt("productid"));
                 p.setProductName(rs.getString("productname"));
@@ -111,7 +107,7 @@ public class ProductDAOImpl implements ProductDAO {
                 p.setDiscount(rs.getDouble("discount"));
                 p.setBrand(new Brand(rs.getInt("brandid"), ""));
                 p.setCategory(new Category(rs.getInt("categoryid"), "", new Brand()));
-
+                
                 list.add(p);
             }
             connection.close();
@@ -123,13 +119,13 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public String countNumberOfProductByCategory(Category category) {
-        int count = 0;
+        int count=0;
         try {
             Connection connection = DBConnect.getConnection();
             String sql = "SELECT COUNT(*) AS total FROM product WHERE product.categoryid =" + category.getCategoryID();
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
+            while(rs.next()){
                 count = rs.getInt("total");
             }
         } catch (SQLException ex) {
@@ -140,13 +136,13 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public String countNumberOfProductByBrand(Brand brand) {
-        int count = 0;
+        int count=0;
         try {
             Connection connection = DBConnect.getConnection();
             String sql = "SELECT COUNT(*) AS total FROM product WHERE product.brandid =" + brand.getBrandID();
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
+            while(rs.next()){
                 count = rs.getInt("total");
             }
         } catch (SQLException ex) {
@@ -163,81 +159,30 @@ public class ProductDAOImpl implements ProductDAO {
             String sql = "SELECT * FROM product WHERE productid= " + product;
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-
-                p.setProductID(rs.getInt("productid"));
-                p.setProductName(rs.getString("productname"));
-                p.setProductPrice(rs.getDouble("productprice"));
-                p.setProductImage(rs.getString("productimage"));
-                p.setProductQuantity(rs.getInt("productquantity"));
-                p.setDescription(rs.getString("description"));
-                p.setDiscount(rs.getDouble("discount"));
-                p.setBrand(new Brand(rs.getInt("brandid"), ""));
-                p.setCategory(new Category(rs.getInt("categoryid"), "", new Brand()));
-
-            }
-
-            connection.close();
-
-        } catch (SQLException ex) {
-
-            System.err.println("NO PRODUCT DETAIL FOUND");
-        }
-        return p;
-    }
-
-    @Override
-    public Product getProductDetailByProductName(String product) {
-        Product p = new Product();
-        try {
-            Connection connection = DBConnect.getConnection();
-            String sql = "SELECT * FROM product WHERE productname like '%" + product+"%'";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-
-                p.setProductID(rs.getInt("productid"));
-                p.setProductName(rs.getString("productname"));
-                p.setProductPrice(rs.getDouble("productprice"));
-                p.setProductImage(rs.getString("productimage"));
-                p.setProductQuantity(rs.getInt("productquantity"));
-                p.setDescription(rs.getString("description"));
-                p.setDiscount(rs.getDouble("discount"));
-                p.setBrand(new Brand(rs.getInt("brandid"), ""));
-                p.setCategory(new Category(rs.getInt("categoryid"), "", new Brand()));
-
-            }
-
-            connection.close();
-
-        } catch (SQLException ex) {
-
-            System.err.println("NO PRODUCT DETAIL FOUND");
-        }
-        return p;
-    }
-
-    @Override
-    public String getMin() {
-        int min=0;
-        try {
-            Connection connection = DBConnect.getConnection();
-            String sql = "SELECT MIN(productid) as min FROM product";
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+            
             while(rs.next()){
-                min = rs.getInt("min");
+                
+                p.setProductID(rs.getInt("productid"));
+                p.setProductName(rs.getString("productname"));
+                p.setProductPrice(rs.getDouble("productprice"));
+                p.setProductImage(rs.getString("productimage"));
+                p.setProductQuantity(rs.getInt("productquantity"));
+                p.setDescription(rs.getString("description"));
+                p.setDiscount(rs.getDouble("discount"));
+                p.setBrand(new Brand(rs.getInt("brandid"), ""));
+                p.setCategory(new Category(rs.getInt("categoryid"), "", new Brand()));
+                
+                
             }
+            
+            connection.close();
+            
         } catch (SQLException ex) {
-            System.err.println("ERROR FINDING MIN FROM CATEGORY");
+            
+            System.err.println("NO PRODUCT DETAIL FOUND");
         }
-        
-        return Integer.toString(min);
+        return p;
     }
-
+ }
     
 
-    
-}

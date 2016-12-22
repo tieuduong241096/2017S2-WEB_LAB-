@@ -43,8 +43,6 @@ public class CartServlet extends HttpServlet {
         String command = request.getParameter("command");
         ArrayList<Long> listBuy = null;
         String url = "";
-        String action = request.getParameter("action");
-        if(action.equals("cart")){
         try {
             listBuy = (ArrayList<Long>) session.getAttribute("cartID");
             long idBuy = 0;
@@ -99,64 +97,6 @@ public class CartServlet extends HttpServlet {
             rd.forward(request, response);
         } catch (Exception e) {
             System.err.println("Error shopping cart +"+e.getMessage());
-        }
-        }
-        else if(action.equals("checkout")){
-            try {
-            listBuy = (ArrayList<Long>) session.getAttribute("cartID");
-            long idBuy = 0;
-            if (request.getParameter("cartID") != null) {
-                idBuy = Long.parseLong(request.getParameter("cartID"));
-
-            }
-
-            Product p = pd.getProductDetailByProductID(proid);
-            switch (command) {
-                case "insert":
-                    if (listBuy == null) {
-                        listBuy = new ArrayList<>();
-                        session.setAttribute("cartID", listBuy);
-                    }
-                    if (listBuy.indexOf(idBuy) == -1) {
-                        cart.insertToCart(p, 1);
-                        listBuy.add(idBuy);
-                    }
-                    url = "/index.jsp";
-                    break;
-                case "plus":
-                    if (listBuy == null) {
-                        listBuy = new ArrayList<>();
-                        session.setAttribute("cart", listBuy);
-                    }
-                    if (listBuy.indexOf(idBuy) == -1) {
-                        cart.insertToCart(p, 1);
-                        listBuy.add(idBuy);
-                    }
-                    url = "/checkout.jsp";
-                    break;
-                case "minus":
-                    if (listBuy == null) {
-                        listBuy = new ArrayList<>();
-                        session.setAttribute("cart", listBuy);
-                    }
-                    if (listBuy.indexOf(idBuy) == -1) {
-                        cart.removeFromCart(p, 1);
-                        listBuy.add(idBuy);
-                    }
-                    url = "/checkout.jsp";
-                    break;
-                case "deleteall":
-                    cart.removeAll(p);
-                    url = "/checkout.jsp";
-                    break;
-                default:
-                    break;
-            }
-            RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
-            rd.forward(request, response);
-        } catch (Exception e) {
-            System.err.println("Error shopping cart +"+e.getMessage());
-        }
         }
     }
 

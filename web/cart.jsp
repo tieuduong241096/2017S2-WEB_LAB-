@@ -5,7 +5,6 @@
 --%>
 
 
-<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.TreeMap"%>
 <%@page import="model.Product"%>
@@ -29,35 +28,14 @@
 
 
         <script src="resources/js/jquery.js"></script>
-        <script src="javascript/jquery.session.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>
         <script src="resources/js/jquery.scrollUp.min.js"></script>
         <script src="resources/js/price-range.js"></script>
         <script src="resources/js/jquery.prettyPhoto.js"></script>
         <script src="resources/js/main.js"></script>
-        <script src="javascript/js.cookie.js"></script>
-        
-        <script type="text/javascript">
-            $(document).ready(function () {
-                 $("#checkout").click(function () {
-                $('.table-condensed tr').each(function () {
-                    var productid = $(this).find(".productid").html();
-                    var productsize = $(this).find(".productsizeitem option:selected").html();
-                    
-                    if(typeof productid !== 'undefined' || productid){
-                       Cookies.set(productid.trim(),productsize);
-                    } 
-                    
-                });
-                
-                });
-            });
-        </script>
-       
     </head>
     <body>
         <%
-            
             TreeMap<Product, Integer> list = null;
             if (session.getAttribute("cart") != null) {
                 Cart cart = (Cart) session.getAttribute("cart");
@@ -75,28 +53,7 @@
                 list = null;
             }
 
-            ArrayList<Double> sizes = new ArrayList<>();
-
-            sizes.add(7.0);
-            sizes.add(7.5);
-            sizes.add(8.0);
-            sizes.add(8.5);
-            sizes.add(9.0);
-            sizes.add(9.5);
-            sizes.add(10.0);
-            sizes.add(10.5);
-            sizes.add(11.0);
-            sizes.add(11.5);
-            sizes.add(12.0);
-            sizes.add(12.5);
-            sizes.add(13.0);
-            sizes.add(13.5);
-            sizes.add(14.0);
-            sizes.add(14.5);
         %>
-
-        <jsp:useBean id="size" scope="session" class="model.SizeBean" />
-        <jsp:setProperty name="size" property="sizes" value="<%=sizes%>" />
 
 
         <!--HEADER-->
@@ -111,30 +68,24 @@
                         </ol>
                     </div>
                     <div class="table-responsive cart_info">
-                    <table class="table table-condensed">
-                        <thead>
-                            <tr class="cart_menu">
-                                <td class="image"></td>
-
-
-                                <td class="description">Name</td>
-                                <td class="price">Price</td>
-                                <td class="quantity">Quantity</td>
-
-                                <td class="size">Size</td>
-                                <td></td>
-                                <td class="total">Total</td>
-                                <td></td>
-                            </tr>
-                        </thead>
-                        
-                
-                        <tbody>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr class="cart_menu">
+                                    <td class="image">Item</td>
+                                    <td class="description"></td>
+                                    <td class="price">Price</td>
+                                    <td class="quantity">Quantity</td>
+                                    <td class="size">Size</td>
+                                    <td class="total">Total</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody>
                             <% for (Map.Entry<Product, Integer> ds : list.entrySet()) {
                             %>
                             <tr>
                                 <td class="cart_product">
-                                    <a href=""><img src="resources/images/user/<%= ds.getKey().getProductImage()%>" alt="" style="width: 225px;height: 225px;"></a>
+                                    <a href=""><img src="resources/images/user/<%= ds.getKey().getProductImage()%>" alt=""></a>
                                 </td>
                                 <td class="cart_description">
                                     <h4><a href=""><%= ds.getKey().getProductName()%></a></h4>
@@ -145,70 +96,41 @@
                                 </td>
                                 <td class="cart_quantity">
                                     <div class="cart_quantity_button">
-                                        <a class="cart_quantity_up" href="CartServlet?action=cart&command=plus&productid=<%=ds.getKey().getProductID()%>&cartID=<%=System.currentTimeMillis()%>"> + </a>
+                                        <a class="cart_quantity_up" href="CartServlet?command=plus&productid=<%=ds.getKey().getProductID()%>&cartID=<%=System.currentTimeMillis()%>"> + </a>
                                         <input class="cart_quantity_input" type="text" value="<%=ds.getValue()%> " autocomplete="off" size="2" disabled="">
-                                        <a class="cart_quantity_down" href="CartServlet?action=cart&command=minus&productid=<%=ds.getKey().getProductID()%>&cartID=<%=System.currentTimeMillis()%>"> - </a>
+                                        <a class="cart_quantity_down" href="CartServlet?command=minus&productid=<%=ds.getKey().getProductID()%>&cartID=<%=System.currentTimeMillis()%>"> - </a>
                                     </div>
                                 </td>
-                                <!--lay cookie cho size theo product id-->
-                                <%
-                                    Cookie[] sizess = request.getCookies();
-                                    String sizeItem = "";
-                                    for (Cookie size1 : sizess) {
-                                        if (size1.getName().equals(Long.toString(ds.getKey().getProductID()))) {
-                                            sizeItem = size1.getValue();
-                                        }
-                                    }
-
-                                %>
-
-
                                 <td>
-                                    <select id="<%=ds.getKey().getProductID()%>" name="productsizeitem" class="productsizeitem">
-
-                                        <%for (Double size1 : size.getSizes()) {%>
-                                        <option><%=size1%></option>
-                                        <%}%>
-
+                                    <select>
+                                        <option>7</option>
+                                        <option>7.5</option>
+                                        <option>8</option>
+                                        <option>8.5</option>
+                                        <option>9</option>
+                                        <option>9.5</option>
+                                        <option>10</option>
+                                        <option>10.5</option>
+                                        <option>11</option>
+                                        <option>11.5</option>
+                                        <option>12</option>
+                                        <option>12.5</option>
+                                        <option>13</option>
+                                        <option>13.5</option>
+                                        <option>14</option>
+                                        <option>14.5</option>
                                     </select>
                                 </td>
+                                <td class="cart_total">
+                                    <p class="cart_total_price">$<%= new Double(ds.getValue() * ds.getKey().getProductPrice()).intValue()%></p>
+                                </td>
+                                <td class="cart_delete">
+                                    <a class="cart_quantity_delete" href="CartServlet?command=deleteall&productid=<%=ds.getKey().getProductID()%>&cartID=<%=System.currentTimeMillis()%>"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                            <%}%>
 
-                        <script>
 
-                            function setSelectedIndex(s, v) {
-
-                                for (var i = 0; i < s.options.length; i++) {
-
-                                    if (s.options[i].text == v) {
-
-                                        s.options[i].selected = true;
-
-                                        return;
-
-                                    }
-
-                                }
-
-                            }
-
-                            setSelectedIndex(document.getElementById('<%=ds.getKey().getProductID()%>'), <%=sizeItem%>);
-
-                        </script>
-
-                        <td style="visibility: hidden;" class="productid">
-                            <%= ds.getKey().getProductID()%>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">$<%= new Double(ds.getValue() * ds.getKey().getProductPrice()).intValue()%></p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href="CartServlet?command=deleteall&productid=<%=ds.getKey().getProductID()%>&cartID=<%=System.currentTimeMillis()%>"><i class="fa fa-times"></i></a>
-                        </td>
-                        </tr>
-
-                        <%}%>
-
-                        
 
                         </tbody>
                     </table>
@@ -216,16 +138,77 @@
             </div>
         </section> <!--/#cart_items-->
 
-        <section id="do_action" style="border: none">
+        <section id="do_action">
             <div class="container">
-                
+                <div class="heading">
+                    <h3>What would you like to do next?</h3>
+                    <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+                </div>
                 <div class="row">
-                    
+                    <div class="col-sm-6">
+                        <div class="chose_area">
+                            <ul class="user_option">
+                                <li>
+                                    <input type="checkbox">
+                                    <label>Use Coupon Code</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <label>Use Gift Voucher</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <label>Estimate Shipping & Taxes</label>
+                                </li>
+                            </ul>
+                            <ul class="user_info">
+                                <li class="single_field">
+                                    <label>Country:</label>
+                                    <select>
+                                        <option>United States</option>
+                                        <option>Bangladesh</option>
+                                        <option>UK</option>
+                                        <option>India</option>
+                                        <option>Pakistan</option>
+                                        <option>Ucrane</option>
+                                        <option>Canada</option>
+                                        <option>Dubai</option>
+                                    </select>
+
+                                </li>
+                                <li class="single_field">
+                                    <label>Region / State:</label>
+                                    <select>
+                                        <option>Select</option>
+                                        <option>Dhaka</option>
+                                        <option>London</option>
+                                        <option>Dillih</option>
+                                        <option>Lahore</option>
+                                        <option>Alaska</option>
+                                        <option>Canada</option>
+                                        <option>Dubai</option>
+                                    </select>
+
+                                </li>
+                                <li class="single_field zip-field">
+                                    <label>Zip Code:</label>
+                                    <input type="text">
+                                </li>
+                            </ul>
+                            <a class="btn btn-default update" href="">Get Quotes</a>
+                            <a class="btn btn-default check_out" href="">Continue</a>
+                        </div>
+                    </div>
                     <div class="col-sm-6">
                         <div class="total_area">
-                            
-                           
-                            <a class="btn btn-default check_out" id="checkout" href="AccountController?action=checkout">Check Out</a>
+                            <ul>
+                                <li>Cart Sub Total <span>$59</span></li>
+                                <li>Eco Tax <span>$2</span></li>
+                                <li>Shipping Cost <span>Free</span></li>
+                                <li>Total <span>$61</span></li>
+                            </ul>
+                            <a class="btn btn-default update" href="">Update</a>
+                            <a class="btn btn-default check_out" href="checkout.jsp">Check Out</a>
                         </div>
                     </div>
                 </div>
