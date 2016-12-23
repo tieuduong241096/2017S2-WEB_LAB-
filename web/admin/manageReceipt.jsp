@@ -54,7 +54,6 @@
             out.println("<th class='data'><b><center>Ship address</center></b></th>");
             out.println("<th class='data'><b><center>User ID</center></b></th>");
             out.println("<th class='data'><b><center>Status</center></b></th>");
-            out.println("<th class='data'><b>Action</b></th>");
             out.println("</tr>");
 
             while (rs.next()) {
@@ -72,8 +71,6 @@
                 out.println("<td align=left>" + sa + "</a></td>");
                 out.println("<td align=left>" + uid + "</a></td>");
                 out.println("<td align=left>" + s + "</a></td>");
-                out.println("<td><a href=\"../Action/edit.jsp?id=" + rid + "\">Edit</a> | ");
-                out.println("<a href=\"../Action/delete.jsp?id=" + rid + "\">Delete</a></td>");
                 out.println("</tr>");
 
             }
@@ -82,7 +79,6 @@
             rs.close();
         %>
         <br>
-        <a href="../Action/add.jsp">New Receipt</a><br/>
         <hr>
 	</div>
         <div class="clear"></div>

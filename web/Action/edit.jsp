@@ -51,8 +51,8 @@
             String cname = "";
             String bid ="";
             if (rs.next()) {
-                cname = rs.getString("cname");
-                bid = rs.getString("bid");
+                cname = rs.getString("categoryname");
+                bid = rs.getString("brandid");
                 
             }
             cname = "'" + cname + "'";
@@ -61,7 +61,7 @@
             rs.close();
         %>
 
-        <form method="post" action="update.jsp">
+        <form method="post" action="../Action/update.jsp">
             <table>
                 <tr>
                     <td>Category ID</td>
