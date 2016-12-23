@@ -7,7 +7,6 @@ package controller;
 
 import dao.ProductDAOImpl;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,7 +25,7 @@ import model.Product;
 @WebServlet(name="CartServlet",urlPatterns={"/CartServlet"})
 public class CartServlet extends HttpServlet {
 
-    private ProductDAOImpl pd = new ProductDAOImpl();
+    private final ProductDAOImpl pd = new ProductDAOImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -97,7 +96,7 @@ public class CartServlet extends HttpServlet {
             }
             RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
             rd.forward(request, response);
-        } catch (Exception e) {
+        } catch (IOException | NumberFormatException | ServletException e) {
             System.err.println("Error shopping cart +"+e.getMessage());
         }
         }
@@ -154,7 +153,7 @@ public class CartServlet extends HttpServlet {
             }
             RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
             rd.forward(request, response);
-        } catch (Exception e) {
+        } catch (IOException | NumberFormatException | ServletException e) {
             System.err.println("Error shopping cart +"+e.getMessage());
         }
         }
