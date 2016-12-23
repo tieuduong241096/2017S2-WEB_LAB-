@@ -38,7 +38,8 @@ public class ReceiptDetailDAOImpl implements ReceiptDetailDAO{
                         rs.getInt("quantity"), 
                         rs.getDouble("price"), 
                         receipt, 
-                        new Product(rs.getInt("productid"),"",0,"",0,"",0,new Brand(),new Category()));
+                        new Product(rs.getInt("productid"),"",0,"",0,"",0,new Brand(),new Category()),
+                        rs.getInt("size"));
                 
                 
                 
@@ -67,7 +68,8 @@ public class ReceiptDetailDAOImpl implements ReceiptDetailDAO{
                         rs.getInt("quantity"), 
                         rs.getDouble("price"), 
                         new Receipt(), 
-                        new Product(rs.getInt("productid"),"",0,"",0,"",0,new Brand(),new Category()));
+                        new Product(rs.getInt("productid"),"",0,"",0,"",0,new Brand(),new Category()),
+                        rs.getInt("size"));
                 
                 
                 
@@ -84,20 +86,20 @@ public class ReceiptDetailDAOImpl implements ReceiptDetailDAO{
     @Override
     public boolean insertReceiptDetail(ReceiptDetail rcdt) {
         Connection cons = DBConnect.getConnection();
-        String sql = "INSERT INTO receiptdetail(receiptdetail.quantity,receiptdetail.price,receiptdetail.receiptid,receiptdetail.productid) values(?,?,?,?)";
+        String sql = "INSERT INTO receiptdetail(receiptdetail.quantity,receiptdetail.price,receiptdetail.receiptid,receiptdetail.productid,receiptdetail.size) values(?,?,?,?,?)";
         try {
             PreparedStatement ps = cons.prepareCall(sql);
             ps.setInt(1, rcdt.getQuantity());
             ps.setDouble(2, rcdt.getPrice());
             ps.setInt(3, (int) rcdt.getReceipt().getReceiptID());
             ps.setInt(4, (int) rcdt.getProduct().getProductID()); //status
-            
+            ps.setDouble(5, rcdt.getSize());
             
             ps.executeUpdate();
             cons.close();
             return true;
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            System.err.println("INSERT ERROR");
         }
         
         return false;

@@ -36,7 +36,9 @@ public class AccountController extends HttpServlet {
                 //khong check remember me, nghia la khong luu cookie trong browser
                 session.removeAttribute("username");
                 session.removeAttribute("email");
-                
+                session.removeAttribute("cart");
+                session.removeAttribute("cartID");
+
                 request.getRequestDispatcher("index.jsp").forward(request, response);
 
             } else {//check remeber me, nghia la co luu cookie trong browser
@@ -46,7 +48,7 @@ public class AccountController extends HttpServlet {
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
             }
-        } else {
+        } else if (action.equals("signout")) {
             // <editor-fold defaultstate="collapsed" desc="Log Out Action">
             //remove session
             session.removeAttribute("username");
@@ -65,16 +67,31 @@ public class AccountController extends HttpServlet {
             }
             request.getRequestDispatcher("index.jsp").forward(request, response);
             //</editor-fold>
+        } else if (action.equals("feedback")) {
+            // <editor-fold defaultstate="collapsed" desc="Feedback Action">
+            if (session.getAttribute("username") != null && session.getAttribute("email") != null) {
+                request.getRequestDispatcher("feedback.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
+            //</editor-fold>
+        } else if (action.equals("checkout")) {
+            // <editor-fold defaultstate="collapsed" desc="Checkout Action">
+            if (session.getAttribute("cart") == null) {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("checkout.jsp").forward(request, response);
+            }
+            //</editor-fold>
         }
     }
 
-   
-
     private User checkCookie(HttpServletRequest request) {
+        // <editor-fold defaultstate="collapsed" desc="check cookie">
         Cookie[] cookies = request.getCookies();
         User user = null;
         String email = "", password = "";
-        
+
         if (cookies != null) {
 
             for (Cookie c : cookies) {
@@ -92,6 +109,7 @@ public class AccountController extends HttpServlet {
 
         }
         return user;
+        // </editor-fold>
     }
 
     @Override
@@ -133,11 +151,11 @@ public class AccountController extends HttpServlet {
                 url = "/login.jsp";
 
             } else {
-                url = "/index.jsp";
+                url = request.getParameter("checkout")!=null?"/checkout.jsp":"/index.jsp";
                 HttpSession s = request.getSession();
                 s.setAttribute("username", username);
                 s.setAttribute("email", email);
-                
+
                 if (rememberMe) {
                     Cookie c = new Cookie("email", email);
                     c.setMaxAge(3600);
@@ -148,9 +166,14 @@ public class AccountController extends HttpServlet {
                     response.addCookie(c1);
                 }
             }
-
+            
+            if(url.equals("/checkout.jsp")){
+                response.sendRedirect("AccountController?action=checkout");
+            }
+            else{
             RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
             rd.forward(request, response);
+            }
             // </editor-fold>
         } else if (action.equals("signup")) {
             // <editor-fold defaultstate="collapsed" desc="Sign Up Action">
@@ -222,7 +245,7 @@ public class AccountController extends HttpServlet {
                 request.setAttribute("fullname_err", "the length is 2 to 50 character");
 
             } else if (!fullname.matches("^[a-zA-Z_]+( [a-zA-Z_]+)*$")) {
-                request.setAttribute("fullname_err", "no more than 2 spaces, no special characters, no number");
+                request.setAttribute("fullname_err", "no more than 1 spaces, no special characters, no number");
 
             } else {
                 request.setAttribute("fullname", fullname);
@@ -245,13 +268,20 @@ public class AccountController extends HttpServlet {
 
                 request.setAttribute("address_err", "Please input your address!");
 
-            } else if (address.length() < 6 || address.length() > 20) {
-                request.setAttribute("address_err", "the length is 6 to 20");
+            } 
+            
 
-            } else {
+            
+            else if (!address.matches("^([a-zA-Z0-9]+\\s)*[a-zA-Z0-9]+$") || address.length() < 6 || address.length() > 300) {
+                    request.setAttribute("address_err", "10 to 300 characters required, no more than 1 space, no special characters");
+                    
+                }
+                else {
                 request.setAttribute("address", address);
                 address_err = "";
-            }
+                }
+            
+            
 
             if (phone.equals("")) {
 
@@ -260,12 +290,10 @@ public class AccountController extends HttpServlet {
             } else if (phone.length() < 10 || phone.length() > 15) {
                 request.setAttribute("phone_err", "10 to 15 numbers required");
 
-            }
-            else if (!phone.matches("^(?=\\d{10,11}$)(098|097|096|0169|0168|0167|0166|0165|0164|0163|0162|091|094|0123|0124|0125|0127|0129|090|093|0120|0121|0122|0126|0128|092|0188|0993|0994|0995|0996|099|095)\\d+")) {
+            } else if (!phone.matches("^(?=\\d{10,11}$)(098|097|096|0169|0168|0167|0166|0165|0164|0163|0162|091|094|0123|0124|0125|0127|0129|090|093|0120|0121|0122|0126|0128|092|0188|0993|0994|0995|0996|099|095)\\d+")) {
                 request.setAttribute("phone_err", "Appropriate phone carriers are Viettel, Vinaphone, Mobifone, Vietnamobile, Beeline,S fone");
 
-            } 
-            else {
+            } else {
                 request.setAttribute("phone", phone);
                 phone_err = "";
             }
@@ -274,7 +302,8 @@ public class AccountController extends HttpServlet {
 
             if (!username_err.equals("") || !password_err.equals("") || !email_err.equals("") || !fullname_err.equals("") || !age_err.equals("") || !address_err.equals("") || !phone_err.equals("")) {
                 url = "/login.jsp";
-
+                RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+                rd.forward(request, response);
             } else {
                 url = "/index.jsp";
                 String encryptedPassword = AES.encrypt(password, secretKey);
@@ -284,10 +313,10 @@ public class AccountController extends HttpServlet {
                 HttpSession s = request.getSession();
                 s.setAttribute("username", username);
                 s.setAttribute("email", email);
+                response.sendRedirect("/AccountController.java");
             }
 
-            RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
-            rd.forward(request, response);
+            
             // </editor-fold>
         }
     }

@@ -4,8 +4,22 @@
     Author     : tuan
 --%>
 
+<%@page import="dao.AdminDAOImpl"%>
+<%@page import="model.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%Cookie[] cookies = request.getCookies();
+    Cookie c = null;
+    
+    for (int i = 0; i < cookies.length; i++) {
+            c = cookies[i];
+            if (new AdminDAOImpl().checkLogin(new Admin(c.getName(),c.getValue()))) {
+                    
+                    break;
+                }
+            
+        }
+   %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -15,8 +29,8 @@
         <div id="header">
 	<div class="inHeader">
 		<div class="mosAdmin">
-		Hallo, Mas Administrator<br>
-		<a href="">Lihat website</a> | <a href="">Help</a> | <a href="login.html">Keluar</a>
+		Hello, <%=c.getName()%><br>
+		
 		</div>
 	<div class="clear"></div>
 	</div>

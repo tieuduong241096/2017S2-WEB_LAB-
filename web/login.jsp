@@ -112,6 +112,7 @@
                                         Keep me signed in
                                     </span>
                                     <input type="hidden" name="action" value="login" />
+                                    <%if(request.getParameter("checkout")!=null){%><input type="hidden" name="checkout" value="checkout" /><%}%>
                                     <button type="submit" class="btn btn-default">Login</button>
                                 </form>
                             </div><!--/login form-->

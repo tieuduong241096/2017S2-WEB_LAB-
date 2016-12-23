@@ -27,6 +27,7 @@
             ProductDAOImpl pro = new ProductDAOImpl();
             
             
+            
             Cart cart = (Cart) session.getAttribute("cart");
             if(cart==null){
                 cart = new Cart();
@@ -53,7 +54,7 @@
                                 <a href="detail.jsp?productid=<%= p.getProductID()%>"><img src="resources/images/user/<%= p.getProductImage()%>" alt=""></a>
                                 <h2>$<%= new Double(p.getProductPrice()).intValue()  %></h2>
                                 <p><%= p.getProductName()%></p>
-                                <a href="CartServlet?command=insert&productid=<%=p.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                <a href="CartServlet?action=cart&command=insert&productid=<%=p.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div>
                             
                         </div>
@@ -88,7 +89,7 @@
                                 <a href="detail.jsp?productid=<%= p.getProductID()%>"><img src="resources/images/user/<%= p.getProductImage()%>" alt=""></a>
                                 <h2>$<%= new Double(p.getProductPrice()).intValue()  %></h2>
                                 <p><%= p.getProductName()%></p>
-                                <a href="CartServlet?command=insert&productid=<%=p.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                <a href="CartServlet?action=cart&command=insert&productid=<%=p.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div>
                             
                         </div>
@@ -120,7 +121,7 @@
                                 <a href="detail.jsp?productid=<%= p.getProductID()%>"><img src="resources/images/user/<%= p.getProductImage()%>" alt=""></a>
                                 <h2>$<%= new Double(p.getProductPrice()).intValue()  %></h2>
                                 <p><%= p.getProductName()%></p>
-                                <a href="CartServlet?command=insert&productid=<%=p.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                <a href="CartServlet?action=cart&command=insert&productid=<%=p.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div>
                             
                         </div>
@@ -177,7 +178,7 @@
                                         <a href="detail.jsp?productid=<%= prod.getProductID()%>"><img src="resources/images/user/<%= prod.getProductImage()%>" alt=""></a>
                                         <h2>$<%= new Double(prod.getProductPrice()).intValue()  %></h2>
                                         <p><%= prod.getProductName()%></p>
-                                        <a href="CartServlet?command=insert&productid=<%=prod.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        <a href="CartServlet?action=cart&command=insert&productid=<%=prod.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
 
                                 </div>
@@ -198,7 +199,7 @@
                                         <a href="detail.jsp?productid=<%= prod.getProductID()%>"><img src="resources/images/user/<%= prod.getProductImage()%>" alt=""></a>
                                         <h2>$<%= new Double(prod.getProductPrice()).intValue()  %></h2>
                                         <p><%= prod.getProductName()%></p>
-                                        <a href="CartServlet?command=insert&productid=<%=prod.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        <a href="CartServlet?action=cart&command=insert&productid=<%=prod.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
 
                                 </div>
@@ -255,7 +256,7 @@
                                         <a href="detail.jsp?productid=<%= prod.getProductID()%>"><img src="resources/images/user/<%= prod.getProductImage()%>" alt=""></a>
                                         <h2>$<%= new Double(prod.getProductPrice()).intValue()  %></h2>
                                         <p><%= prod.getProductName()%></p>
-                                        <a href="CartServlet?command=insert&productid=<%=prod.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        <a href="CartServlet?action=cart&command=insert&productid=<%=prod.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
 
                                 </div>
@@ -276,7 +277,7 @@
                                         <a href="detail.jsp?productid=<%= prod.getProductID()%>"><img src="resources/images/user/<%= prod.getProductImage()%>" alt=""></a>
                                         <h2>$<%= new Double(prod.getProductPrice()).intValue()  %></h2>
                                         <p><%= prod.getProductName()%></p>
-                                        <a href="CartServlet?command=insert&productid=<%=prod.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        <a href="CartServlet?action=cart&command=insert&productid=<%=prod.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
 
                                 </div>
@@ -332,7 +333,7 @@
                                         <a href="detail.jsp?productid=<%= prod.getProductID()%>"><img src="resources/images/user/<%= prod.getProductImage()%>" alt=""></a>
                                         <h2>$<%= new Double(prod.getProductPrice()).intValue()  %></h2>
                                         <p><%= prod.getProductName()%></p>
-                                        <a href="CartServlet?command=insert&productid=<%=prod.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        <a href="CartServlet?action=cart&command=insert&productid=<%=prod.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
 
                                 </div>
@@ -353,7 +354,7 @@
                                         <a href="detail.jsp?productid=<%= prod.getProductID()%>"><img src="resources/images/user/<%= prod.getProductImage()%>" alt=""></a>
                                         <h2>$<%= new Double(prod.getProductPrice()).intValue()  %></h2>
                                         <p><%= prod.getProductName()%></p>
-                                        <a href="CartServlet?command=insert&productid=<%=prod.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        <a href="CartServlet?action=cart&command=insert&productid=<%=prod.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
 
                                 </div>
@@ -385,7 +386,7 @@
                                             <a href="detail.jsp?productid=<%= p.getProductID()%>"><img src="resources/images/user/<%= p.getProductImage()%>" alt=""/></a>
                                             <h2>$<%= new Double(p.getProductPrice()).intValue()  %></h2>
                                             <p><%= p.getProductName()%></p>
-                                            <a href="CartServlet?command=insert&productid=<%=p.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <a href="CartServlet?action=cart&command=insert&productid=<%=p.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
 
                                     </div>
@@ -406,7 +407,7 @@
                                             <a href="detail.jsp?productid=<%= p.getProductID()%>"><img src="resources/images/user/<%= p.getProductImage()%>" alt=""></a>
                                             <h2>$<%= new Double(p.getProductPrice()).intValue()  %></h2>
                                             <p><%= p .getProductName() %></p>
-                                            <a href="CartServlet?command=insert&productid=<%=p.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <a href="CartServlet?action=cart&command=insert&productid=<%=p.getProductID()%>&cartID=<%=System.currentTimeMillis()%>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
 
                                     </div>

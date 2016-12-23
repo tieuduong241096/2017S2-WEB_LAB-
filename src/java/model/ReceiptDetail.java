@@ -15,17 +15,29 @@ public class ReceiptDetail {
     private double price;
     private Receipt receipt;
     private Product product;
+    private double size;
 
     public ReceiptDetail() {
     }
 
-    public ReceiptDetail(int receiptDetailID, int quantity, double price, Receipt receipt, Product product) {
+    public double getSize() {
+        return size;
+    }
+
+    public void setSize(double size) {
+        this.size = size;
+    }
+
+    public ReceiptDetail(int receiptDetailID, int quantity, double price, Receipt receipt, Product product, double size) {
         this.receiptDetailID = receiptDetailID;
         this.quantity = quantity;
         this.price = price;
         this.receipt = receipt;
         this.product = product;
+        this.size = size;
     }
+
+    
 
     public int getReceiptDetailID() {
         return receiptDetailID;
