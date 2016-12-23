@@ -65,8 +65,8 @@
                 out.println("<tr><td align=center>" + cid + "</td>");
                 out.println("<td align=left>" + cname + "</a></td>");
                 out.println("<td><td align=center>" + bid + "</td>");
-                out.println("<td><a href=\"../Action/edit.jsp?id=" + cid + "\">Edit</a> | ");
-                out.println("<a href=\"../Action/delete.jsp?id=" + cid + "\">Delete</a></td>");
+                out.println("<td><a href=\"../Action/edit.jsp?cid=" + cid + "\">Edit</a> | ");
+                out.println("<a href=\"../Action/delete.jsp?cid=" + cid + "\">Delete</a></td>");
                 out.println("</tr>");
 
             }

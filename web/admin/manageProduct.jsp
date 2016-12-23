@@ -77,12 +77,13 @@
                         <td><%=product.getDiscount()%></td>
                         <td><%=braDAO.getBrandNameByBrandID(new Long(product.getBrand().getBrandID()).toString())%></td>
                         <td><%=product.getProductID()%></td>
-                        <td><a href="????">edit</a> | <a href="????">delete</a></td>
+                        <td><a href="handleProduct.jsp?id=<%=product.getProductID()%>">edit</a> | <a href="ProductServlet?action=delete">delete</a></td>
                     </tr>
                     <%}%>
                 </table>
                      </div>
                     <div class="clear"></div>
+                    <p><a href="handleProduct.jsp?id=empty">Add new Product</a></p>
                     <jsp:include page="footer.jsp"></jsp:include>
            
     </body>

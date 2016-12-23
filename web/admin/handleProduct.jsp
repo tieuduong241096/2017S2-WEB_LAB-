@@ -1,0 +1,37 @@
+<%-- 
+    Document   : handleProduct
+    Created on : Dec 21, 2016, 8:39:40 PM
+    Author     : LMD0207
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+    </head>
+    <body>
+        <form action="handleProduct.jsp" method="GET">
+            ID:       <input type="text" name="id" style="margin-left: 68px;
+    padding-right: 25px;"><br/>
+            Name:     <input type="text" name="name" style="margin-left: 46px;
+    padding-right: 25px;"><br/>
+            Price:    <input type="text" name="price" style="margin-left: 52px;
+    padding-right: 25px;"><br/>
+            Image: <br/>
+            Quantity: <input type="numeber" name="quantity" style="    margin-left: 29px;
+    padding-right: 24px;"><br/>
+            Description: <input type="text" name="description" style="    padding-right: 25px;
+    margin-left: 10px;"><br/>
+            Discount: <input type="text" name="discount" style="margin-left: 27px;
+    padding-right: 25px;"><br/>
+            Brand: <input type="text" name="brand" style="margin-left: 45px;
+    padding-right: 25px;"><br/>
+            Category: <input type="text" name="category" style="    padding-right: 25px;
+    margin-left: 26px;"><br/>
+            Modify: <input type="text" name="modify" style="    margin-left: 37px;
+    padding-right: 25px;"><br/>
+            <input type="submit" value="Submit" />
+        </form>
+    </body>
+</html>

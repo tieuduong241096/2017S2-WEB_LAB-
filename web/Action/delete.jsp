@@ -8,6 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.sql.*"%>
 <%@page import="connect.Controller"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,7 +18,7 @@
     <body>
        <%
             String cid = (request.getParameter("cid"));
-            String bid = (request.getParameter("bid"));
+            //String bid = (request.getParameter("bid"));
             out.println("<h1>" + cid + "</h1>");
             String query = "delete from category where categoryid = " + cid;
             Controller.updateExecute(query);
