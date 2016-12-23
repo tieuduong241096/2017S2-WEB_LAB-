@@ -13,8 +13,12 @@
         <servlet-class>controller.FeedbackController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ProductServlet</servlet-name>
-        <servlet-class>controller.ProductServlet</servlet-class>
+        <servlet-name>AdminProductServlet</servlet-name>
+        <servlet-class>controller.AdminProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminBrandServlet</servlet-name>
+        <servlet-class>controller.AdminBrandServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CheckoutController</servlet-name>
@@ -41,8 +45,12 @@
         <url-pattern>/FeedbackController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ProductServlet</servlet-name>
-        <url-pattern>/ProductServlet</url-pattern>
+        <servlet-name>AdminProductServlet</servlet-name>
+        <url-pattern>/AdminProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminBrandServlet</servlet-name>
+        <url-pattern>/AdminBrandServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

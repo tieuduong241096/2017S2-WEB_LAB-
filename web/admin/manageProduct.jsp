@@ -18,51 +18,37 @@
 
         <title>CATEGORY MENU</title>        
 
-        
+
         <link href="../resources/css/mos-style.css" rel='stylesheet' type='text/css' />
 
 
     </head>
     <body>
         <jsp:include page="header.jsp"></jsp:include>
-
-            <div id="wrapper">
+        <%
+            ProductDAOImpl proDAO = new ProductDAOImpl();
+            BrandDAOImpl braDAO = new BrandDAOImpl();
+        %>
+        <div id="wrapper">
             <jsp:include page="menu.jsp"></jsp:include>
                 <div id="rightContent">
-                    <h3>Tabel</h3>
 
-                    <div class="informasi">
-                        ini adalah notifikasi pertanda informasi
-                    </div>
+                    <table class="data">
+                        <tr class="data">
+                            <th class="data">ID</th>
+                            <th class="data">Name</th>
+                            <th class="data">Price</th>
+                            <th class="data">Image</th>
+                            <th class="data">Quantity</th>
+                            <th class="data">Description</th>
+                            <th class="data">Discount</th>
+                            <th class="data">Brand</th>
+                            <th class="data">Category</th>
+                            <th class="data">Modify</th>
 
-                    <div class="gagal">
-                        ini adalah notifikasi pertanda gagal
-                    </div>
 
-                    <div class="sukses">
-                        ini adalah notifikasi pertanda sukses
-
-                    <%
-                        ProductDAOImpl proDAO = new ProductDAOImpl();
-                        BrandDAOImpl braDAO = new BrandDAOImpl();
-                    %>
-                </div>
-                <table class="data">
-                    <tr class="data">
-                        <th class="data">ID</th>
-                        <th class="data">Name</th>
-                        <th class="data">Price</th>
-                        <th class="data">Image</th>
-                        <th class="data">Quantity</th>
-                        <th class="data">Description</th>
-                        <th class="data">Discount</th>
-                        <th class="data">Brand</th>
-                        <th class="data">Category</th>
-                        <th class="data">Modify</th>
-                       
-
-                    </tr>
-                    <% for (Product product : proDAO.getProductList("")) { %>
+                        </tr>
+                    <% for (Product product : proDAO.getProductList("")) {%>
                     <tr>
                         <td><%=product.getProductID()%></td>
                         <td><%=product.getProductName()%></td>
@@ -73,12 +59,16 @@
                         <td><%=product.getDiscount()%></td>
                         <td><%=braDAO.getBrandNameByBrandID(new Long(product.getBrand().getBrandID()).toString())%></td>
                         <td><%=product.getProductID()%></td>
-                        <td><a href="handleProduct.jsp?id=<%=product.getProductID()%>">edit</a> | <a href="ProductServlet?action=delete">delete</a></td>
+                        <td><a href="handleProduct.jsp?id=<%=product.getProductID()%>">edit</a> | <a href="../ProductServlet?action=delete">delete</a></td>
                     </tr>
                     <%}%>
-                    <div class="clear"></div>
-                    <p><a href="handleProduct.jsp?id=empty">Add new Product</a></p>
-                    <jsp:include page="footer.jsp"></jsp:include>
+                </table>
+                <div class="clear"></div>
+                <p><a href="handleProduct.jsp?id=empty">Add new Product</a></p>
+
             </div>
+            <div class="clear"></div>
+            <jsp:include page="footer.jsp"></jsp:include>
+        </div>
     </body>
 </html>
