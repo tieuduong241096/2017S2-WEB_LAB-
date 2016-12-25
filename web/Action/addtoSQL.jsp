@@ -26,19 +26,7 @@
         <div id="wrapper">
         <jsp:include page="../admin/menu.jsp"></jsp:include>
        <div id="rightContent">
-	        <h1>Staff's Info Manage</h1>
-	
-	<div class="informasi">
-	ini adalah notifikasi pertanda informasi
-	</div>
-	
-	<div class="gagal">
-	ini adalah notifikasi pertanda gagal
-	</div>
-	
-	<div class="sukses">
-	ini adalah notifikasi pertanda sukses
-	</div>
+	        
     <%
             Integer cid = Integer.parseInt(request.getParameter("cid"));
             String cname = request.getParameter("cname");
