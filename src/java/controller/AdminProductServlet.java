@@ -39,6 +39,8 @@ public class AdminProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        //viet add o day
+       
+       
        String action = request.getParameter("action");
        String id = request.getParameter("id")==null?"0":request.getParameter("id");
        String name = request.getParameter("name");

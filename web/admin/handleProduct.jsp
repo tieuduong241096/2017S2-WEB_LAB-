@@ -36,7 +36,7 @@
 
                     %>
                 
-                    <form action="../AdminProductServlet" method="POST" enctype="multipart/form-data">
+                    <form action="../AdminProductServlet" method="POST" enctype="multipart/form-data" name="form1">
                         <%if (!id.equals("")) {%>
                           <input type="hidden" name="id" id="id" style="margin-left: 68px;
                                      padding-right: 25px;" value="<%=id%>"><br/>
