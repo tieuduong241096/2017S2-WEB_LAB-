@@ -33,23 +33,20 @@
 
         <title>CATEGORY MENU</title>        
 
-        
+
         <link href="../resources/css/mos-style.css" rel='stylesheet' type='text/css' />
 
 
     </head>
     <body>
         <jsp:include page="header.jsp"></jsp:include>
-
-            <div id="wrapper">
+        <%
+            ProductDAOImpl proDAO = new ProductDAOImpl();
+            BrandDAOImpl braDAO = new BrandDAOImpl();
+        %>
+        <div id="wrapper">
             <jsp:include page="menu.jsp"></jsp:include>
                 <div id="rightContent">
-                    
-
-                    <%
-                        ProductDAOImpl proDAO = new ProductDAOImpl();
-                        BrandDAOImpl braDAO = new BrandDAOImpl();
-                    %>
                 
                 <table class="data">
                     <tr class="data">
@@ -77,7 +74,7 @@
                         <td><%=product.getDiscount()%></td>
                         <td><%=braDAO.getBrandNameByBrandID(new Long(product.getBrand().getBrandID()).toString())%></td>
                         <td><%=product.getProductID()%></td>
-                        <td><a href="handleProduct.jsp?id=<%=product.getProductID()%>">edit</a> | <a href="ProductServlet?action=delete">delete</a></td>
+                        <td><a href="handleProduct.jsp?id=<%=product.getProductID()%>">edit</a> | <a href="../ProductServlet?action=delete">delete</a></td>
                     </tr>
                     <%}%>
                 </table>
