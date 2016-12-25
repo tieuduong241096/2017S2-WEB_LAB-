@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import model.Receipt;
+import model.ReceiptReceiptDetailProduct;
 import model.User;
 
 /**
@@ -143,6 +144,55 @@ public class ReceiptDAOImpl implements ReceiptDAO{
         }
         
         
+    }
+
+    @Override
+    public ArrayList<ReceiptReceiptDetailProduct> getReceiptListByUserID(String id) {
+        ArrayList<ReceiptReceiptDetailProduct> list = new ArrayList<>();
+        try {
+            Connection connection = DBConnect.getConnection();
+            String sql = "SELECT bookdate,paymode,shipaddress,quantity,price,size,productname FROM receipt r, receiptdetail rd, product p WHERE r.receiptid = rd.receiptid AND rd.productid = p.productid AND r.userid = "+id;
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                ReceiptReceiptDetailProduct total = new ReceiptReceiptDetailProduct();
+                total.setBookDate(rs.getTimestamp("bookdate"));
+                total.setPayMode(rs.getString("paymode"));
+                total.setShipAddress(rs.getString("shipaddress"));
+                total.setQuantity(rs.getInt("quantity"));
+                total.setPrice(rs.getDouble("price"));
+                total.setSize(rs.getDouble("size"));
+                total.setProductName(rs.getString("productname"));
+                
+                
+                list.add(total);
+            }
+            System.err.println(list);
+            connection.close();
+            
+        } catch (SQLException ex) {
+            System.err.println("ERROR LOADiNG RECEIPT FROM USERid");
+        }
+        return list;
+    }
+    
+    public String getUserIDByReceiptID(String id) {
+        Connection cons = DBConnect.getConnection();
+        String sql = "select userid from receipt where receiptid='"+id+"'";
+        int ids = 0;
+        try {
+            PreparedStatement ps = cons.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                ids = rs.getInt("userid");
+            }
+            cons.close();
+        } catch (Exception e) {
+            System.err.println("ERROR GET ID");
+        }
+        
+        return new Integer(ids).toString();
     }
     
 }

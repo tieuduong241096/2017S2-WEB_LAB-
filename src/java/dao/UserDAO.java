@@ -21,4 +21,5 @@ public interface UserDAO {
     public int getUserIDFromEmail(String email);
     public User getUserDetailByEmail(String email);
     public void updateAccount(User user);
+    public String getUserEmailByUserID(String id);
 }

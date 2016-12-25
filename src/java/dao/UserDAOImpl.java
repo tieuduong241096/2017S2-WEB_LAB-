@@ -162,7 +162,7 @@ public class UserDAOImpl implements UserDAO{
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-
+                user.setUserID(rs.getLong("userid"));
                user.setUserName(rs.getString("username"));
             user.setPassword(AES.decrypt(rs.getString("password"), "secretkeysecretkey"));
            user.setFullName(rs.getString("fullname"));
@@ -205,6 +205,25 @@ public class UserDAOImpl implements UserDAO{
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    @Override
+    public String getUserEmailByUserID(String id) {
+        Connection cons = DBConnect.getConnection();
+        String sql = "select email from user where userid='"+id+"'";
+        String email = "";
+        try {
+            PreparedStatement ps = cons.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                email = rs.getString("email");
+            }
+            cons.close();
+        } catch (Exception e) {
+            System.err.println("ERROR GET EMAIL");
+        }
+        
+        return email;
     }
 
    

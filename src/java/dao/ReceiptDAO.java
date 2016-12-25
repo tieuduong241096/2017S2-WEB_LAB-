@@ -7,6 +7,7 @@ package dao;
 
 import java.util.ArrayList;
 import model.Receipt;
+import model.ReceiptReceiptDetailProduct;
 import model.User;
 
 /**
@@ -19,4 +20,5 @@ public interface ReceiptDAO {
     public int getLatestReceiptID();
     public ArrayList<Receipt> getReceiptList(String input);
     public void updateReceipt(String id);
+    public ArrayList<ReceiptReceiptDetailProduct> getReceiptListByUserID(String id);
 }
