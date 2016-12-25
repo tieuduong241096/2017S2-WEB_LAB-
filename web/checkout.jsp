@@ -10,6 +10,19 @@
 <%@page import="model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+            //session
+            HttpSession s = request.getSession();
+            double total = 0.0;
+            String address_err = "";
+            if (request.getAttribute("address_err") != null) {
+                address_err = (String) request.getAttribute("address_err");
+            }
+            
+            if (s.getAttribute("cart")==null) {
+                    response.sendRedirect("index.jsp");
+                }
+        %>
 <html>
     <head>
 
@@ -34,7 +47,7 @@
         <script src="resources/js/price-range.js"></script>
         <script src="resources/js/jquery.prettyPhoto.js"></script>
         <script src="resources/js/main.js"></script>
-        
+
         <script src="javascript/validateCheckout.js"></script>
 
 
@@ -68,33 +81,20 @@
     </head>
     <jsp:useBean id="size" scope="session" class="model.SizeBean" />
     <body>
-        <%
-            //session
-            HttpSession s = request.getSession();
-            double total = 0.0;
-            String address_err="";
-            if (request.getAttribute("address_err")!=null) {
-                   address_err =  (String)request.getAttribute("address_err");
-            }
-        %>
+        
 
         <jsp:include page="header.jsp"></jsp:include>
 
             <section id="cart_items">
                 <div class="container">
-                    <div class="breadcrumbs">
-                        <ol class="breadcrumb">
-                            <li><a href="#">Home</a></li>
-                            <li class="active">Check out</li>
-                        </ol>
-                    </div><!--/breadcrums-->
-                    <%if (s.getAttribute("username") == null) {%>
-                    <div class="step-one">
-                        <h2 class="heading" style="color: red;">Step1 - Checkout options</h2>
-                    </div>
-                    <div class="checkout-options">
+                    
+                <%if (s.getAttribute("username") == null) {%>
+                <div class="step-one">
+                    <h2 class="heading" style="color: red;">Step1 - Checkout options</h2>
+                </div>
+                <div class="checkout-options">
 
-                    <%if (s.getAttribute("username") == null) {%>
+
                     <ul class="nav">
                         <li>
                             <a href="login.jsp?checkout=true">Login and Checkout as Registered Account</a>
@@ -105,22 +105,20 @@
 
                     </ul>
                     <div class="register-req">
-                    <p>*Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest*</p>
-                </div><!--/register-req-->
+                        <p>*Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest*</p>
+                    </div><!--/register-req-->
 
-                <div class="step-one">
-                    <h2 class="heading" style="color: red;">Step 2 - Checkout Information</h2>
-                </div>
+
+                    </div><!--/checkout-options-->
                     <%}%>
-                     <%}%>
                     
-                </div><!--/checkout-options-->
+                
+                <div class="step-one">
+                    <h2 class="heading" style="color: red;">Checkout Information</h2>
+                    </div>
+
 
                 
-                
-                <div class="review-payment">
-                    <h2>Review & Payment</h2>
-                </div>
                 <div class="table-responsive cart_info">
                     <table class="table table-condensed">
                         <thead>
@@ -139,25 +137,25 @@
                             </tr>
                         </thead>
                         <%
-                    TreeMap<Product, Integer> list = null;
-                    if (session.getAttribute("cart") != null) {
-                        Cart cart = (Cart) session.getAttribute("cart");
-                        if (cart == null) {
-                            cart = new Cart();
-                            session.setAttribute("cart", cart);
-                        }
+                            TreeMap<Product, Integer> list = null;
+                            if (session.getAttribute("cart") != null) {
+                                Cart cart = (Cart) session.getAttribute("cart");
+                                if (cart == null) {
+                                    cart = new Cart();
+                                    session.setAttribute("cart", cart);
+                                }
 
-                        list = cart.getList();
-                    }
+                                list = cart.getList();
+                            }
 
-                    if (session.getAttribute("cart") == null) {
-                        Cart cart = new Cart();
+                            if (session.getAttribute("cart") == null) {
+                                Cart cart = new Cart();
 
-                        list = null;
-                    }
+                                list = null;
+                            }
 
-                %>
-                
+                        %>
+
                         <tbody>
                             <% for (Map.Entry<Product, Integer> ds : list.entrySet()) {
                             %>
@@ -230,7 +228,7 @@
                         <td class="cart_total">
                             <p class="cart_total_price">$<%= new Double(ds.getValue() * ds.getKey().getProductPrice()).intValue()%></p>
                             <%
-                                total+= new Double(ds.getValue() * ds.getKey().getProductPrice()).intValue();
+                                total += new Double(ds.getValue() * ds.getKey().getProductPrice()).intValue();
                             %>
                         </td>
                         <td class="cart_delete">
@@ -267,7 +265,7 @@
                         </tbody>
                     </table>
                 </div>
-                
+
                 <div class="shopper-informations">
                     <div class="row">
                         <div class="col-sm-3">
@@ -298,9 +296,9 @@
                     </div>
                 </div>
 
-                
 
-                
+
+
 
             </div>
         </section> <!--/#cart_items-->

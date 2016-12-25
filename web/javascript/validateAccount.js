@@ -51,6 +51,35 @@ function checkPassword() {
     document.getElementById("err2").innerHTML = "";
     return true;
 }
+function checkPassword_login() {
+    var password = document.getElementById("password1").value;
+
+
+    if (password == '') {
+
+        document.getElementById("err9").innerHTML = "Please input your password!";
+        return false;
+    }
+    var checkpass = [];
+    checkpass[0] = /^\S{6,30}$/g;
+    checkpass[1] = /.*[a-z].*/g;
+    checkpass[2] = /.*[A-Z].*/g;
+    checkpass[3] = /.*\d.*/g;
+    checkpass[4] = /.*[^A-Za-z0-9\s].*/g;
+
+
+    for (var i = 0; i < checkpass.length; i++)
+    {
+        if (!password.match(checkpass[i]) || password.length < 6 || password.length > 30)
+        {
+            document.getElementById("err9").innerHTML = "6 to 30 characters required, at least 1 lowercase letter, 1 uppercase letter, 1 special character, 1 number!";
+            return false;
+
+        }
+    }
+    document.getElementById("err9").innerHTML = "";
+    return true;
+}
 
 function checkEmail() {
     var email = document.getElementById("email").value;

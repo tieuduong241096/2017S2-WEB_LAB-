@@ -12,6 +12,48 @@
 <%@page import="model.Cart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+            
+            TreeMap<Product, Integer> list = null;
+            if (session.getAttribute("cart") != null) {
+                Cart cart = (Cart) session.getAttribute("cart");
+                if (cart == null) {
+                    cart = new Cart();
+                    session.setAttribute("cart", cart);
+                }
+
+                list = cart.getList();
+            }
+            
+            
+            if (session.getAttribute("cart") == null) {
+                Cart cart = new Cart();
+
+                list = null;
+                response.sendRedirect("redirect.jsp");
+                request.getSession().setAttribute("success","CHOOSE PRODUCT TO VIEW CART!");
+                return;
+            }
+
+            ArrayList<Double> sizes = new ArrayList<>();
+
+            sizes.add(7.0);
+            sizes.add(7.5);
+            sizes.add(8.0);
+            sizes.add(8.5);
+            sizes.add(9.0);
+            sizes.add(9.5);
+            sizes.add(10.0);
+            sizes.add(10.5);
+            sizes.add(11.0);
+            sizes.add(11.5);
+            sizes.add(12.0);
+            sizes.add(12.5);
+            sizes.add(13.0);
+            sizes.add(13.5);
+            sizes.add(14.0);
+            sizes.add(14.5);
+        %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -56,44 +98,7 @@
        
     </head>
     <body>
-        <%
-            
-            TreeMap<Product, Integer> list = null;
-            if (session.getAttribute("cart") != null) {
-                Cart cart = (Cart) session.getAttribute("cart");
-                if (cart == null) {
-                    cart = new Cart();
-                    session.setAttribute("cart", cart);
-                }
-
-                list = cart.getList();
-            }
-
-            if (session.getAttribute("cart") == null) {
-                Cart cart = new Cart();
-
-                list = null;
-            }
-
-            ArrayList<Double> sizes = new ArrayList<>();
-
-            sizes.add(7.0);
-            sizes.add(7.5);
-            sizes.add(8.0);
-            sizes.add(8.5);
-            sizes.add(9.0);
-            sizes.add(9.5);
-            sizes.add(10.0);
-            sizes.add(10.5);
-            sizes.add(11.0);
-            sizes.add(11.5);
-            sizes.add(12.0);
-            sizes.add(12.5);
-            sizes.add(13.0);
-            sizes.add(13.5);
-            sizes.add(14.0);
-            sizes.add(14.5);
-        %>
+        
 
         <jsp:useBean id="size" scope="session" class="model.SizeBean" />
         <jsp:setProperty name="size" property="sizes" value="<%=sizes%>" />
@@ -104,12 +109,7 @@
 
             <section id="cart_items">
                 <div class="container">
-                    <div class="breadcrumbs">
-                        <ol class="breadcrumb">
-                            <li><a href="#">Home</a></li>
-                            <li class="active">Shopping Cart</li>
-                        </ol>
-                    </div>
+                    
                     <div class="table-responsive cart_info">
                     <table class="table table-condensed">
                         <thead>

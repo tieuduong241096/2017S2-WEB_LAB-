@@ -109,7 +109,8 @@
                         jQuery("#divResult").fadeOut();
                     }
                 });
-//                
+                
+               
 
             });
         </script>
@@ -120,82 +121,6 @@
             CategoryDAOImpl cat = new CategoryDAOImpl();
             ProductDAOImpl pro = new ProductDAOImpl();
         %>
-        <div class="col-sm-3">
-            <div class="left-sidebar">
-                <h2>Category</h2>
-
-                <div class="panel-group category-products" id="accordian"><!--category-productsr-->
-                    <%  for (Brand brand : braDAO.getBrandList("")) {%>
-                    <div class="panel panel-default">
-                        <!--1 vong lap cho brand-->
-
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-
-                                <a data-toggle="collapse" data-parent="#accordian" href="#<%=brand.getBrandID()%>">
-                                    <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                    <!--brand--><%=brand.getBrandName()%>
-                                </a>
-
-                            </h4>
-                        </div>
-                        <div id="<%=brand.getBrandID()%>" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <ul>
-                                    <% for (Category cate : cat.getCategoryListByBrand(Long.toString(brand.getBrandID()), "")) {%>
-                                    <li><a href="index.jsp?category=c<%= cate.getCategoryID()%>"> <span class="pull-right">(<%=pro.countNumberOfProductByCategory(cate)%>)</span><%= cate.getCategoryName()%></a></li>
-                                        <%}%>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!--ket thuc vong lap cho brand-->
-
-                        <!--bat dau vong lap cho category-->
-
-
-                    </div>
-                    <% }%>
-
-
-
-                </div><!--/category-products-->
-
-                <div class="brands_products"><!--brands_products-->
-                    <h2>Brands</h2>
-                    <div class="brands-name">
-                        <% for (Brand bra : braDAO.getBrandList("")) {%>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="index.jsp?brand=b<%= bra.getBrandID()%>"> <span class="pull-right">(<%=pro.countNumberOfProductByBrand(bra)%>)</span><%= bra.getBrandName()%></a></li>
-
-                        </ul>
-                        <%}%>
-                    </div>
-                </div><!--/brands_products-->
-
-
-
-                <div class="header-bottom">
-                    <div class="container">
-                        <div class="row">
-
-                            <div class="col-sm-3">
-                                <form id="form1" runat="server">
-                                    <fieldset class="search_box" style="width:15%; height:100%">
-                                        <div class="contentArea">
-                                            <input type="text" class="search" id="inputSearch" autocomplete="off" placeholder="Search..." />
-                                            <p style="color: red" id="searcherr"></p>
-                                            <div id="divResult">
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--/header-bottom-->
-                
-            </div>
-        </div>
+        
     </body>
 </html>
