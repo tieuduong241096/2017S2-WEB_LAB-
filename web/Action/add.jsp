@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="connect.Controller"%>
 <!DOCTYPE html>
@@ -15,8 +14,7 @@
         <title>JSP Page</title>
         
 
-<c:set var="root" value="${pageContext.request.contextPath}"/>
-<link href="${root}/resources/css/mos-style.css" rel='stylesheet' type='text/css' />
+<link href="../resources/css/mos-style.css" rel='stylesheet' type='text/css' />
 
         
     </head>
@@ -39,7 +37,8 @@
 	<div class="sukses">
 	ini adalah notifikasi pertanda sukses
 	</div>
-        <h1>Add new staff into system!</h1>
+        <h1>Add new Category into system!</h1>
+       
         <form method="post" action="../Action/addtoSQL.jsp">
           <table>
                 <tr>
@@ -52,7 +51,22 @@
                 </tr>
                 <tr>
                     <td>Brand ID</td>
-                    <td><input type="text" name="bid"></td>
+                    <td>
+                        <select name="bid">
+                            <%
+            String query = "select brandid from brand";
+
+            ResultSet rs = Controller.queryExecute(query);
+
+            String bid ="";
+            while(rs.next()) {
+                
+                bid = rs.getString("brandid");
+                %><option><%=bid%>
+            </option><%              
+            }           
+            rs.close();%>
+                    </td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="s3" value="Add"></td>

@@ -14,6 +14,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+       
     </head>
     <body>
        <%
@@ -21,8 +22,18 @@
             //String bid = (request.getParameter("bid"));
             out.println("<h1>" + cid + "</h1>");
             String query = "delete from category where categoryid = " + cid;
-            Controller.updateExecute(query);
-            response.sendRedirect("../admin/manageCategory.jsp");
+            try{
+                Controller.updateExecute(query);
+                response.sendRedirect("../admin/manageCategory.jsp");
+            }
+            catch(Exception e){
+                out.println("<script type=\"text/javascript\">");
+   out.println("alert('Cannot delete this category!');");
+   out.println("location='../admin/manageCategory.jsp';");
+   out.println("</script>");
+} 
+
+            
         %>        
     </body>
 </html>
