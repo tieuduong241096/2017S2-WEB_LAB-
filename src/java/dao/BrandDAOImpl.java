@@ -65,6 +65,60 @@ public class BrandDAOImpl implements BrandDAO{
         return brand1.getBrandName();
     }
 
+    @Override
+    public void insertBrand(Brand brand) {
+        try {
+            String sql = "INSERT INTO `brand`(`brand`.brandname) values('"+brand.getBrandName()+"')";
+            Connection connection = DBConnect.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            
+            
+            
+            ps.executeUpdate(sql);
+        } catch (SQLException ex) {
+            
+            System.err.println("insert brand loi" + ex.getLocalizedMessage());
+            
+        }
+      
+    }
+
+    @Override
+    public void updateBrand(Brand brand) {
+        try {
+            String sql = "UPDATE brand set brandname='"+brand.getBrandName()+"' where brandid="+brand.getBrandID();
+            Connection connection = DBConnect.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            
+           
+            ps.executeUpdate(sql);
+        } catch (SQLException ex) {
+            
+            System.err.println("update brand loi");
+            
+        }
+    }
+
+    @Override
+    public void deleteBrand(Brand brand) {
+        try {
+            String sql = "DELETE FROm brand where brandid='"+brand.getBrandID()+"'";
+            Connection connection = DBConnect.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.executeUpdate(sql);
+            
+            
+        } catch (SQLException ex) {
+            
+            System.err.println("delete brand loi" + ex.getLocalizedMessage());
+            
+        }
+    }
+    
+    public static void main(String[] args) {
+        new BrandDAOImpl().deleteBrand(new Brand(6,"yhyh"));
+    }
+
     
     
 }

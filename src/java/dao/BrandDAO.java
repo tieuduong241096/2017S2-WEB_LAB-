@@ -23,4 +23,10 @@ public interface BrandDAO {
     
     public String getBrandNameByBrandID(String brand);
     
+    public void insertBrand(Brand brand);
+    
+    public void updateBrand(Brand brand);
+    
+    public void deleteBrand(Brand brand);
+    
 }
