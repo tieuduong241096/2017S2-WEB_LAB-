@@ -47,12 +47,6 @@
         <div id="wrapper">
             <jsp:include page="menu.jsp"></jsp:include>
                 <div id="rightContent">
-                    
-
-                    <%
-                        ProductDAOImpl proDAO = new ProductDAOImpl();
-                        BrandDAOImpl braDAO = new BrandDAOImpl();
-                    %>
                 
                 <table class="data">
                     <tr class="data">

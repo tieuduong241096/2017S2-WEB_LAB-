@@ -64,5 +64,13 @@ public class Controller {
         }
         return false;
     }
+    
+    public static void main(String[] args) {
+        try {
+            Controller.getConnection();
+        } catch (SQLException ex) {
+            System.err.println(ex.getLocalizedMessage());
+        }
+    }
 
 }
