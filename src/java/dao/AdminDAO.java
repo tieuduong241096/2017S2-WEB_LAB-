@@ -5,10 +5,13 @@
  */
 package dao;
 
+import model.Admin;
+
 /**
  *
  * @author tuan
  */
 public interface AdminDAO {
-    
+    public boolean checkLogin(Admin admin);
+    public void insertAdmin(Admin admin);
 }

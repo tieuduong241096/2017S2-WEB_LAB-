@@ -5,12 +5,8 @@
         <servlet-class>controller.CheckoutController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SearchServlet</servlet-name>
-        <servlet-class>controller.SearchServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>FeedbackController</servlet-name>
-        <servlet-class>controller.FeedbackController</servlet-class>
+        <servlet-name>AdminLoginServlet</servlet-name>
+        <servlet-class>controller.AdminLoginServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AdminProductServlet</servlet-name>
@@ -33,16 +29,8 @@
         <url-pattern>/AccountController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SearchServlet</servlet-name>
-        <url-pattern>/SearchServlet</url-pattern>
-    </servlet-mapping>
-    <error-page>
-        <error-code>404</error-code>
-        <location>/index.jsp</location>
-    </error-page>
-    <servlet-mapping>
-        <servlet-name>FeedbackController</servlet-name>
-        <url-pattern>/FeedbackController</url-pattern>
+        <servlet-name>AdminLoginServlet</servlet-name>
+        <url-pattern>/AdminLoginServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminProductServlet</servlet-name>

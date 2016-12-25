@@ -18,7 +18,6 @@ import javax.xml.bind.JAXBException;
 import model.Brand;
 import model.Category;
 import model.Product;
-import utils.JAXBUtils;
 
 /**
  *
@@ -235,6 +234,30 @@ public class ProductDAOImpl implements ProductDAO {
         }
         
         return Integer.toString(min);
+    }
+
+    @Override
+    public String getProductNameByProductID(String id) {
+        String result = "";
+        try {
+            Connection connection = DBConnect.getConnection();
+            String sql = "SELECT productname FROM product WHERE productid= " + id;
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+
+                result = rs.getString("productname");
+
+            }
+
+            connection.close();
+
+        } catch (SQLException ex) {
+
+            System.err.println("NO PRODUCT DETAIL FOUND");
+        }
+        return result;
     }
 
     

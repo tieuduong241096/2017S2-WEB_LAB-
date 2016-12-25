@@ -6,7 +6,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.TreeMap;
 
 /**
  *
@@ -15,17 +14,7 @@ import java.util.TreeMap;
 public class SizeBean {
     private ArrayList<Double> sizes;
     private double size;
-    private TreeMap<Integer,Double>idsizes;
 
-    public TreeMap<Integer, Double> getIdsizes() {
-        return idsizes;
-    }
-
-    public void setIdsizes(TreeMap<Integer, Double> idsizes) {
-        this.idsizes = idsizes;
-    }
-
-    
     public ArrayList<Double> getSizes() {
         return sizes;
     }

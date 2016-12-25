@@ -17,4 +17,6 @@ public interface ReceiptDAO {
     public ArrayList<Receipt> getReceiptListByUser(User user);
     public boolean insertReceipt(Receipt rc);
     public int getLatestReceiptID();
+    public ArrayList<Receipt> getReceiptList(String input);
+    public void updateReceipt(String id);
 }

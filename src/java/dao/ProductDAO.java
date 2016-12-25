@@ -31,4 +31,6 @@ public interface ProductDAO {
     public Product getProductDetailByProductName(String product);
     
     public String getMin();
+    
+    public String getProductNameByProductID(String id);
 }

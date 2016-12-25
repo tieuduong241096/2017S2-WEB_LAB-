@@ -38,6 +38,7 @@ public class FeedbackDAOImpl implements FeedbackDAO{
                 f.setFeedbackID(rs.getInt("feedbackid"));
                 f.setUser(new User(rs.getInt("userid"),"","","",true,0,true,"","",""));
                 f.setFeedbackDate(rs.getDate("feedbackdate"));
+                f.setTitle(rs.getString("title"));
                 f.setContent(rs.getString("content"));
                 f.setReplyDate(rs.getDate("replydate"));
                 f.setReplyContent(rs.getString("replycontent"));

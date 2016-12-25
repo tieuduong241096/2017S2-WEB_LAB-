@@ -151,7 +151,7 @@ public class AccountController extends HttpServlet {
                 url = "/login.jsp";
 
             } else {
-                url = request.getParameter("checkout").equals("checkout")?"/checkout.jsp":"/index.jsp";
+                url = request.getParameter("checkout")!=null?"/checkout.jsp":"/index.jsp";
                 HttpSession s = request.getSession();
                 s.setAttribute("username", username);
                 s.setAttribute("email", email);
@@ -302,7 +302,8 @@ public class AccountController extends HttpServlet {
 
             if (!username_err.equals("") || !password_err.equals("") || !email_err.equals("") || !fullname_err.equals("") || !age_err.equals("") || !address_err.equals("") || !phone_err.equals("")) {
                 url = "/login.jsp";
-
+                RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+                rd.forward(request, response);
             } else {
                 url = "/index.jsp";
                 String encryptedPassword = AES.encrypt(password, secretKey);
@@ -315,8 +316,7 @@ public class AccountController extends HttpServlet {
                 response.sendRedirect("/AccountController.java");
             }
 
-            RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
-            rd.forward(request, response);
+            
             // </editor-fold>
         }
     }

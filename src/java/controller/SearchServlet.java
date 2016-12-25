@@ -27,7 +27,7 @@ import javax.xml.bind.JAXBException;
 import model.Brand;
 import model.Category;
 import model.Product;
-import utils.JAXBUtils;
+
 
 /**
  *
@@ -95,7 +95,7 @@ public class SearchServlet extends HttpServlet {
                 p.setBrand(new Brand(rs.getInt("brandid"), ""));
                 p.setCategory(new Category(rs.getInt("categoryid"), "", new Brand()));
                 
-                string += "<div id='display_box' align='left'><img src='resources/images/user/" + p.getProductImage() + "' style='width:50px; height:50px; float:left; margin-right:6px;margin-bottom:5px;' /><span class='name'>" + p.getProductName().toUpperCase() + "</span>&nbsp;<br/>$" + p.getProductPrice() + "<br/><span style='font-size:9px; color:#999999'>" + new BrandDAOImpl().getBrandNameByBrandID(Long.toString(p.getBrand().getBrandID()))+ "</span><span style='color:white' class='proid'>"+p.getProductID()+"</span></div>";
+                string += "<div id='display_box' align='left'><img src='resources/images/user/" + p.getProductImage() + "' style='width:50px; height:50px; float:left; margin-right:6px;margin-bottom:5px;' /><span class='name'>" + p.getProductName().toUpperCase() + "</span>&nbsp;<br/>$" + p.getProductPrice() + "<br/><span style='font-size:9px; color:#999999'>" + new BrandDAOImpl().getBrandNameByBrandID(Long.toString(p.getBrand().getBrandID()))+ "</span><span style='visibility:hidden' class='proid'>"+p.getProductID()+"</span></div>";
                 
                         
 

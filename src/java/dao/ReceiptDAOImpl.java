@@ -94,5 +94,55 @@ public class ReceiptDAOImpl implements ReceiptDAO{
         
         return max;
     }
+
+    @Override
+    public ArrayList<Receipt> getReceiptList(String input) {
+        ArrayList<Receipt> list = new ArrayList<>();
+        try {
+            Connection connection = DBConnect.getConnection();
+            String sql = "SELECT * FROM receipt "+input;
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Receipt r = new Receipt(
+                        rs.getInt("receiptid"), 
+                        rs.getTimestamp("bookdate"), 
+                        rs.getString("paymode"), 
+                        
+                        rs.getString("shipaddress"),
+                        
+                        new User(rs.getInt("userid"),"","","",true,0,true,"","",""), 
+                        rs.getInt("status"));
+                
+                
+                list.add(r);
+            }
+            connection.close();
+            
+        } catch (SQLException ex) {
+            System.err.println("ERROR LOADiNG RECEIPT");
+        }
+        return list;
+    }
+
+    @Override
+    public void updateReceipt(String id) {
+        Connection cons = DBConnect.getConnection();
+        String sql = "UPDATE receipt set status = 1 where receiptid="+id;
+        try {
+            
+            PreparedStatement ps = cons.prepareCall(sql);
+           
+            
+            ps.executeUpdate();
+            cons.close();
+            
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        
+        
+    }
     
 }
