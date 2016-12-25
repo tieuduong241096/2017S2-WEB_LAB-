@@ -15,7 +15,46 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>header</title>
-        
+        <!--Use Jquery to save cookie-->
+        <script src="javascript/js.cookie.js"></script>
+        <script type="text/javascript">
+                function fade_out() {
+                    
+                   
+                   var dataString = $('.promptDiv').val();
+                    $.ajax({
+                            type: "POST",
+                            url: "SessionServlet",
+                            data: {dataString: dataString},
+                            cache: false,
+                            success: function (html) {
+                                $('.promptDiv').remove();
+
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                if (xhr.status == 404) {
+                                    alert(thrownError);
+                                }
+                            }
+                        });
+                }
+                $(function() {
+                    setTimeout(fade_out, 5000);
+                });
+                
+                function blinker() {
+                    $('.promptDiv').fadeOut(500);
+                    $('.promptDiv').fadeIn(500);
+                }
+                setInterval(blinker, 1000);
+
+                
+
+                
+            
+            
+        </script>
+
     </head>
     <body>
         <%
@@ -42,15 +81,16 @@
             //session
             HttpSession s = request.getSession();
 
-//            //cookie
-//            Cookie[] cookies = request.getCookies();
-//            String c = "";
-//            for(Cookie cookie: cookies){
-//                if(cookie.getName().equalsIgnoreCase("username")){
-//                    c = cookie.getName();
-//                }
-//            }
+
         %>
+        <%  String successPrompt = "";
+        
+            if(request.getSession().getAttribute("success")!=null){
+                successPrompt = (String)request.getSession().getAttribute("success");
+            }
+            
+        %>
+        
         <header id="header"><!--header-->
             <div class="header_top"><!--header_top-->
                 <div class="container">
@@ -60,9 +100,11 @@
                                 <ul class="nav nav-pills">
                                     <li><a href="#"><i class="fa fa-phone"></i> +84 0123456789</a></li>
                                     <li><a href="#"><i class="fa fa-envelope"></i> ShoeStore@gmail.com</a></li>
+                                    <li class="promptDiv"><a href="#" style="color: red;font-weight: bold"><%=successPrompt%></a></li>
                                 </ul>
                             </div>
                         </div>
+
                         <div class="col-sm-6">
                             <div class="social-icons pull-right">
                                 <ul class="nav navbar-nav">
@@ -85,6 +127,7 @@
                         <div class="col-sm-4">
                             <div class="logo pull-left">
                                 <a href="index.jsp"><img src="resources/images/home/Logomakr_2HHT9q.png" alt="" /></a>
+
                             </div>
 
 
@@ -93,7 +136,7 @@
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
                                     <%if (s.getAttribute("username") != null) {%>
-                                    <li><a href="#"><i class="fa fa-user"></i> <%=s.getAttribute("email")%></a></li>
+                                    <li><a href="account.jsp?account=<%=s.getAttribute("email")%>"><i class="fa fa-user"></i> <%=s.getAttribute("email")%></a></li>
                                         <%}%>
 
                                     <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i><span style="color: red"> <%= num%></span></a>
@@ -101,8 +144,8 @@
 
 
                                     </li>
-                                    
-                                        <%if (s.getAttribute("username") != null) {%>
+
+                                    <%if (s.getAttribute("username") != null) {%>
                                     <li><a href="AccountController?action=signout"><i class="fa fa-sign-out"></i> Sign out</a></li>
                                     <li><a href="AccountController?action=feedback"><i class="fa fa-comments-o"></i> Feedback</a></li>
                                         <%}%>
@@ -117,8 +160,8 @@
                 </div>
             </div><!--/header-middle-->
 
-            
-            
+
+
         </header><!--/header-->
     </body>
 </html>

@@ -90,12 +90,7 @@
             <section id="form"><!--form-->
                 
                 <div class="container">
-                    <div class="breadcrumbs">
-                        <ol class="breadcrumb">
-                            <li><a href="#">Home</a></li>
-                            <li class="active">Login & Signup</li>
-                        </ol>
-            </div>
+                    
                     <div class="row">
                         <div class="col-sm-4 col-sm-offset-1">
                             <div class="login-form"><!--login form-->
@@ -104,8 +99,8 @@
                                     <p style="color: red"><%= email_login_err%></p>
                                     <p id="err8" style="color: red"></p>
                                     <input type="text" placeholder="Email Address" name ="email1" id="email1" oninput="checkEmail_login()" />
-                                    
-                                    <input type="password" placeholder="Password" name="password" />
+                                    <p id="err9" style="color: red"></p>
+                                    <input type="password" placeholder="Password" name="password1" id="password1" oninput="checkPassword_login()" />
                                     <p style="color: red"><%= login_err%></p>
                                     <span>
                                         <input type="checkbox" class="checkbox" name="remember"> 

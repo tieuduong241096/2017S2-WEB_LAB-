@@ -19,4 +19,6 @@ public interface UserDAO {
     public boolean checkAccountExistBaseOnEmailAndPassword(String email,String password);
     public String getUserNameFromUserID(String id);
     public int getUserIDFromEmail(String email);
+    public User getUserDetailByEmail(String email);
+    public void updateAccount(User user);
 }

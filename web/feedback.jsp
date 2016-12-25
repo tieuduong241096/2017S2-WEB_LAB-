@@ -74,8 +74,8 @@
                 <ul class="listask">
 
                     <li class="item">
-                        <div>Title: <%=f.getTitle()%></div>
-                        <div>Content: <%=f.getContent()%></div>
+                        
+                        <div><%=f.getContent()%></div>
 
                         <div class="info">
                             <i><%= udi.getUserNameFromUserID(Long.toString(f.getUser().getUserID()))%> sent</i>

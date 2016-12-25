@@ -63,6 +63,7 @@ public class CartServlet extends HttpServlet {
                         cart.insertToCart(p, 1);
                         listBuy.add(idBuy);
                     }
+                    session.setAttribute("success", "ADD TO CART SUCCESSFULLY");
                     url = "/index.jsp";
                     break;
                 case "plus":

@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="connect.Controller"%>
 <!DOCTYPE html>
@@ -15,8 +14,7 @@
         <title>JSP Page</title>
         
 
-<c:set var="root" value="${pageContext.request.contextPath}"/>
-<link href="${root}/resources/css/mos-style.css" rel='stylesheet' type='text/css' />
+<link href="../resources/css/mos-style.css" rel='stylesheet' type='text/css' />
 
         
     </head>
@@ -26,19 +24,7 @@
         <div id="wrapper">
         <jsp:include page="../admin/menu.jsp"></jsp:include>
        <div id="rightContent">
-	        <h1>Staff's Info Manage</h1>
-	
-	<div class="informasi">
-	ini adalah notifikasi pertanda informasi
-	</div>
-	
-	<div class="gagal">
-	ini adalah notifikasi pertanda gagal
-	</div>
-	
-	<div class="sukses">
-	ini adalah notifikasi pertanda sukses
-	</div>
+	       
         <h1>Edit this Category's information</h1>
 
         <%

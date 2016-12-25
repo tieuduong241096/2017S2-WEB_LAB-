@@ -9,6 +9,7 @@ import connect.DBConnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import model.User;
 
 /**
@@ -149,6 +150,61 @@ public class UserDAOImpl implements UserDAO{
         }
         
         return userid;
+    }
+
+    @Override
+    public User getUserDetailByEmail(String email) {
+        User user = new User();
+        try {
+            Connection connection = DBConnect.getConnection();
+            String sql = "SELECT * FROM user WHERE email='" + email+"'";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+               user.setUserName(rs.getString("username"));
+            user.setPassword(AES.decrypt(rs.getString("password"), "secretkeysecretkey"));
+           user.setFullName(rs.getString("fullname"));
+            user.setStatus(rs.getBoolean("status")); //status
+           user.setAge(rs.getInt("age"));
+            user.setGender(rs.getBoolean("gender"));
+            user.setAddress(rs.getString("address"));
+            user.setEmail(rs.getString("email"));
+            user.setPhone(rs.getString("phone"));
+
+            }
+
+            connection.close();
+
+        } catch (SQLException ex) {
+
+            System.err.println("NO USER DETAIL FOUND");
+        }
+        return user;
+    }
+
+    @Override
+    public void updateAccount(User user) {
+        Connection cons = DBConnect.getConnection();
+        String sql = "UPDATE `user` set `user`.username=?,`user`.`password`=?,`user`.fullname=?,`user`.`status`=?, `user`.age=?,`user`.gender=?,`user`.address=?,`user`.phone=? where `user`.email=?";
+        try {
+            PreparedStatement ps = cons.prepareCall(sql);
+            ps.setString(1, user.getUserName());
+            ps.setString(2, user.getPassword());
+            ps.setString(3, user.getFullName());
+            ps.setBoolean(4,user.isStatus()); //status
+            ps.setInt(5,user.getAge());
+            ps.setBoolean(6,user.isGender());
+            ps.setString(7, user.getAddress());
+           
+            ps.setString(8, user.getPhone());
+             ps.setString(9, user.getEmail());
+            ps.executeUpdate();
+            cons.close();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 
    

@@ -132,7 +132,8 @@ public class CheckoutController extends HttpServlet {
                 }
                 session.removeAttribute("cart");
                 session.removeAttribute("cartID");
-
+                HttpSession s = request.getSession();
+                s.setAttribute("success", "checkout successfully");
                 response.sendRedirect("redirect.jsp");
 
             } catch (IOException e) {

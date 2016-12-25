@@ -35,6 +35,7 @@
 
                 query = "delete from category where categoryid = " + id;
 
+                try{
                 Controller.updateExecute(query);
 
              
@@ -57,6 +58,14 @@
                     response.sendRedirect("../admin/manageCategory.jsp");
                     return;
                 }
+                 }
+            catch(Exception e){
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Cannot edit this category!');");
+                out.println("location='../admin/manageCategory.jsp';");
+                out.println("</script>");
+} 
+                
             }
 
         %>      

@@ -16,6 +16,10 @@
         <servlet-name>AdminBrandServlet</servlet-name>
         <servlet-class>controller.AdminBrandServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SessionServlet</servlet-name>
+        <servlet-class>controller.SessionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CheckoutController</servlet-name>
         <url-pattern>/CheckoutController</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>AdminBrandServlet</servlet-name>
         <url-pattern>/AdminBrandServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SessionServlet</servlet-name>
+        <url-pattern>/SessionServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

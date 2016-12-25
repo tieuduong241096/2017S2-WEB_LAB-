@@ -342,7 +342,7 @@ ul.sub-menu {
 **************************/
 
 #footer {
-  background: #333;
+  background: black;
 }
 
 
@@ -1768,7 +1768,7 @@ h2.title {
 }
 
 .update, .check_out {
-  background: #FE980F;
+  background: #FF0000;
   border-radius: 0;
   color: #FFFFFF;
   margin-top: 18px;
