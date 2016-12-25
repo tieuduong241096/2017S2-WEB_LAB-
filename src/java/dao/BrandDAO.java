@@ -28,5 +28,5 @@ public interface BrandDAO {
     public void updateBrand(Brand brand);
     
     public void deleteBrand(Brand brand);
-    
+    public int getBrandIDByBrandName(String brand);
 }

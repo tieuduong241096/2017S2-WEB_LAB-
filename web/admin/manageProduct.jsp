@@ -4,6 +4,7 @@
     Author     : tuan
 --%>
 
+<%@page import="dao.CategoryDAOImpl"%>
 <%@page import="dao.AdminDAOImpl"%>
 <%@page import="model.Admin"%>
 <%@page import="dao.BrandDAOImpl"%>
@@ -60,27 +61,26 @@
                         <th class="data">Brand</th>
                         <th class="data">Category</th>
                         <th class="data">Modify</th>
-                       
-
+                      
                     </tr>
-                    <% for (Product product : proDAO.getProductList("")) { %>
+                    <% for (Product product : proDAO.getProductList(" order by productid desc")) { %>
                     <tr>
                         <td><%=product.getProductID()%></td>
                         <td><%=product.getProductName()%></td>
                         <td><%=product.getProductPrice()%></td>
-                        <td><img src=../resources/images/user/<%=product.getProductImage()%>" alt=""/></td>
+                        <td><img style="width: 100px; height: 100px;" src="../resources/images/user/<%=product.getProductImage()%>" alt=""/></td>
                         <td><%=product.getProductQuantity()%></td>
-                        <td><%=product.getDescription()%></td>
+                        <td><%=product.getDescription()==null?"":product.getDescription()%></td>
                         <td><%=product.getDiscount()%></td>
                         <td><%=braDAO.getBrandNameByBrandID(new Long(product.getBrand().getBrandID()).toString())%></td>
-                        <td><%=product.getProductID()%></td>
+                        <td><%=new CategoryDAOImpl().getCategoryNameByCategoryID(new Long(product.getCategory().getCategoryID()).toString())%></td>
                         <td><a href="handleProduct.jsp?id=<%=product.getProductID()%>">edit</a> | <a href="../ProductServlet?action=delete">delete</a></td>
                     </tr>
                     <%}%>
                 </table>
                      </div>
                     <div class="clear"></div>
-                    <p><a href="handleProduct.jsp?id=empty">Add new Product</a></p>
+                    <p><a href="handleProduct.jsp?id=empty" style= "margin-left: 250px;">Add new Product</a></p>
                     <jsp:include page="footer.jsp"></jsp:include>
            
     </body>

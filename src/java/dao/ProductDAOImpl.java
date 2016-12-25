@@ -49,13 +49,11 @@ public class ProductDAOImpl implements ProductDAO {
                 list.add(p);
             }
             connection.close();
-            
-            
-            
+
         } catch (SQLException ex) {
 
             System.err.println("NO PRODUCT FOUND");
-        } 
+        }
         return list;
     }
 
@@ -191,7 +189,7 @@ public class ProductDAOImpl implements ProductDAO {
         Product p = new Product();
         try {
             Connection connection = DBConnect.getConnection();
-            String sql = "SELECT * FROM product WHERE productname like '%" + product+"%'";
+            String sql = "SELECT * FROM product WHERE productname like '%" + product + "%'";
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
@@ -220,19 +218,19 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public String getMin() {
-        int min=0;
+        int min = 0;
         try {
             Connection connection = DBConnect.getConnection();
             String sql = "SELECT MIN(productid) as min FROM product";
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 min = rs.getInt("min");
             }
         } catch (SQLException ex) {
             System.err.println("ERROR FINDING MIN FROM CATEGORY");
         }
-        
+
         return Integer.toString(min);
     }
 
@@ -244,7 +242,7 @@ public class ProductDAOImpl implements ProductDAO {
             String sql = "SELECT productname FROM product WHERE productid= " + id;
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            
+
             while (rs.next()) {
 
                 result = rs.getString("productname");
@@ -260,7 +258,62 @@ public class ProductDAOImpl implements ProductDAO {
         return result;
     }
 
-    
+    public void updateProduct(Product p) {
+        try {
+            String sql = "UPDATE product set productname=?, productprice=?,productimage=?,productquantity=?,description=?,discount=?,brandid=?,categoryid=? where productid=?";
+            Connection connection = DBConnect.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, p.getProductName());
+            ps.setDouble(2, p.getProductPrice());
+            ps.setString(3, p.getProductImage());
+            ps.setDouble(4, p.getProductQuantity());
+            ps.setString(5, p.getDescription());
+            ps.setDouble(6, p.getDiscount());
+            ps.setLong(7, p.getBrand().getBrandID());
+            ps.setLong(8, p.getCategory().getCategoryID());
+            ps.setLong(9, p.getProductID());
+            //lam tiep
+            ps.executeUpdate(sql);
+        } catch (SQLException ex) {
 
-    
+            System.err.println("updateP roduct loi");
+
+        }
+    }
+
+    public void deleteroduct(Product p) {
+        try {
+            String sql = "DELETE FROM product where productid='" + p.getProductID() + "'";
+            Connection connection = DBConnect.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+
+            System.err.println("delete product loi" + ex.getLocalizedMessage());
+
+        }
+    }
+
+    public void insertProduct(Product p) {
+        try {
+            String sql = "INSERT into product(product.productname,product.productprice,product.productimage,product.productquantity,product.description,product.discount,product.brandid,product.categoryid) values( productname=?, productprice=?,productimage=?,productquantity=?,description=?,discount=?,brandid=?,categoryid=?)";
+            Connection connection = DBConnect.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, p.getProductName());
+            ps.setDouble(2, p.getProductPrice());
+            ps.setString(3, p.getProductImage());
+            ps.setDouble(4, p.getProductQuantity());
+            ps.setString(5, p.getDescription());
+            ps.setDouble(6, p.getDiscount());
+            ps.setLong(7, p.getBrand().getBrandID());
+            ps.setLong(8, p.getCategory().getCategoryID());
+            ps.executeUpdate(sql);
+        } catch (SQLException ex) {
+
+            System.err.println("insert product loi" + ex.getLocalizedMessage());
+
+        }
+    }
+
 }

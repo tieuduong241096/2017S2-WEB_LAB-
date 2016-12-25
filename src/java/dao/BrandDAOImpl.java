@@ -102,7 +102,7 @@ public class BrandDAOImpl implements BrandDAO{
     @Override
     public void deleteBrand(Brand brand) {
         try {
-            String sql = "DELETE FROm brand where brandid='"+brand.getBrandID()+"'";
+            String sql = "DELETE FROM brand where brandid='"+brand.getBrandID()+"'";
             Connection connection = DBConnect.getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.executeUpdate(sql);
@@ -115,8 +115,25 @@ public class BrandDAOImpl implements BrandDAO{
         }
     }
     
-    public static void main(String[] args) {
-        new BrandDAOImpl().deleteBrand(new Brand(6,"yhyh"));
+    public int getBrandIDByBrandName(String brand) {
+        int id=0;
+        try {
+            Connection connection = DBConnect.getConnection();
+            String sql = "SELECT brandid FROM brand where brandname = " + brand;
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                
+                id = rs.getInt("brandname");
+                
+                
+            }
+            connection.close();
+        } catch (SQLException ex) {
+            System.err.println("ERROR LOADING BRANDID BY CATEGORYID");
+        }
+        return id;
     }
 
     

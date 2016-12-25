@@ -5,82 +5,66 @@
  */
 package controller;
 
+import dao.BrandDAOImpl;
+import dao.CategoryDAOImpl;
+import dao.ProductDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Brand;
+import model.Category;
+import model.Product;
 
 /**
  *
  * @author LMD0207
  */
+@WebServlet("/AdminProductServlet")
 public class AdminProductServlet extends HttpServlet {
+   
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AdminProductServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AdminProductServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        doPost(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       //viet add o day
+       String action = request.getParameter("action");
+       String id = request.getParameter("id")==null?"0":request.getParameter("id");
+       String name = request.getParameter("name");
+       String price = request.getParameter("price");
+       String image = request.getParameter("image");
+       String quantity = request.getParameter("quantity");
+       String description = request.getParameter("description");
+       String discount = request.getParameter("discount");
+       String brand = request.getParameter("brand");
+       String category = request.getParameter("category");
+       
+       Product p = new Product(Integer.parseInt(id), name, Double.parseDouble(price), image, Integer.parseInt(quantity), description, Double.parseDouble(discount), new Brand(new BrandDAOImpl().getBrandIDByBrandName(brand), ""), new Category(new CategoryDAOImpl().getCategoryIDByCategoryName(category), "", new Brand()));
+       ProductDAOImpl pd = new ProductDAOImpl();
+       
+       if (action.equals("edit")) {
+           pd.updateProduct(p);
+            
+        }
+        else if(action.equals("delete")){
+            pd.deleteroduct(p);
+        }
+        else{//add new
+            pd.insertProduct(p);
+        }
+        response.sendRedirect("admin/manageBrand.jsp");
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+    
+    
 }

@@ -116,4 +116,45 @@ public class CategoryDAOImpl implements CategoryDAO{
         }
         return Long.toString(brand.getBrandID());
     }
+    
+    public String getCategoryNameByCategoryID(String category) {
+        String name= "";
+        try {
+            Connection connection = DBConnect.getConnection();
+            String sql = "SELECT categoryname FROM category where categoryid = " + category;
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                
+                name = rs.getString("categoryname");
+                
+                
+            }
+            connection.close();
+        } catch (SQLException ex) {
+            System.err.println("ERROR LOADING BRANDID BY CATEGORYID");
+        }
+        return name;
+    }
+    public int getCategoryIDByCategoryName(String brand) {
+        int id=0;
+        try {
+            Connection connection = DBConnect.getConnection();
+            String sql = "SELECT categoryid FROM category where categoryname = " + brand;
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                
+                id = rs.getInt("categoryid");
+                
+                
+            }
+            connection.close();
+        } catch (SQLException ex) {
+            System.err.println("ERROR LOADING BRANDID BY CATEGORYID");
+        }
+        return id;
+    }
 }

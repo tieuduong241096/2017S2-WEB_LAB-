@@ -19,4 +19,6 @@ public interface CategoryDAO {
     public String getBrandIDByCategoryID(String input);
     public Boolean checkMin(Category category);
     public String trimAllWhiteSpace(String string);
+    public String getCategoryNameByCategoryID(String category);
+    public int getCategoryIDByCategoryName(String brand);
 }
