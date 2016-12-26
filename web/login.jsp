@@ -28,8 +28,13 @@
         <script src="resources/js/price-range.js"></script>
         <script src="resources/js/jquery.prettyPhoto.js"></script>
         <script src="resources/js/main.js"></script>
+        <script>
+            function focus(){
+                document.getElementById("email1").focus;
+            }
+        </script>
     </head>
-    <body>
+    <body onload="focus()">
         <!--HEADER-->
         <jsp:include page="header.jsp"></jsp:include>
         <%
