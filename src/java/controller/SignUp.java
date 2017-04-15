@@ -51,7 +51,7 @@ public class SignUp extends HttpServlet {
                 username,
                 Encript.encript(password),
                 email, "",
-                Activation.UNACTIVATED,
+                Activation.ACTIVATED,   // Note: by default : UNACTIVATED
                 UserRole.CUSTOMER,
                 today);
     }
