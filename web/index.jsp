@@ -643,7 +643,8 @@
             </div>
             <div class="clearfix"></div>
         </div>						
-    </div>	
+    </div>
+                    <div>test lan 2</div>
 </div>	
 </body>
 </html>
