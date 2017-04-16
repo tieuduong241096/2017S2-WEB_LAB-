@@ -173,9 +173,9 @@ public class BaseDAO {
     public static void insertAccount(Account account) {
         try {
             String sqlQuery = "INSERT INTO ecmrproj.`account`"
-                    + "(accid, accname, accpassword, accemail, accaddress, accactivate, accrole, accdate)"
-                    + " VALUES ('" + account.getId()
-                    + "','" + account.getUsername()
+                    + "('account'.accname, 'account'.accpassword, 'account'.accemail, 'account'.accaddress, 'account'.accactivate, 'account'.accrole, 'account'.accdate)"
+                    + " VALUES ('" /*+ account.getId()
+                    + "','" */+ account.getUsername()
                     + "','" + account.getPassword()
                     + "','" + account.getEmail()
                     + "','" + account.getAddress()

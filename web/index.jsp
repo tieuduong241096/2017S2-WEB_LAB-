@@ -77,12 +77,16 @@
                     <a href="index.jsp">E-<span>COMMERCE</span></a>
                 </div>
                 <div class="search">
-                    <input type="text" value="" placeholder="<%=map.get("place_holder")%>" 
+                  <%--  <input type="text" class="search" id="inputSearch" value="" placeholder="<%=map.get("place_holder")%>" 
                            onfocus="this.value = '';" 
-                           onblur="if (this.value === '') {
-                                       this.value = '';
-                                   }" >
+                             >
+                    <div id="divResult"> </div>
                     <input type="submit"  value="<%=map.get("search")%>">
+                    --%>
+                     <input type="text" class="search" id="inputSearch" autocomplete="off" placeholder="Search..." />
+                                                    <p style="color: red" id="searcherr"></p>
+                                                    <div id="divResult">
+                                                    </div>
 
                 </div>
                 <div class="clearfix"> </div>
@@ -354,7 +358,9 @@
             </div>
         </a>
         <!---->
-                
+                <div class="col-sm-9 padding-right" style="
+    margin-left: 259px;" id="recommendit"></div>
+            </div>
                 
         <div class="shoes-grid-left">
             <a href="view.jsp?productId=<%=products.get(3).getProductId()%>">				 
@@ -470,7 +476,10 @@
             <div class="clearfix"> </div>
         </div>
         <div class="clearfix"> </div>
-    </div>   
+        
+    </div> 
+                            
+                            
     <div class="sub-cate">
         <div class=" top-nav rsidebar span_1_of_left">
             <h3 class="cate"><%=map.get("cate")%></h3>
@@ -561,6 +570,9 @@
                 </li>
             </ul>
         </div>
+                    
+        
+                    
         <!--initiate accordion-->
         <script type="text/javascript">
             $(function () {
