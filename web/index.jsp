@@ -1,3 +1,11 @@
+<%@page import="model.Category"%>
+<%@page import="model.Brand"%>
+<%@page import="dao.ProductDAOImpl"%>
+<%@page import="dao.BrandDAOImpl"%>
+<%@page import="dao.CategoryDAOImpl"%>
+
+
+
 
 
 <%@page import="repository.ProductRepositoty"%>
@@ -41,6 +49,22 @@
         <script src="js/base-ajax.js"></script>
     </head>
     <body> 
+        
+        
+        
+        <%
+            BrandDAOImpl braDAO = new BrandDAOImpl();
+            CategoryDAOImpl cat = new CategoryDAOImpl();
+            ProductDAOImpl pro = new ProductDAOImpl();
+        %>
+        
+        
+        
+        
+        
+        
+        
+        
         <!--header-->
         <div class="header">
             <div class="top-header">
@@ -285,7 +309,7 @@
         <a href="#">
             <div class="wrap-in">
                 
-                
+                <%---
                 <div class="wmuSlider example1 slide-grid">		 
                     <div class="wmuSliderWrapper">		  
                         <article style="position: absolute; width: 100%; opacity: 0;">					
@@ -355,13 +379,114 @@
     $('.example1').wmuSlider();
                     </script> 
                 </div>
+                
+                ------%>
             </div>
         </a>
+    </div>
+</div>
+        
         <!---->
+        
+        
+        
+        
+        
+         <!--MAIN CONTENT + CATEGORY MENU-->
+         <div>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="left-sidebar" style="height: 0px">
+                            <h2>Category</h2>
+
+                            <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                            <%  for (Brand brand : braDAO.getBrandList("")) {%>
+                            <div class="panel panel-default">
+                                <!--1 vong lap cho brand-->
+
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+
+                                        <a data-toggle="collapse" data-parent="#accordian" href="#<%=brand.getBrandID()%>">
+                                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                            <!--brand--><%=brand.getBrandName()%>
+                                        </a>
+
+                                    </h4>
+                                </div>
+                                <div id="<%=brand.getBrandID()%>" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="hihi">
+                                            <% for (Category cate : cat.getCategoryListByBrand(Long.toString(brand.getBrandID()), "")) {%>
+                                            <li><a href="javascript:void(0)" class="menuidcategory" data-id="c<%=cate.getCategoryID()%>"> <span class="pull-right">(<%=pro.countNumberOfProductByCategory(cate)%>)</span><%= cate.getCategoryName()%></a></li>
+                                                <%}%>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                            <% }%>
+
+
+
+                        </div><!--/category-products-->
+
+                        <div class="brands_products"><!--brands_products-->
+                            <h2>Brands</h2>
+                            <div class="brands-name">
+                                <% for (Brand bra : braDAO.getBrandList("")) {%>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="javascript:void(0)" class="menuidbrand" data-id="b<%=bra.getBrandID()%>"><span class="pull-right">(<%=pro.countNumberOfProductByBrand(bra)%>)</span><%= bra.getBrandName()%></a></li>
+
+                                </ul>
+                                <%}%>
+                            </div>
+                        </div><!--/brands_products-->
+
+
+
+                        <div class="header-bottom"><!--Search-->
+                            <div class="container">
+                                <div class="row">
+
+                                    <div class="col-sm-3">
+                                        <form id="form1" runat="server">
+                                            <fieldset class="search_box" style="width:15%; height:100%">
+                                                <div class="contentArea">
+                                                    <input type="text" class="search" id="inputSearch" autocomplete="off" placeholder="Search..." />
+                                                    <p style="color: red" id="searcherr"></p>
+                                                    <div id="divResult">
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--/search-->
+
+                    </div>
+                </div>
+
+                            <div class="col-sm-9 padding-right" id="dynamicContent" style="height: 100%">
+                      
+                </div>
                 <div class="col-sm-9 padding-right" style="
     margin-left: 259px;" id="recommendit"></div>
             </div>
+        </div>
+    </section>
+         </div>
                 
+      <%----
+
+      
+      
         <div class="shoes-grid-left">
             <a href="view.jsp?productId=<%=products.get(3).getProductId()%>">				 
                 <div class="col-md-6 con-sed-grid">
@@ -606,6 +731,10 @@
     </div>
     <div class="clearfix"> </div>        	         
 </div>
+      
+      
+      
+      ------%>
 <div class="temp">
 
 </div>
