@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 import model.Account;
-import model.Category;
+import model.Categorys;
 import model.Checkout;
 import model.Order;
-import model.Product;
+import model.Products;
 
 import static repository.AccountRepository.getCustomerName;
 import util.JsonBinder;
@@ -21,7 +21,7 @@ import util.MailService;
  */
 public class ProductRepositoty {
 
-    public static List<Product> getAllProduct() {
+    public static List<Products> getAllProduct() {
         return BaseDAO.getAllProduct();
     }
 
@@ -33,7 +33,7 @@ public class ProductRepositoty {
         BaseDAO.insertOrderDAO(orderDAO);
     }
 
-    public static Product getProductById(String productId) {
+    public static Products getProductById(String productId) {
         return getAllProduct().stream()
                 .filter(product -> product.getProductId().equals(productId))
                 .findFirst()
@@ -66,17 +66,17 @@ public class ProductRepositoty {
 
     }
 
-    public static List<Product> getProductByCategory(String supplierId, String name) {
-        List<Category> categories = BaseDAO.getAllSupply();
+    public static List<Products> getProductByCategory(String supplierId, String name) {
+        List<Categorys> categories = BaseDAO.getAllSupply();
 
         return categories.stream()
                 .filter(cate -> cate.getSupplierId().equals(supplierId) && cate.getName().equals(name))
-                .map(Category::getProducts)
+                .map(Categorys::getProducts)
                 .findFirst()
                 .orElse(null);
     }
     
-    public static void saveProductFromProviders(List<Product> products) {
+    public static void saveProductFromProviders(List<Products> products) {
         
         
         System.out.println(products);

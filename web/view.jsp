@@ -1,7 +1,7 @@
 
 
 <%@page import="java.util.List"%>
-<%@page import="model.Product"%>
+<%@page import="model.Products"%>
 <%@page import="repository.ProductRepositoty"%>
 <%@page import="model.UserRole"%>
 <%@page import="model.UserSessionHolder"%>
@@ -15,10 +15,10 @@
     Map<String, String> map = (HashMap<String, String>) Settings.getSessionAttribute(request, "languageCode");
     UserSessionHolder ush = Settings.getCurrentUserSession(request);
 
-    List<Product> products = ProductRepositoty.getAllProduct();
+    List<Products> products = ProductRepositoty.getAllProduct();
     String productId = request.getParameter("productId");
-    Product currentProduct = ProductRepositoty.getProductById(productId);
-    List<Product> cartProduct = Settings.getCart(request).getProducts();
+    Products currentProduct = ProductRepositoty.getProductById(productId);
+    List<Products> cartProduct = Settings.getCart(request).getProducts();
     String cartSettings = "href=\"login.jsp\"";
 
     if (map == null) {
@@ -156,7 +156,7 @@
                         <tbody>
                             <%
 
-                                for (Product product : cartProduct) {
+                                for (Products product : cartProduct) {
                                     out.print("<tr>"
                                             + "<td>" + product.getProductId() + "</td>"
                                             + "<td>" + (map.get(product.getProductName()) == null ? product.getProductName() : map.get(product.getProductName())) + "</td>"

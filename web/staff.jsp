@@ -5,7 +5,7 @@
 <%@page import="repository.ProductRepositoty"%>
 <%@page import="model.Order"%>
 <%@page import="dao.OrderDAO"%>
-<%@page import="model.Product"%>
+<%@page import="model.Products"%>
 <%@page import="java.util.List"%>
 <%@page import="dao.BaseDAO"%>
 <%@page import="model.Account"%>

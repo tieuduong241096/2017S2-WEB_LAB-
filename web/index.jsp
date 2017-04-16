@@ -1,7 +1,7 @@
 
 
 <%@page import="repository.ProductRepositoty"%>
-<%@page import="model.Product"%>
+<%@page import="model.Products"%>
 <%@page import="java.util.List"%>
 <%@page import="model.UserRole"%>
 <%@page import="model.UserSessionHolder"%>
@@ -15,7 +15,7 @@
     Map<String, String> map = (HashMap<String, String>) Settings.getSessionAttribute(request, "languageCode");
     UserSessionHolder ush = Settings.getCurrentUserSession(request);
 
-    List<Product> products = ProductRepositoty.getAllProduct();
+    List<Products> products = ProductRepositoty.getAllProduct();
     String cartSettings = "href=\"login.jsp\"";
 
     if (map == null) {
@@ -152,8 +152,8 @@
                         <tbody>
 
                             <%
-                                List<Product> cartProduct = Settings.getCart(request).getProducts();
-                                for (Product product : cartProduct) {
+                                List<Products> cartProduct = Settings.getCart(request).getProducts();
+                                for (Products product : cartProduct) {
                                     out.print("<tr>"
                                             + "<td>" + product.getProductId() + "</td>"
                                             + "<td>" + map.get(product.getProductName()) + "</td>"
@@ -280,6 +280,8 @@
     <div class="shoes-grid">
         <a href="#">
             <div class="wrap-in">
+                
+                
                 <div class="wmuSlider example1 slide-grid">		 
                     <div class="wmuSliderWrapper">		  
                         <article style="position: absolute; width: 100%; opacity: 0;">					
@@ -352,6 +354,8 @@
             </div>
         </a>
         <!---->
+                
+                
         <div class="shoes-grid-left">
             <a href="view.jsp?productId=<%=products.get(3).getProductId()%>">				 
                 <div class="col-md-6 con-sed-grid">

@@ -6,8 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import model.Account;
-import model.Cart;
-import model.Product;
+import model.Carts;
+import model.Products;
 import model.UserSessionHolder;
 
 /**
@@ -35,25 +35,25 @@ public class Settings {
     }
     
     public static void initializeCart(HttpServletRequest request) {
-        List<Product> products = new ArrayList<>();
-        Cart cart = new Cart(products);
+        List<Products> products = new ArrayList<>();
+        Carts cart = new Carts(products);
         
         setSessionAttribute(request, CART_NAME, cart);
     }
     
-    public static Cart getCart(HttpServletRequest request) {
-        Cart cart = (Cart)getSessionAttribute(request, CART_NAME);
+    public static Carts getCart(HttpServletRequest request) {
+        Carts cart = (Carts)getSessionAttribute(request, CART_NAME);
         
         while (cart == null) {
             initializeCart(request);
-            cart = (Cart)getSessionAttribute(request, CART_NAME);
+            cart = (Carts)getSessionAttribute(request, CART_NAME);
         }
         
         return cart;
     }
     
-    public static void addToCart(HttpServletRequest request, Product product) {
-        Cart cart = getCart(request);
+    public static void addToCart(HttpServletRequest request, Products product) {
+        Carts cart = getCart(request);
         cart.addProduct(product);
         removeSessionAttribute(request, CART_NAME);
         setSessionAttribute(request, CART_NAME, cart);

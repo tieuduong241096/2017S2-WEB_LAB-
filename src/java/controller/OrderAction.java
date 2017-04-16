@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Checkout;
 import model.Order;
 import model.OrderType;
-import model.Product;
+import model.Products;
 import repository.ProductRepositoty;
 import util.JsonBinder;
 import util.Settings;
@@ -53,7 +53,7 @@ public class OrderAction extends HttpServlet {
         Map<String, Integer> quantityMap = new HashMap<>();   
         String customerId = Settings.getCurrentAccount(request).getId();
         Map<String, String> map = (HashMap<String, String>) Settings.getSessionAttribute(request, "languageCode");
-        List<Product> orderProduct = Settings.getCart(request).getProducts();
+        List<Products> orderProduct = Settings.getCart(request).getProducts();
         
         orderProduct.forEach(product -> {
             quantityMap.put((map.get(product.getProductName()) == null ? product.getProductName() : map.get(product.getProductName())), Integer.valueOf(request.getParameter(product.getProductId())));

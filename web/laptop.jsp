@@ -2,7 +2,7 @@
 
 <%@page import="repository.APIFetcher"%>
 <%@page import="repository.ProductRepositoty"%>
-<%@page import="model.Product"%>
+<%@page import="model.Products"%>
 <%@page import="java.util.List"%>
 <%@page import="model.UserRole"%>
 <%@page import="model.UserSessionHolder"%>
@@ -16,7 +16,7 @@
     Map<String, String> map = (HashMap<String, String>) Settings.getSessionAttribute(request, "languageCode");
     UserSessionHolder ush = Settings.getCurrentUserSession(request);
 
-    List<Product> products = ProductRepositoty.getAllProduct();
+    List<Products> products = ProductRepositoty.getAllProduct();
     String cartSettings = "href=\"login.jsp\"";
 
     if (map == null) {
@@ -153,8 +153,8 @@
                         <tbody>
 
                             <%
-                                List<Product> cartProduct = Settings.getCart(request).getProducts();
-                                for (Product product : cartProduct) {
+                                List<Products> cartProduct = Settings.getCart(request).getProducts();
+                                for (Products product : cartProduct) {
                                     out.print("<tr>"
                                             + "<td>" + product.getProductId() + "</td>"
                                             + "<td>" + map.get(product.getProductName()) + "</td>"
@@ -287,9 +287,9 @@
                 <div class="row">
                     <h1><%=map.get("laptop.title")%></h1>
                     <%
-                        List<Product> productsByCate = APIFetcher.fetcher("/laptopApi");
+                        List<Products> productsByCate = APIFetcher.fetcher("/laptopApi");
 
-                        for (Product product : productsByCate) {%>
+                        for (Products product : productsByCate) {%>
                     <div class="col-md-6" style="border: 1px solid  #bfbfbf;">
                         <br>
                         <div class="col-md-12">

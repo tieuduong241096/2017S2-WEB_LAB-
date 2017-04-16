@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Product;
+import model.Products;
 import repository.ProductRepositoty;
 import util.Settings;
 
@@ -33,7 +33,7 @@ public class AddToCart extends HttpServlet {
         String productId = request.getParameter("productid");
         Map<String, String> map = (HashMap<String, String>) Settings.getSessionAttribute(request, "languageCode");
 
-        Product product = ProductRepositoty.getProductById(productId);
+        Products product = ProductRepositoty.getProductById(productId);
 
         Settings.addToCart(request, product);
         out.println(map.get("cart.msg"));

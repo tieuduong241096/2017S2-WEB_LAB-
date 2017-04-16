@@ -11,9 +11,9 @@ import java.util.Collections;
 import java.util.List;
 import model.Account;
 import model.Activation;
-import model.Category;
+import model.Categorys;
 import model.OrderType;
-import model.Product;
+import model.Products;
 import model.UserRole;
 import util.Constant;
 import util.JsonBinder;
@@ -83,13 +83,13 @@ public class BaseDAO {
     }
 
     @Transaction
-    public static List<Product> getAllProduct() {
-        List<Product> products = new ArrayList<>();
+    public static List<Products> getAllProduct() {
+        List<Products> products = new ArrayList<>();
         try {
-            ResultSet rs = coreExeTransaction("SELECT * FROM product");
+            ResultSet rs = coreExeTransaction("SELECT * FROM products");
 
             while (rs.next()) {
-                products.add(new Product(rs.getString("productid"),
+                products.add(new Products(rs.getString("productid"),
                         rs.getString("productname"),
                         rs.getDouble("productprice"),
                         rs.getString("supplierid"),
@@ -128,15 +128,15 @@ public class BaseDAO {
     }
 
     @Transaction
-    public static List<Category> getAllSupply() {
-        List<Category> categories = new ArrayList<>();
+    public static List<Categorys> getAllSupply() {
+        List<Categorys> categories = new ArrayList<>();
 
         try {
             ResultSet rs = coreExeTransaction("SELECT * FROM supply");
 
             while (rs.next()) {
                 String jsString = rs.getString("product");
-                categories.add((Category) JsonBinder.fromJson(jsString, Category.class));
+                categories.add((Categorys) JsonBinder.fromJson(jsString, Categorys.class));
             }
 
             getConnection().close();
@@ -189,7 +189,7 @@ public class BaseDAO {
     }
 
     @Transaction
-    public static void insertProduct(Product product) {
+    public static void insertProduct(Products product) {
         try {
            
             String sqlQuery = "INSERT INTO ecmrproj.`product`"
@@ -206,7 +206,7 @@ public class BaseDAO {
     }
 
     @Transaction
-    public static void insertSupply(Category category) {
+    public static void insertSupply(Categorys category) {
         try {
             String sqlQuery = "INSERT INTO ecmrproj.`supply`"
                     + "(product, supplierid, name)"
@@ -220,7 +220,7 @@ public class BaseDAO {
     }
 
     @Transaction
-    public static void updateProduct(Product product) {
+    public static void updateProduct(Products product) {
         try {           
             String sqlQuery = "UPDATE ecmrproj.`product`"
                     + "SET productname='" + product.getProductName()

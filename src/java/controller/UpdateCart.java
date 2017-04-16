@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Product;
+import model.Products;
 import util.Settings;
 
 /**
@@ -26,7 +26,7 @@ public class UpdateCart extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
-        List<Product> cartProduct = Settings.getCart(request).getProducts();
+        List<Products> cartProduct = Settings.getCart(request).getProducts();
         Map<String, String> map = (HashMap<String, String>) Settings.getSessionAttribute(request, "languageCode");
 
         String value = "<table class='table table-hover'>"
@@ -39,7 +39,7 @@ public class UpdateCart extends HttpServlet {
                 + "                        </thead>"
                 + "                        <tbody>";
 
-        for (Product product : cartProduct) {
+        for (Products product : cartProduct) {
             
             String name = map.get(product.getProductName()) == null ? product.getProductName() : map.get(product.getProductName());
             

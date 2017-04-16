@@ -6,8 +6,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
-import model.Category;
-import model.Product;
+import model.Categorys;
+import model.Products;
 import util.Constant;
 import util.JsonBinder;
 
@@ -41,9 +41,9 @@ public class APIFetcher {
         return response.toString();
     }
     
-    public static List<Product> fetcher(String url) {
+    public static List<Products> fetcher(String url) {
         String jsonString = fetch(url);
-        Category category = (Category) JsonBinder.fromJson(jsonString, Category.class);
+        Categorys category = (Categorys) JsonBinder.fromJson(jsonString, Categorys.class);
         
         System.out.println("dsrdrr" +jsonString);
         

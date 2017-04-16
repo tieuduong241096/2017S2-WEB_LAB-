@@ -1,5 +1,5 @@
 
-<%@page import="model.Product"%>
+<%@page import="model.Products"%>
 <%@page import="java.util.List"%>
 
 <%@page import="util.Encript"%>
@@ -15,7 +15,7 @@
     Map<String, String> languageMap = (HashMap<String, String>) Settings.getSessionAttribute(request, "languageCode");
     UserSessionHolder ush = Settings.getCurrentUserSession(request);
     Account account = Settings.getCurrentAccount(request);
-    List<Product> cartProduct = Settings.getCart(request).getProducts();
+    List<Products> cartProduct = Settings.getCart(request).getProducts();
 
     if (languageMap == null) {
         request.getRequestDispatcher("language?lang=vi").forward(request, response);
@@ -182,7 +182,7 @@
                                     <%
                                         int i = 0;
                                         double sum = 0.0;
-                                        for (Product product : cartProduct) {
+                                        for (Products product : cartProduct) {
                                     %>
                                     <tr>
                                         <td><%=languageMap.get(product.getProductName()) == null ? product.getProductName() : languageMap.get(product.getProductName())%></td>
