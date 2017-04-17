@@ -97,10 +97,10 @@ ul.support li a:hover {
 }
 .account,.cart{
 	float:left;
-	width:40%;
+	width:100%;
 }
 .cart{
-	width:24%;
+	width:100%;
 }
 .account a span{
 	background: url(../images/img-sprite.png)-117px -30px;
@@ -123,7 +123,7 @@ ul.support li a:hover {
 }
 ul.login{
 	float:left;
-	width:36%;
+	width:100%;
 	margin:0;
 }
 ul.login li{

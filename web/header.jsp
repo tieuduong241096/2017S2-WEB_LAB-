@@ -160,13 +160,13 @@
                     <div class="top-header-left">
                         <ul class="support">
                             <li><a href="error.jsp"><label> </label></a></li>
-                            <li><a href="error.jsp"><span class="glyphicon glyphicon-headphones"></span>Dịch vụ hổ trợ trưc tuyến</a>
+                            <li><a href="error.jsp"><span></span>Dịch vụ hổ trợ trưc tuyến</a>
                                
                             </li>
                         </ul>
                         <ul class="support">
                             <li class="van"><a href="error.jsp"><label> </label></a></li>
-                            <li><a href="error.jsp"><span class="glyphicon glyphicon-plane"></span>Miễn phí giao hàng cho hoá đơn trên 500k</a></li>
+                            <li><a href="error.jsp"><span></span>Miễn phí giao hàng cho hoá đơn trên 500k</a></li>
                         </ul>
                     </div>
                     <div class="top-header-right">
@@ -260,11 +260,11 @@
          
 
                <%--- <% if (ush.getAccrole() == UserRole.GUEST) {%>    ---%>
-               <div class="col-md-2">
+               <div class="col-md-2 header-bottom-right">
                     <div class="account"><a href="login.jsp"><span></span>Tài khoản của tôi</a></div>
                </div>
                
-               <div class="col-md-2">
+               <div class="col-md-2 header-bottom-right">
                 <ul class="login">
                     <li><a href="login.jsp"><span> </span>Đăng nhập</a></li>
                     <li><a data-toggle="modal" data-target="#registerModal">| Đăng ký</a></li>
@@ -295,8 +295,8 @@
                 
                 ----%>
                 
-                <div class="col-md-2">
-                    <div class="cart"><a><span> </span>Giỏ hàng</a></div>
+                <div class="col-md-2 header-bottom-right">
+                    <div class="cart"><a><span></span>Giỏ hàng</a></div>
                 </div>
                 
                 
