@@ -55,6 +55,33 @@
             
             
         </script>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <%----- addLibrary ----%>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="ContentType" content="text/html" charset="utf-8"/>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <script src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/my-script.js"></script>
+        <script src="js/base-ajax.js"></script>
+        <link href="css/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"glyphicon glyphicon-headphones />
+    
 
     </head>
     <body>
@@ -133,13 +160,13 @@
                     <div class="top-header-left">
                         <ul class="support">
                             <li><a href="error.jsp"><label> </label></a></li>
-                            <li><a href="error.jsp">Dịch vụ hổ trợ trưc tuyến<span class="live"></span></a>
+                            <li><a href="error.jsp"><span class="glyphicon glyphicon-headphones"></span>Dịch vụ hổ trợ trưc tuyến</a>
                                
                             </li>
                         </ul>
                         <ul class="support">
                             <li class="van"><a href="error.jsp"><label> </label></a></li>
-                            <li><a href="error.jsp">Miễn phí giao hàng cho hoá đơn trên 500k<span class="live"></span></a></li>
+                            <li><a href="error.jsp"><span class="glyphicon glyphicon-plane"></span>Miễn phí giao hàng cho hoá đơn trên 500k</a></li>
                         </ul>
                     </div>
                     <div class="top-header-right">
