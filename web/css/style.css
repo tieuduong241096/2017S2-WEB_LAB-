@@ -73,7 +73,7 @@ ul.support li a:hover {
 }
 .logo{
 	float:left;
-	width: 50%;
+	width: 100%;
     margin-top:22px;
 }
 .logo a {
@@ -91,7 +91,7 @@ ul.support li a:hover {
 }
 .header-bottom-right{
 	float: right;
-	width: 45%;
+	width: 100%;
 	text-align: center;
 	padding-top:1.7em;
 }
@@ -143,9 +143,9 @@ ul.login li a span{
 .search {
 	background:#fff;
 	border: 1px solid #ddd;
-	position: relative;
-	width: 47%;
-	float: right;
+	/*-- position: relative --*/
+ 	width: 100%;
+	/*-- float: right; --*/
 	margin: 1.2em 0 0;
 }
 .search input[type="text"] {
@@ -1359,7 +1359,7 @@ padding: 0 0 0 4.7em;
 	width: 31%;
 }	
 .header-bottom-right {
-	width: 45%;
+	width: 100%;
 }
 .search {
 	margin: 1.7em 2em 0em 0;
@@ -1423,7 +1423,7 @@ a.get-cart {
 }
 .header-bottom-right{
 	float: none;
-	width: 62%;
+	width: 100%;
 	text-align: center;
 	margin: 0px auto;
 	padding: 0;
@@ -1507,7 +1507,7 @@ a.get-cart {
     margin: 0 auto;
 }    
 .header-bottom-right {
-	width: 67%;
+	width: 100%;
 }
 .banner-bag {
 	width: 53%;

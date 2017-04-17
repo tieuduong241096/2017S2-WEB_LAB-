@@ -187,19 +187,31 @@
                         
                         
                         
-
+                        <%------Old
             <div class="header-middle"><!--header-middle-->
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
+                            
+                             <div class="logo">
+                                <a href="index.jsp">E-<span>COMMERCE</span></a>
+                             </div>
+                            
+                            
+                            
                             <div class="logo pull-left">
                                 <a href="index.jsp"><img src="resources/images/home/Logomakr_2HHT9q.png" alt="" /></a>
 
                             </div>
+                            
+                          
 
 
                         </div>
-                        <div class="col-sm-8">
+                            
+                        
+                            
+                        <div class="col-sm-4">
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
                                     <%if (s.getAttribute("username") != null) {%>
@@ -226,7 +238,76 @@
                     </div>
                 </div>
             </div><!--/header-middle-->
+            -----%>
+                        
+                        
+       <div class="bottom-header">
+        <div class="row">
+            <div class="col-md-3 header-bottom-left">
+                <div class="logo">
+                    <a href="index.jsp">E-<span>COMMERCE</span></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="search">
+                    <input type="text" value="" placeholder="Nhập từ khoá" >
+                          
 
+                </div>
+                
+            </div>
+
+         
+
+               <%--- <% if (ush.getAccrole() == UserRole.GUEST) {%>    ---%>
+               <div class="col-md-2">
+                    <div class="account"><a href="login.jsp"><span></span>Tài khoản của tôi</a></div>
+               </div>
+               
+               <div class="col-md-2">
+                <ul class="login">
+                    <li><a href="login.jsp"><span> </span>Đăng nhập</a></li>
+                    <li><a data-toggle="modal" data-target="#registerModal">| Đăng ký</a></li>
+                </ul>
+               </div>
+        <%---        <% } else {
+                    String settings = "";
+                    if (ush.getAccrole().equals(UserRole.ADMINISTRATOR)) {
+                        settings = "admin.jsp";
+                        cartSettings = "data-toggle=\"modal\" data-target=\"#myModal\"";
+                    } else if (ush.getAccrole().equals(UserRole.CUSTOMER)) {
+                        settings = "account.jsp";
+                        cartSettings = "data-toggle=\"modal\" data-target=\"#myModal\"";
+                    } else if (ush.getAccrole().equals(UserRole.STAFF)) {
+                        settings = "staff.jsp";
+                        cartSettings = "data-toggle=\"modal\" data-target=\"#myModal\"";
+                    }
+
+                %>     ---%>
+                
+                <%----
+                <div class="account"><a href="#"><span></span><%=map.get("account.welcome")%><%=ush.getAccname()%></a></div>
+                <ul class="login">
+                    <li><a href="<%=settings%>"><span> </span><%=map.get("account.setting")%> </a></li> 
+                    <li><a href="logout">| <%=map.get("logout")%> </a></li>
+                </ul>
+                <%}%>
+                
+                ----%>
+                
+                <div class="col-md-2">
+                    <div class="cart"><a><span> </span>Giỏ hàng</a></div>
+                </div>
+                
+                
+                
+               
+          
+
+           	
+        </div>
+    </div>
+</div>
 
 
         </header><!--/header-->
