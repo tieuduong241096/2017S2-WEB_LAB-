@@ -309,7 +309,7 @@
         <a href="#">
             <div class="wrap-in">
                 
-                <%---
+                
                 <div class="wmuSlider example1 slide-grid">		 
                     <div class="wmuSliderWrapper">		  
                         <article style="position: absolute; width: 100%; opacity: 0;">					
@@ -380,7 +380,7 @@
                     </script> 
                 </div>
                 
-                ------%>
+                
             </div>
         </a>
     </div>
@@ -389,7 +389,7 @@
         <!---->
         
         
-        
+        <%-----
         
         
          <!--MAIN CONTENT + CATEGORY MENU-->
@@ -481,9 +481,12 @@
             </div>
         </div>
     </section>
+        
+        
+        ----%>
          </div>
-                
-      <%----
+     
+      
 
       
       
@@ -734,7 +737,7 @@
       
       
       
-      ------%>
+      
 <div class="temp">
 
 </div>
