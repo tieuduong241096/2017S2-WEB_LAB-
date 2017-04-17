@@ -14,10 +14,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Hỏi đáp | FSShop</title>
 
-        <link rel="stylesheet" href="css/main_user.css"/>
-        <script language="javascript" src="javascript/form.js"></script>
-        <script type="text/javascript" src="javascript/jquery-1.9.0.min.js"></script>
-        <script type="text/javascript" src="javascript/checkTK.js"></script>
+        <link rel="stylesheet" href="resources/css/main_user.css"/>
+        <script language="javascript" src="resources/js/form.js"></script>
+        <script type="text/javascript" src="resources/js/jquery-1.9.0.min.js"></script>
+        
         <link href="favicon.ico" rel="shortcut icon" />
 
         <link href="resources/css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@
         <script src="resources/js/jquery.prettyPhoto.js"></script>
         <script src="resources/js/main.js"></script>
 
-        <script src="javascript/validateFeedback.js"></script>
+        <script src="resources/js/validateFeedback.js"></script>
 
     </head>
     <body>

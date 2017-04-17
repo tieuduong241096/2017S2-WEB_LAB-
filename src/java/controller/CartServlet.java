@@ -42,7 +42,7 @@ public class CartServlet extends HttpServlet {
         String command = request.getParameter("command");
         ArrayList<Long> listBuy = null;
         String url = "";
-        String action = request.getParameter("action");
+        String action = request.getParameter("action")==null?"":request.getParameter("action");
         if(action.equals("cart")){
         try {
             listBuy = (ArrayList<Long>) session.getAttribute("cartID");
@@ -90,6 +90,7 @@ public class CartServlet extends HttpServlet {
                     break;
                 case "deleteall":
                     cart.removeAll(p);
+                    session.setAttribute("cart", null);
                     url = "/cart.jsp";
                     break;
                 default:
@@ -98,7 +99,7 @@ public class CartServlet extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
             rd.forward(request, response);
         } catch (IOException | NumberFormatException | ServletException e) {
-            System.err.println("Error shopping cart +"+e.getMessage());
+            e.printStackTrace();
         }
         }
         else if(action.equals("checkout")){

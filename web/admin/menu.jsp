@@ -13,14 +13,14 @@
     </head>
     <body>
        <div id="leftBar">
-	<ul>
-		<li><a href="index.jsp">Home</a></li>
-		<li><a href="manageProduct.jsp">Product</a></li>
-		<li><a href="manageBrand.jsp">Brand</a></li>
-                <li><a href="manageCategory.jsp">Category</a></li>
-                <li><a href="manageReceipt.jsp">Receipt</a></li>
-                <li><a href="manageUser.jsp">User</a></li>
-                <li><a href="manageFeedback.jsp">Feedback</a></li>
+        <ul class="lb">
+            <li><a href="javascript:void(0)" class="h">Home</a></li>
+            <li><a href="javascript:void(0)" class="p">Product</a></li>
+            <li><a href="javascript:void(0)" class="b">Brand</a></li>
+            <li><a href="javascript:void(0)" class="c">Category</a></li>
+            <li><a href="javascript:void(0)" class="r">Receipt</a></li>
+            <li><a href="javascript:void(0)" class="u">User</a></li>
+            <li><a href="javascript:void(0)" class="f">Feedback</a></li>
 	</ul>
 	</div>
     </body>

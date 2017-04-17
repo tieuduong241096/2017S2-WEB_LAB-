@@ -124,7 +124,7 @@
                     <div class="row">
                         <div class="col-sm-2">
                             <div class="companyinfo">
-                                <h2 style="color: white"><span>D</span>-LAB</h2>
+                                <h2 style="color: white"><span>S</span>-LAB</h2>
                                 <p style="color: white">Linh Trung, Thủ Đức, Hồ Chí Minh city</p>
                             </div>
                         </div>

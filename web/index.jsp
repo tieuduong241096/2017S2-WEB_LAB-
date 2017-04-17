@@ -18,260 +18,19 @@
         <link href="resources/css/animate.css" rel="stylesheet">
         <link href="resources/css/main.css" rel="stylesheet">
         <link href="resources/css/responsive.css" rel="stylesheet">
-
+        <link href="resources/css/searchBox.css" rel="stylesheet">
 
         <script src="resources/js/html5shiv.js"></script>
 
 
         <script src="resources/js/jquery.js"></script>
+        <script src="resources/ajax/navigate.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>
         <script src="resources/js/jquery.scrollUp.min.js"></script>
         <script src="resources/js/price-range.js"></script>
         <script src="resources/js/jquery.prettyPhoto.js"></script>
         <script src="resources/js/main.js"></script>
-        <style type="text/css">
-
-            .contentArea
-            {
-                width: 500px;
-                margin: 0 auto;
-            }
-            #inputSearch
-            {
-                width: 250px;
-                border: solid 1px #000;
-                padding: 3px;
-            }
-            #divResult
-            {
-                position: inherit;
-                width: 250px;
-                display: none;
-                margin-top: -1px;
-                border: solid 1px #dedede;
-                border-top: 0px;
-                overflow: hidden;
-                border-bottom-right-radius: 6px;
-                border-bottom-left-radius: 6px;
-                -moz-border-bottom-right-radius: 6px;
-                -moz-border-bottom-left-radius: 6px;
-                box-shadow: 0px 0px 5px #999;
-                border-width: 3px 1px 1px;
-                border-style: solid;
-                border-color: #333 #DEDEDE #DEDEDE;
-                background-color: white;
-                height: 350px;
-                overflow: auto;
-            }
-            #display_box
-            {
-                padding: 4px;
-                border-top: solid 1px #dedede;
-                font-size: 12px;
-                height: 60px;
-            }
-            #display_box:hover
-            {
-                background: black;
-                color: #FFFFFF;
-                cursor: pointer;
-            }
-        </style>
-
-
-        <!--JQuery-->
-        <script type="text/javascript">
-
-
-            $(document).ready(function () {
-                //mac dinh
-                 $.ajax({
-                            type: "GET",
-                            url: "content.jsp",
-                            data: {category: null, brand : null},
-                            cache: false,
-                            success: function (html) {
-
-                                $("#dynamicContent").html(html);
-                                $("#dynamicContent").fadeIn('slow');
-                            },
-                            error: function (xhr, ajaxOptions, thrownError) {
-                                if (xhr.status == 404) {
-                                    alert(thrownError);
-                                }
-                            },
-                            complete: function (html) {
-
-                            }
-                        });
-                
-                
-                //click vao category
-                $('.hihi li').on('click', '.menuidcategory', function () {
-                    var cat = $(this).data("id");
-                    if (cat !== null) {
-
-                        $.ajax({
-                            type: "GET",
-                            url: "content.jsp",
-                            data: {category: cat},
-                            cache: false,
-                            success: function (html) {
-
-                                $("#dynamicContent").html(html);
-                                $("#dynamicContent").fadeIn('slow');
-                            },
-                            error: function (xhr, ajaxOptions, thrownError) {
-                                if (xhr.status == 404) {
-                                    alert(thrownError);
-                                }
-                            },
-                            complete: function (html) {
-
-                            }
-                        });
-                    }
-
-                });
-
-                //click vào brand
-                $('.nav-stacked').on('click', '.menuidbrand', function () {
-                    var bra = $(this).data("id");
-                    if (bra !== null) {
-
-                        $.ajax({
-                            type: "GET",
-                            url: "content.jsp",
-                            data: {brand: bra},
-                            cache: false,
-                            success: function (html) {
-
-                                $("#dynamicContent").html(html);
-                                $("#dynamicContent").fadeIn('slow');
-                            },
-                            error: function (xhr, ajaxOptions, thrownError) {
-                                if (xhr.status == 404) {
-                                    alert(thrownError);
-                                }
-                            },
-                            complete: function (html) {
-
-                            }
-                        });
-                    }
-
-                });
-
-                //click để xem detail
-                $(document).on('click', '.menudetail', function () {
-                    var detail = $(this).data("id");
-                    if (detail != null) {
-                        $.ajax({
-                            type: "GET",
-                            url: "detail.jsp",
-                            data: {productid: detail},
-                            cache: false,
-                            success: function (html) {
-
-                                $("#dynamicContent").html(html);
-                                $("#dynamicContent").fadeIn('slow');
-                                $("html, body").animate({
-                                    scrollTop: 390
-                                }, 1000);
-                                $("#dynamicContent").load('this.href', function () {
-                                    FB.XFBML.parse();
-                                });
-                            },
-                            error: function (xhr, ajaxOptions, thrownError) {
-                                if (xhr.status == 404) {
-                                    alert(thrownError);
-                                }
-                            },
-                            complete: function (html) {
-
-                            }
-                        });
-                    }
-
-                });
-
-
-
-            });
-
-
-        </script>
-        <!--JQuery-->
-
-        <!--search-->
-        <script type="text/javascript">
-            $(function () {
-                $(".search").keyup(function () {
-                    var inputSearch = $(this).val();
-                    var dataString = inputSearch;
-                    if (inputSearch == '')
-                        jQuery("#divResult").fadeOut();
-                    else if ($.isNumeric(dataString) || /^[a-zA-Z\s]+$/.test(dataString) == false) {
-                        $("#searcherr").text("*letters only*");
-                    } else {
-                        $("#searcherr").text("");
-                        $.ajax({
-                            type: "POST",
-                            url: "SearchServlet",
-                            data: {dataString: dataString},
-                            cache: false,
-                            success: function (html) {
-                                $("#divResult").html(html).fadeIn();
-
-                            },
-                            error: function (xhr, ajaxOptions, thrownError) {
-                                if (xhr.status == 404) {
-                                    alert(thrownError);
-                                }
-                            }
-                        });
-                    }
-                    return false;
-                });
-                $(document).on("click", "#divResult", function (e) {
-                    var $clicked = $(e.target);
-                    var name = $clicked.find('.proid').html();
-
-                    $.ajax({
-                        type: "GET",
-                        url: "detail.jsp",
-                        data: {productid: name},
-                        cache: false,
-                        success: function (html) {
-
-                            $("#dynamicContent").html(html);
-                            $("html, body").animate({
-                                scrollTop: 390
-                            }, 1000);
-                        },
-                        error: function (xhr, ajaxOptions, thrownError) {
-                            if (xhr.status == 404) {
-                                alert(thrownError);
-                            }
-                        },
-                        complete: function (html) {
-
-                        }
-                    });
-
-                });
-                $(document).on("click", function (e) {
-                    var $clicked = $(e.target);
-                    if (!$clicked.hasClass("search")) {
-                        jQuery("#divResult").fadeOut();
-                    }
-                });
-
-
-
-            });
-        </script>
-        <!--Search-->
+        <script src="resources/js/jquery.jscroll.min.js"></script>
 
 
 
@@ -296,7 +55,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3">
-                        <div class="left-sidebar">
+                        <div class="left-sidebar" style="height: 0px">
                             <h2>Category</h2>
 
                             <div class="panel-group category-products" id="accordian"><!--category-productsr-->
@@ -324,9 +83,7 @@
                                     </div>
                                 </div>
 
-                                <!--ket thuc vong lap cho brand-->
 
-                                <!--bat dau vong lap cho category-->
 
 
                             </div>
@@ -372,9 +129,12 @@
 
                     </div>
                 </div>
-                <div class="col-sm-9 padding-right" id="dynamicContent">
 
+                            <div class="col-sm-9 padding-right" id="dynamicContent" style="height: 100%">
+                      
                 </div>
+                <div class="col-sm-9 padding-right" style="
+    margin-left: 259px;" id="recommendit"></div>
             </div>
         </div>
     </section>
@@ -383,4 +143,5 @@
     <jsp:include page="footer.jsp"></jsp:include>
 
 </body>
+
 </html>

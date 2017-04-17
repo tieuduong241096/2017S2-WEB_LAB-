@@ -81,7 +81,7 @@ public class AdminReceiptServlet extends HttpServlet {
         }
         else if(request.getParameter("action").equals("update")){
             new ReceiptDAOImpl().updateReceipt(myData);
-            result = "confirm successfully!";
+            result = "";
         }
         response.getWriter().write(result);
     }

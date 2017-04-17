@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 import java.net.CookieStore;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 import javax.servlet.RequestDispatcher;
@@ -55,7 +56,7 @@ public class CheckoutController extends HttpServlet {
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
         Cookie[] sizes = request.getCookies();
-        TreeMap<Product, Integer> list = cart.getList();
+        HashMap<Product, Integer> list = cart.getList();
 
         String address_err = "err";
         if (address.equals("")) {
@@ -88,6 +89,7 @@ public class CheckoutController extends HttpServlet {
                                     deleteCookie = size1;
                                 }
                             }
+                            System.out.println("Aaaaaaaaaaaaaaaaaaa");
                             if (rcd.insertReceiptDetail(new ReceiptDetail(0, ds.getValue(), (ds.getKey().getProductPrice() * ds.getValue()) - (ds.getKey().getProductPrice() * ds.getValue() * ds.getKey().getDiscount()), new Receipt(new ReceiptDAOImpl().getLatestReceiptID(), new Timestamp(new Date().getTime()), "", "", new User("", "", "", true, 0, true, "", "", ""), 0), p, size))) {
                                 out.println("<script type=\"text/javascript\">");
                                 out.println("alert('User or password incorrect');");
@@ -126,7 +128,7 @@ public class CheckoutController extends HttpServlet {
                                 response.addCookie(deleteCookie);
                             }
                         });
-                        
+
                     }
 
                 }

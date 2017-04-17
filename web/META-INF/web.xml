@@ -5,10 +5,6 @@
         <servlet-class>controller.CheckoutController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdminLoginServlet</servlet-name>
-        <servlet-class>controller.AdminLoginServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AdminProductServlet</servlet-name>
         <servlet-class>controller.AdminProductServlet</servlet-class>
     </servlet>
@@ -19,6 +15,11 @@
     <servlet>
         <servlet-name>SessionServlet</servlet-name>
         <servlet-class>controller.SessionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>CheckoutController</servlet-name>

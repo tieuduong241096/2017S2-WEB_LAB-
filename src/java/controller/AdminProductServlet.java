@@ -23,7 +23,7 @@ import model.Product;
  *
  * @author LMD0207
  */
-@WebServlet("/AdminProductServlet")
+@WebServlet(name = "/AdminProductServlet", urlPatterns = "/AdminProductServlet")
 public class AdminProductServlet extends HttpServlet {
    
 
@@ -38,7 +38,7 @@ public class AdminProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       //viet add o day
+       
        
        
        String action = request.getParameter("action");
@@ -65,7 +65,7 @@ public class AdminProductServlet extends HttpServlet {
         else{//add new
             pd.insertProduct(p);
         }
-        response.sendRedirect("admin/manageBrand.jsp");
+        response.sendRedirect("admin/indexProduct.jsp");
     }
     
     

@@ -25,7 +25,7 @@
 
 
         <script src="resources/js/html5shiv.js"></script>
-        <script src="javascript/validateAccount.js"></script>
+        <script src="resources/js/validateAccount.js"></script>
 
         <script src="resources/js/jquery.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>

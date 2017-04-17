@@ -7,14 +7,14 @@
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Map"%>
-<%@page import="java.util.TreeMap"%>
+<%@page import="java.util.HashMap"%>
 <%@page import="model.Product"%>
 <%@page import="model.Cart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
             
-            TreeMap<Product, Integer> list = null;
+            HashMap<Product, Integer> list = null;
             if (session.getAttribute("cart") != null) {
                 Cart cart = (Cart) session.getAttribute("cart");
                 if (cart == null) {
@@ -71,13 +71,13 @@
 
 
         <script src="resources/js/jquery.js"></script>
-        <script src="javascript/jquery.session.js"></script>
+        <script src="resources/js/jquery.session.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>
         <script src="resources/js/jquery.scrollUp.min.js"></script>
         <script src="resources/js/price-range.js"></script>
         <script src="resources/js/jquery.prettyPhoto.js"></script>
         <script src="resources/js/main.js"></script>
-        <script src="javascript/js.cookie.js"></script>
+        <script src="resources/js/js.cookie.js"></script>
         
         <script type="text/javascript">
             $(document).ready(function () {
@@ -202,7 +202,7 @@
                             <p class="cart_total_price">$<%= new Double(ds.getValue() * ds.getKey().getProductPrice()).intValue()%></p>
                         </td>
                         <td class="cart_delete">
-                            <a class="cart_quantity_delete" href="CartServlet?command=deleteall&productid=<%=ds.getKey().getProductID()%>&cartID=<%=System.currentTimeMillis()%>"><i class="fa fa-times"></i></a>
+                            <a class="cart_quantity_delete" href="CartServlet?action=cart&command=deleteall&productid=<%=ds.getKey().getProductID()%>&cartID=<%=System.currentTimeMillis()%>"><i class="fa fa-times"></i></a>
                         </td>
                         </tr>
 

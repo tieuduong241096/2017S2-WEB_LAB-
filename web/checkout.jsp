@@ -4,6 +4,7 @@
     Author     : tuan
 --%>
 
+<%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 <%@page import="model.Cart"%>
 <%@page import="java.util.TreeMap"%>
@@ -48,11 +49,11 @@
         <script src="resources/js/jquery.prettyPhoto.js"></script>
         <script src="resources/js/main.js"></script>
 
-        <script src="javascript/validateCheckout.js"></script>
+        <script src="resources/js/validateCheckout.js"></script>
 
 
         <!--Use Jquery to save cookie-->
-        <script src="javascript/js.cookie.js"></script>
+        <script src="resources/js/js.cookie.js"></script>
 
         <script>
             function setValueForHiddenField() {
@@ -97,7 +98,7 @@
 
                     <ul class="nav">
                         <li>
-                            <a href="login.jsp?checkout=true">Login and Checkout as Registered Account</a>
+                            <a href="login.jsp?checkout=true">Checkout as Registered Account</a>
                         </li>
                         <li>
                             <label><input type="checkbox" onclick="setValueForHiddenField('guest')"> Checkout as Guest </label>
@@ -137,7 +138,7 @@
                             </tr>
                         </thead>
                         <%
-                            TreeMap<Product, Integer> list = null;
+                            HashMap<Product, Integer> list = null;
                             if (session.getAttribute("cart") != null) {
                                 Cart cart = (Cart) session.getAttribute("cart");
                                 if (cart == null) {

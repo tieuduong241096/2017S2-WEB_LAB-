@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -12,26 +14,26 @@ import java.util.TreeMap;
  * @author tuan
  */
 public class Cart {
-    private TreeMap<Product,Integer> list;
+    private HashMap<Product,Integer> list;
     private long cartID;
 
     public Cart() {
-        list = new TreeMap<>();
+        list = new HashMap<>();
         cartID = System.currentTimeMillis();
     }
 
     
 
-    public Cart(TreeMap<Product, Integer> list, long cartID) {
+    public Cart(HashMap<Product, Integer> list, long cartID) {
         this.list = list;
         this.cartID = cartID;
     }
 
-    public TreeMap<Product, Integer> getList() {
+    public HashMap<Product, Integer> getList() {
         return list;
     }
 
-    public void setList(TreeMap<Product, Integer> list) {
+    public void setList(HashMap<Product, Integer> list) {
         this.list = list;
     }
 
@@ -44,6 +46,7 @@ public class Cart {
     }
     
     public void insertToCart(Product p, int quantity){
+        try{
         boolean bln = list.containsKey(p);
         if(bln){
             int q = list.get(p);
@@ -53,6 +56,11 @@ public class Cart {
         else{
             list.put(p, quantity);
         }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
     }
     
     public void removeFromCart(Product p, int quantity){

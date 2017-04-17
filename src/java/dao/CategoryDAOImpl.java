@@ -39,7 +39,8 @@ public class CategoryDAOImpl implements CategoryDAO{
                 list.add(c);
             }
             connection.close();
-            
+            rs.close();
+            ps.close();
         } catch (SQLException ex) {
             System.err.println("ERROR LOADiNG CATEGORY FROM BRAND");
         }
@@ -64,6 +65,8 @@ public class CategoryDAOImpl implements CategoryDAO{
                 list.add(c);
             }
             connection.close();
+            rs.close();
+            ps.close();
             
         } catch (SQLException ex) {
             System.err.println("ERROR LOADiNG CATEGORY");
@@ -82,6 +85,9 @@ public class CategoryDAOImpl implements CategoryDAO{
             while(rs.next()){
                 min = rs.getInt("min");
             }
+            connection.close();
+            rs.close();
+            stmt.close();
         } catch (SQLException ex) {
             System.err.println("ERROR FINDING MIN FROM CATEGORY");
         }
@@ -111,6 +117,8 @@ public class CategoryDAOImpl implements CategoryDAO{
                 
             }
             connection.close();
+            rs.close();
+            ps.close();
         } catch (SQLException ex) {
             System.err.println("ERROR LOADING BRANDID BY CATEGORYID");
         }
@@ -131,7 +139,9 @@ public class CategoryDAOImpl implements CategoryDAO{
                 
                 
             }
-            connection.close();
+           connection.close();
+            rs.close();
+            ps.close();
         } catch (SQLException ex) {
             System.err.println("ERROR LOADING BRANDID BY CATEGORYID");
         }
@@ -152,6 +162,8 @@ public class CategoryDAOImpl implements CategoryDAO{
                 
             }
             connection.close();
+            rs.close();
+            ps.close();
         } catch (SQLException ex) {
             System.err.println("ERROR LOADING BRANDID BY CATEGORYID");
         }

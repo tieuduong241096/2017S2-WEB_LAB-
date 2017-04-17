@@ -17,6 +17,12 @@ public class Category {
     public Category() {
     }
 
+    public Category(long categoryID) {
+        this.categoryID = categoryID;
+    }
+    
+    
+
     public Category(long categoryID, String categoryName, Brand brand) {
         this.categoryID = categoryID;
         this.categoryName = categoryName;

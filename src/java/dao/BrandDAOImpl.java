@@ -37,6 +37,8 @@ public class BrandDAOImpl implements BrandDAO{
                 list.add(brand);
             }
             connection.close();
+            rs.close();
+            ps.close();
         } catch (SQLException ex) {
             System.err.println("ERROR LOADING BRAND");
         }
@@ -59,6 +61,8 @@ public class BrandDAOImpl implements BrandDAO{
                 
             }
             connection.close();
+            rs.close();
+            ps.close();
         } catch (SQLException ex) {
             System.err.println("ERROR LOADING BRANDID BY CATEGORYID");
         }
@@ -72,9 +76,10 @@ public class BrandDAOImpl implements BrandDAO{
             Connection connection = DBConnect.getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             
-            
-            
             ps.executeUpdate(sql);
+            connection.close();
+            
+            ps.close();
         } catch (SQLException ex) {
             
             System.err.println("insert brand loi" + ex.getLocalizedMessage());
@@ -89,9 +94,10 @@ public class BrandDAOImpl implements BrandDAO{
             String sql = "UPDATE brand set brandname='"+brand.getBrandName()+"' where brandid="+brand.getBrandID();
             Connection connection = DBConnect.getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
-            
-           
             ps.executeUpdate(sql);
+            connection.close();
+            
+            ps.close();
         } catch (SQLException ex) {
             
             System.err.println("update brand loi");
@@ -106,7 +112,9 @@ public class BrandDAOImpl implements BrandDAO{
             Connection connection = DBConnect.getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.executeUpdate(sql);
+            connection.close();
             
+            ps.close();
             
         } catch (SQLException ex) {
             
@@ -115,6 +123,7 @@ public class BrandDAOImpl implements BrandDAO{
         }
     }
     
+    @Override
     public int getBrandIDByBrandName(String brand) {
         int id=0;
         try {
@@ -130,6 +139,8 @@ public class BrandDAOImpl implements BrandDAO{
                 
             }
             connection.close();
+            rs.close();
+            ps.close();
         } catch (SQLException ex) {
             System.err.println("ERROR LOADING BRANDID BY CATEGORYID");
         }

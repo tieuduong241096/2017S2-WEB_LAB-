@@ -10,20 +10,20 @@ package model;
  * @author tuan
  */
 public class Product{
-    private long productID;
+    private Integer productID;
     private String productName;
-    private double productPrice;
+    private Double productPrice;
     private String productImage;
-    private int productQuantity;
+    private Integer productQuantity;
     private String description;
-    private double discount;
+    private Double discount;
     private Brand brand;
     private Category category;
 
     public Product() {
     }
 
-    public Product(long productID, String productName, double productPrice, String productImage, int productQuantity, String description, double discount, Brand brand, Category category) {
+    public Product(Integer productID, String productName, Double productPrice, String productImage, Integer productQuantity, String description, Double discount, Brand brand, Category category) {
         this.productID = productID;
         this.productName = productName;
         this.productPrice = productPrice;
@@ -35,13 +35,11 @@ public class Product{
         this.category = category;
     }
 
-    
-
-    public long getProductID() {
+    public Integer getProductID() {
         return productID;
     }
 
-    public void setProductID(long productID) {
+    public void setProductID(Integer productID) {
         this.productID = productID;
     }
 
@@ -53,11 +51,11 @@ public class Product{
         this.productName = productName;
     }
 
-    public double getProductPrice() {
+    public Double getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(double productPrice) {
+    public void setProductPrice(Double productPrice) {
         this.productPrice = productPrice;
     }
 
@@ -69,11 +67,11 @@ public class Product{
         this.productImage = productImage;
     }
 
-    public int getProductQuantity() {
+    public Integer getProductQuantity() {
         return productQuantity;
     }
 
-    public void setProductQuantity(int productQuantity) {
+    public void setProductQuantity(Integer productQuantity) {
         this.productQuantity = productQuantity;
     }
 
@@ -85,11 +83,11 @@ public class Product{
         this.description = description;
     }
 
-    public double getDiscount() {
+    public Double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(double discount) {
+    public void setDiscount(Double discount) {
         this.discount = discount;
     }
 
@@ -111,6 +109,30 @@ public class Product{
 
     
 
+    
+
+    
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (productID != null ? productID.hashCode(): 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Product)) {
+            return false;
+        }
+        Product other = (Product) object;
+        if ((this.productID == null && other.productID != null) || (this.productID != null && !this.productID.equals(other.productID))) {
+            return false;
+        }
+        return true;
+    }
+    
     
     
 }

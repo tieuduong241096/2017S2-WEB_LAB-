@@ -21,6 +21,12 @@ public class Brand {
         this.brandName = brandName;
     }
 
+    public Brand(long brandID) {
+        this.brandID = brandID;
+    }
+    
+    
+
     public long getBrandID() {
         return brandID;
     }

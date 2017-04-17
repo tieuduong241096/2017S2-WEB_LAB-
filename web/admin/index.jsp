@@ -8,20 +8,7 @@
 <%@page import="dao.AdminDAOImpl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%Cookie[] cookies = request.getCookies();
-    Cookie c = null;
-    boolean isLogin = false;
-    for (int i = 0; i < cookies.length; i++) {
-            c = cookies[i];
-            if (new AdminDAOImpl().checkLogin(new Admin(c.getName(),c.getValue()))) {
-                    isLogin = true;
-                }
-            
-        }
-    if (!isLogin) {
-            response.sendRedirect("login.jsp");
-        }
-    %>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -29,8 +16,12 @@
         
 
 
-<link href="../resources/css/mos-style.css" rel='stylesheet' type='text/css' />
-
+        <link href="../resources/css/mos-style.css" rel='stylesheet' type='text/css' />
+        <script src="../resources/js/jquery.js"></script>
+        <script src="../resources/js/jquery-1.9.0.min.js"></script>
+        <script src="../resources/js/jquery-1.7.1.min.js"></script>
+        <script src="../resources/ajax/adminNavigate.js"></script>
+        
         
     </head>
     <body>

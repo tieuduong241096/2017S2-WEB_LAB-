@@ -18,9 +18,13 @@ import model.Product;
 public interface ProductDAO {
     public ArrayList<Product> getProductList(String input);
     
+    public ArrayList<Product> getPageList(int maxResults, int firstResult,String option,ArrayList<Product> arr);
+    
     public ArrayList<Product> getProductListByBrand(String brand, String input);
     
     public ArrayList<Product> getProductListByCategory(String category, String input);
+    
+    public int countNumberOfProduct();
     
     public String countNumberOfProductByCategory(Category category);
     
@@ -33,4 +37,6 @@ public interface ProductDAO {
     public String getMin();
     
     public String getProductNameByProductID(String id);
+    
+    public ArrayList<Product> search(String name);
 }

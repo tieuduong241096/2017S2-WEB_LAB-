@@ -4,6 +4,7 @@
     Author     : tuan
 --%>
 
+<%@page import="java.util.HashMap"%>
 <%@page import="java.util.TreeMap"%>
 <%@page import="model.Product"%>
 <%@page import="model.Cart"%>
@@ -16,7 +17,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>header</title>
         <!--Use Jquery to save cookie-->
-        <script src="javascript/js.cookie.js"></script>
+        <script src="resources/js/js.cookie.js"></script>
         <script type="text/javascript">
                 function fade_out() {
                     
@@ -59,7 +60,7 @@
     <body>
         <%
 
-            TreeMap<Product, Integer> list = null;
+            HashMap<Product, Integer> list = null;
             if (session.getAttribute("cart") != null) {
                 Cart cart = (Cart) session.getAttribute("cart");
                 if (cart == null) {
