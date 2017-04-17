@@ -143,7 +143,7 @@
     <jsp:include page="footer.jsp"></jsp:include>
     
     
-    <p>Test</p>
+   
 
 </body>
 

@@ -140,7 +140,7 @@ ul.login li a span{
 	color: #1DBAA5;
 }
 /*----*/
-.search {
+.search1 {
 	background:#fff;
 	border: 1px solid #ddd;
 	/*-- position: relative --*/
@@ -148,7 +148,7 @@ ul.login li a span{
 	/*-- float: right; --*/
 	margin: 1.2em 0 0;
 }
-.search input[type="text"] {
+.search1 input[type="text"] {
 	border: none;
 	outline: none;
 	background: none;

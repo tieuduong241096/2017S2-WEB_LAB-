@@ -249,7 +249,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="search">
+                <div class="search1">
                     <input type="text" value="" placeholder="Nhập từ khoá" >
                           
 
