@@ -93,6 +93,8 @@
         %>
         
         <header id="header"><!--header-->
+            
+            <%-----
             <div class="header_top"><!--header_top-->
                 <div class="container">
                     <div class="row">
@@ -121,6 +123,43 @@
                     </div>
                 </div>
             </div><!--/header_top-->
+            
+            ----%>
+            
+            <%-----Header Top-----%>
+            <div class="header">
+            <div class="top-header">
+                <div class="container">
+                    <div class="top-header-left">
+                        <ul class="support">
+                            <li><a href="error.jsp"><label> </label></a></li>
+                            <li><a href="error.jsp">Dịch vụ hổ trợ trưc tuyến<span class="live"></span></a>
+                               
+                            </li>
+                        </ul>
+                        <ul class="support">
+                            <li class="van"><a href="error.jsp"><label> </label></a></li>
+                            <li><a href="error.jsp">Miễn phí giao hàng cho hoá đơn trên 500k<span class="live"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="top-header-right">
+                        <ul class="support">
+                            <li><a href="language?lang=vi">Tiếng Việt</a><a href="#">|</a> 
+                            <li><a href="language?lang=en">English</a>
+                        </ul>        
+                    </div>
+                </div>
+                <!---->
+                <div class="clearfix"> </div>	
+            </div>
+            <div class="clearfix"> </div>		
+        </div>
+                        
+                        <%-----/////Header Top-----%>
+                        
+                        
+                        
+                        
 
             <div class="header-middle"><!--header-middle-->
                 <div class="container">
