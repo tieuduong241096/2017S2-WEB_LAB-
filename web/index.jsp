@@ -129,15 +129,47 @@
 
                     </div>
                 </div>
+                            
+                            
+                            <div class="row customforrow" >
+                                <div class="col-md-12"></div>
+                            </div>
+                            <div class="row customforrow">
+                                <div class="col-md-12"></div>
+                            </div>
+                            <div class="row customforrow">
+                                <div class="col-md-12"></div>
+                            </div>
+                            <div class="row customforrow">
+                                <div class="col-md-12"></div>
+                            </div>
+                            
 
+                            <%------ 2 most special function for later
                             <div class="col-sm-9 padding-right" id="dynamicContent" style="height: 100%">
                       
                 </div>
                 <div class="col-sm-9 padding-right" style="
     margin-left: 259px;" id="recommendit"></div>
             </div>
+                            
+                            
+                            ------%>
         </div>
     </section>
+    
+     <div class="row customforrow" >
+                                <div class="col-md-12"></div>
+                            </div>
+                            <div class="row customforrow">
+                                <div class="col-md-12"></div>
+                            </div>
+                            <div class="row customforrow">
+                                <div class="col-md-12"></div>
+                            </div>
+                            <div class="row customforrow">
+                                <div class="col-md-12"></div>
+                            </div>
 
     <!--FOOTER-->
     <jsp:include page="footer.jsp"></jsp:include>
