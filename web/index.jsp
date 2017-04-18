@@ -55,6 +55,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3">
+                        
+                        
+                        
+                        
+                        <%----- Menu of Son's Project
+                        
+                        
                         <div class="left-sidebar" style="height: 0px">
                             <h2>Category</h2>
 
@@ -128,7 +135,127 @@
                         </div><!--/search-->
 
                     </div>
-                </div>
+                            
+                            
+                          End of menu of Son's project-------%>   
+                            
+                            
+                  <div class="sub-cate">
+        <div class=" top-nav rsidebar span_1_of_left">
+            <h3 class="cate">DANH MỤC SẢN PHẨM</h3>
+            <ul class="menu">
+                <li class="item1"><a href="error.jsp">Điện tử</a>
+                    <ul class="cute">
+                        <li class="subitem1"><a href="phone.jsp">Điện thoại</a></li>
+                        <li class="subitem2"><a href="laptop.jsp">Laptop</a></li>
+                        <li class="subitem3"><a href="tablet.jsp">Máy tính bảng</a></li>
+                        <li class="subitem4"><a href="television.jsp">Ti vi</a></li>
+                        <li class="subitem5"><a href="error.jsp">Máy ảnh</a></li>
+                    </ul>
+                </li>
+                <li class="item2"><a href="error.jsp">Quần áo</a>
+                    <ul class="cute">
+                        <li class="subitem1"><a href="error.jsp">Quần áo nam</a></li>
+                        <li class="subitem2"><a href="error.jsp">Quần áo nữ</a></li>
+                        <li class="subitem2"><a href="error.jsp">Quần áo trẻ em</a></li>
+                    </ul>
+                </li>
+                <li class="item3"><a href="error.jsp">Phụ kiện</a>
+                    <ul class="cute">
+                        <li class="subitem1"><a href="error.jsp">Túi xách</a></li>
+                        <li class="subitem2"><a href="error.jsp">Mắt kính</a></li>
+                        <li class="subitem3"><a href="error.jsp">Mũ, nón</a></li>
+                        <li class="subitem3"><a href="error.jsp">Giày, dép</a></li>
+                    </ul>
+                </li>
+                <li class="item3"><a href="error.jsp">Sinh hoạt</a>
+                    <ul class="cute">
+                        <li class="subitem1"><a href="error.jsp">Dụng cụ nấu ăn</a></li>
+                        <li class="subitem2"><a href="error.jsp">Dụng cụ vệ sinh</a></li>
+                        <li class="subitem3"><a href="error.jsp">Sản phẩm giặt giũ</a></li>
+                        <li class="subitem3"><a href="error.jsp">Dụng cụ phòng tắm</a></li>
+                        <li class="subitem3"><a href="error.jsp">Dụng cụ làm vườn</a></li>
+                        <li class="subitem3"><a href="error.jsp">Dụng cụ trang trí</a></li>
+                    </ul>
+                </li>
+                <li class="item4"><a href="error.jsp">Dân dụng</a>
+                    <ul class="cute">
+                        <li class="subitem1"><a href="error.jsp">Bàn ủi</a></li>
+                        <li class="subitem2"><a href="error.jsp">Tủ lạnh</a></li>
+                        <li class="subitem3"><a href="error.jsp">Máy giặt</a></li>
+                        <li class="subitem1"><a href="error.jsp">Máy quạt</a></li>
+                        <li class="subitem1"><a href="error.jsp">Máy lạnh</a></li>
+                        <li class="subitem1"><a href="error.jsp">Máy nước nóng</a></li>
+                    </ul>
+                </li>
+                <li class="item4"><a href="error.jsp">Nội thất</a>
+                    <ul class="cute">
+                        <li class="subitem1"><a href="error.jsp">Phòng ngủ</a></li>
+                        <li class="subitem2"><a href="error.jsp">Phòng khách</a></li>
+                        <li class="subitem3"><a href="error.jsp">Phòng làm việc</a></li>
+                        <li class="subitem1"><a href="error.jsp">Phòng ăn</a></li>
+                        <li class="subitem1"><a href="error.jsp">Phòng tắm</a></li>
+                        <li class="subitem1"><a href="error.jsp">Hành lang</a></li>
+                    </ul>
+                </li>
+                <li class="item4"><a href="error.jsp">Sắc đẹp</a>
+                    <ul class="cute">
+                        <li class="subitem1"><a href="error.jsp">Thực phẩm chức năng</a></li>
+                        <li class="subitem2"><a href="error.jsp">Mỹ phẩm</a></li>
+                        <li class="subitem3"><a href="error.jspl">Dụng cụ trang điểm</a></li>
+                    </ul>
+                </li>
+                <li class="item4"><a href="error.jsp">Thực phẩm </a>
+                    <ul class="cute">
+                        <li class="subitem1"><a href="error.jsp">Thực phẩm tươi sống</a></li>
+                        <li class="subitem2"><a href="error.jsp">Thực phẩm đóng hộp</a></li>
+                    </ul>
+                </li>
+                <li class="item4"><a href="error.jsp">Du lịch</a>
+                    <ul class="cute">
+                        <li class="subitem1"><a href="error.jsp">Vali</a></li>
+                        <li class="subitem2"><a href="error.jsp">Ba lô</a></li>
+                        <li class="subitem3"><a href="error.jsp">Lều, thãm trải</a></li>
+                    </ul>
+                </li>
+                <li class="item4"><a href="error.jsp">Thể thao</a>
+                    <ul class="cute">
+                        <li class="subitem1"><a href="error.jsp">Bóng đá</a></li>
+                        <li class="subitem2"><a href="error.jsp">Bóng bàn</a></li>
+                        <li class="subitem3"><a href="error.jsp">Cầu lông</a></li>
+                        <li class="subitem3"><a href="error.jsp">Quần vợt</a></li>
+                        <li class="subitem3"><a href="error.jsp">Mạo hiểm</a></li>
+                        <li class="subitem3"><a href="error.jsp">Bơi lội</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+                      
+                      
+                      <script type="text/javascript">
+            $(function () {
+                var menu_ul = $('.menu > li > ul'),
+                        menu_a = $('.menu > li > a');
+                menu_ul.hide();
+                menu_a.click(function (e) {
+                    e.preventDefault();
+                    if (!$(this).hasClass('active')) {
+                        menu_a.removeClass('active');
+                        menu_ul.filter(':visible').slideUp('normal');
+                        $(this).addClass('active').next().stop(true, true).slideDown('normal');
+                    } else {
+                        $(this).removeClass('active');
+                        $(this).next().stop(true, true).slideUp('normal');
+                    }
+                });
+
+            });
+        </script>
+                            
+                            
+                            
+                            
+          </div>
                             
                             
                             <div class="row customforrow" >
@@ -155,6 +282,7 @@
                             
                             
                             ------%>
+                </div>
         </div>
     </section>
     
