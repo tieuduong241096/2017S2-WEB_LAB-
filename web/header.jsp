@@ -250,8 +250,12 @@
             </div>
             <div class="col-md-3">
                 <div class="search1">
-                    <input type="text" value="" placeholder="Nhập từ khoá" >
-                          
+                    <%-- <input type="text" value="" placeholder="Nhập từ khoá" > --%>
+                    <input type="text" class="search" id="inputSearch" autocomplete="off" placeholder="Nhập từ khoá" />
+                    <p style="color: red" id="searcherr"></p>
+                    <div id="divResult">
+                        
+                    </div>
 
                 </div>
                 

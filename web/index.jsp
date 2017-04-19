@@ -31,6 +31,15 @@
         <script src="resources/js/jquery.prettyPhoto.js"></script>
         <script src="resources/js/main.js"></script>
         <script src="resources/js/jquery.jscroll.min.js"></script>
+        
+        
+        
+        
+        
+        <%--- Add Ajax from base project -----%>
+        <script src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/my-script.js"></script>
+        <script src="js/base-ajax.js"></script>
 
 
 
@@ -290,85 +299,113 @@
                 
                 
                 <%------ Slider Bar ----%>
-                
+               
                 <div class="col-sm-9">
                     
-                    <div class="wrap-in">
-                <div class="wmuSlider example1 slide-grid">		 
-                    <div class="wmuSliderWrapper">		  
-                        <article style="position: absolute; width: 100%; opacity: 0;">					
-                            <div class="banner-matter">
-                                <div class="col-md-5 banner-bag">
-                                    <img class="img-responsive " src="images/P001.jpg" alt=" " />
-                                </div>
-                                <div class="col-md-7 banner-off">							
-                                    <h2>GIẢM GIÁ 50%</h2>
-                                    <label>CHO TẤT CẢ THANH TOÁN</label>
-                                    <p>Giày cao got HQ phối màu quý phái CG1015</p>					
-                                    <a href="view.jsp?productId">
-                                        <span class="on-get">MUA NGAY</span>
-                                    </a>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="wrap-in">
+                        <div class="wmuSlider example1 slide-grid">		 
+                            <div class="wmuSliderWrapper">		  
+                                <article style="position: absolute; width: 100%; opacity: 0;">					
+                                    <div class="banner-matter">
+                                        <div class="col-md-5 banner-bag">
+                                            <img class="img-responsive " src="images/P001.jpg" alt=" " />
+                                        </div>
+                                        <div class="col-md-7 banner-off">							
+                                            <h2>GIẢM GIÁ 50%</h2>
+                                            <label>CHO TẤT CẢ THANH TOÁN</label>
+                                            <p>Giày cao got HQ phối màu quý phái CG1015</p>					
+                                            <a href="view.jsp?productId">
+                                                <span class="on-get">MUA NGAY</span>
+                                            </a>
+                                        </div>
 
-                                <div class="clearfix"> </div>
+                                        <div class="clearfix"> </div>
+                                    </div>
+
+                                </article>
+                                <article style="position: absolute; width: 100%; opacity: 0;">					
+                                    <div class="banner-matter">
+                                        <div class="col-md-5 banner-bag">
+                                            <img class="img-responsive " src="images/P002.jpg" alt=" " />
+                                        </div>
+                                        <div class="col-md-7 banner-off">							
+                                            <h2>GIẢM GIÁ 50%</h2>
+                                            <label>CHO TẤT CẢ THANH TOÁN</label>
+                                            <p>Túi đeo chéo LATA 2016(Da bò nhạt)</p>					
+                                            <a href="view.jsp?productId">
+                                                <span class="on-get">MUA NGAY</span>
+                                            </a>
+                                        </div>
+
+                                        <div class="clearfix"> </div>
+                                    </div>
+
+                                </article>
+                                <article style="position: absolute; width: 100%; opacity: 0;">					
+                                    <div class="banner-matter">
+                                        <div class="col-md-5 banner-bag">
+                                            <img class="img-responsive " src="images/P003.jpg" alt=" " />
+                                        </div>
+                                        <div class="col-md-7 banner-off">							
+                                            <h2>GIẢM GIÁ 50%</h2>
+                                            <label>CHO TẤT CẢ THANH TOÁN</label>
+                                            <p>Balo du lịch Glado Classical 2016 mang phong cách trẻ trung, thời trang</p>					
+                                            <a href="view.jsp?productId">
+                                                <span class="on-get">MUA NGAY</span>
+                                            </a>
+                                        </div>
+
+                                        <div class="clearfix"> </div>
+                                    </div>
+
+                                </article>
+
                             </div>
-
-                        </article>
-                        <article style="position: absolute; width: 100%; opacity: 0;">					
-                            <div class="banner-matter">
-                                <div class="col-md-5 banner-bag">
-                                    <img class="img-responsive " src="images/P002.jpg" alt=" " />
-                                </div>
-                                <div class="col-md-7 banner-off">							
-                                    <h2>GIẢM GIÁ 50%</h2>
-                                    <label>CHO TẤT CẢ THANH TOÁN</label>
-                                    <p>Túi đeo chéo LATA 2016(Da bò nhạt)</p>					
-                                    <a href="view.jsp?productId">
-                                        <span class="on-get">MUA NGAY</span>
-                                    </a>
-                                </div>
-
-                                <div class="clearfix"> </div>
-                            </div>
-
-                        </article>
-                        <article style="position: absolute; width: 100%; opacity: 0;">					
-                            <div class="banner-matter">
-                                <div class="col-md-5 banner-bag">
-                                    <img class="img-responsive " src="images/P003.jpg" alt=" " />
-                                </div>
-                                <div class="col-md-7 banner-off">							
-                                    <h2>GIẢM GIÁ 50%</h2>
-                                    <label>CHO TẤT CẢ THANH TOÁN</label>
-                                    <p>Balo du lịch Glado Classical 2016 mang phong cách trẻ trung, thời trang</p>					
-                                    <a href="view.jsp?productId">
-                                        <span class="on-get">MUA NGAY</span>
-                                    </a>
-                                </div>
-
-                                <div class="clearfix"> </div>
-                            </div>
-
-                        </article>
-
+                            </a>
+                            <ul class="wmuSliderPagination">
+                                <li><a href="error.jsp" class="">0</a></li>
+                                <li><a href="error.jsp" class="">1</a></li>
+                                <li><a href="error.jsp" class="">2</a></li>
+                            </ul>
+                            <script src="js/jquery.wmuSlider.js"></script> 
+                            <script>
+            $('.example1').wmuSlider();
+                            </script> 
+                        </div>
                     </div>
-                    </a>
-                    <ul class="wmuSliderPagination">
-                        <li><a href="error.jsp" class="">0</a></li>
-                        <li><a href="error.jsp" class="">1</a></li>
-                        <li><a href="error.jsp" class="">2</a></li>
-                    </ul>
-                    <script src="js/jquery.wmuSlider.js"></script> 
-                    <script>
-    $('.example1').wmuSlider();
-                    </script> 
-                </div>
-            </div>
+                        </div>
+                    </div>
                     
+                    <%----- End of Slider -----%>
+                    
+                    
+                    
+                    
+                    <%---- Div here for common item ----%>
+                    <div class="row">
+                        
+                        
+                    </div>
+                    <%---- End Div for common items ----%>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <%---- Div here for recommend items -----%>
+                    <div class="row">
+                        
+                        
+                        
+                    </div>
+                    <%---- End Div for recommend items ----%>
                     
                 </div>
                 
-                <%---- End of Slider ----%>
+                <%---- End for content ----%>
                 
                 
                 
