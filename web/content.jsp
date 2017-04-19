@@ -14,8 +14,8 @@
 <%@page import="dao.CategoryDAO"%>
 <%
 
-    String categoryRequest = request.getParameter("category") == null ? "" : request.getParameter("category");
-    String brandRequest = request.getParameter("brand") == null ? "" : request.getParameter("brand");
+    String categoryRequest = "";//request.getParameter("category") == null ? "" : request.getParameter("category");
+    String brandRequest = "";//request.getParameter("brand") == null ? "" : request.getParameter("brand");
     ProductDAOImpl pro = new ProductDAOImpl();
 
     
