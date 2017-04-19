@@ -283,10 +283,11 @@
                             </div>
                             
 
-                            <%------ 2 most special function for later
+                           
                             <div class="col-sm-9 padding-right" id="dynamicContent" style="height: 100%">
                       
                 </div>
+                            <%------ 2 most special function for later
                 <div class="col-sm-9 padding-right" style="
     margin-left: 259px;" id="recommendit"></div>
             </div>
@@ -385,7 +386,8 @@
                     
                     <%---- Div here for common item ----%>
                     <div class="row">
-                        
+                        <div class="col-sm-12 padding-right" id="dynamicContent" style="height: 100%">
+                        </div>
                         
                     </div>
                     <%---- End Div for common items ----%>
