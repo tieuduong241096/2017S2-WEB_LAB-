@@ -266,7 +266,7 @@
                <%--- <% if (ush.getAccrole() == UserRole.GUEST) {%>    ---%>
                <div class="col-md-2 header-bottom-right">
                    <% if(s.getAttribute("username") != null) { %>
-                   <div class="account"><a href="login.jsp"><span></span>Xin chào <%=s.getAttribute("username")%></a></div>
+                   <div class="account"><a><span></span>Xin chào <%=s.getAttribute("username")%></a></div>
                    <% } else {%>
                     <div class="account"><a href="login.jsp"><span></span>Tài khoản của tôi</a></div>
                     <% } %>
@@ -275,7 +275,7 @@
                <div class="col-md-2 header-bottom-right">
                 <ul class="login">
                     <% if(s.getAttribute("username") != null) { %>
-                    <li><a href="login.jsp"><span> </span>Tài khoản</a></li>
+                    <li><a href="account.jsp?account=<%=s.getAttribute("email")%>"><span> </span>Tài khoản</a></li>
                     <li><a data-toggle="modal" data-target="#registerModal">| Đăng xuất</a></li>
                     <% } else {%>
                     <li><a href="login.jsp"><span> </span>Đăng nhập</a></li>
