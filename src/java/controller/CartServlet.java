@@ -36,13 +36,18 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
         String proid = request.getParameter("productid");
         String command = request.getParameter("command");
         ArrayList<Long> listBuy = null;
+        
+        
         String url = "";
         String action = request.getParameter("action")==null?"":request.getParameter("action");
+        
+        
         if(action.equals("cart")){
         try {
             listBuy = (ArrayList<Long>) session.getAttribute("cartID");
@@ -102,6 +107,7 @@ public class CartServlet extends HttpServlet {
             e.printStackTrace();
         }
         }
+        
         else if(action.equals("checkout")){
             try {
             listBuy = (ArrayList<Long>) session.getAttribute("cartID");
@@ -159,6 +165,8 @@ public class CartServlet extends HttpServlet {
             System.err.println("Error shopping cart +"+e.getMessage());
         }
         }
+        
+        
     }
 
 }

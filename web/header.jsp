@@ -310,7 +310,7 @@
                 ----%>
                 
                 <div class="col-md-2 header-bottom-right">
-                    <div class="cart"><a><span></span>Giỏ hàng</a></div>
+                    <div class="cart"><a href="cart.jsp"><span></span>Giỏ hàng</a></div>
                 </div>
                 
                 
