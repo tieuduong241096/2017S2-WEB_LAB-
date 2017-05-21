@@ -266,7 +266,7 @@
                <%--- <% if (ush.getAccrole() == UserRole.GUEST) {%>    ---%>
                <div class="col-md-2 header-bottom-right">
                    <% if(s.getAttribute("username") != null) { %>
-                   <div class="account"><a><span></span>Xin chào <%=s.getAttribute("username")%></a></div>
+                   <div class="account"><a><span></span>Xin chào <%=s.getAttribute("email")%></a></div>
                    <% } else {%>
                     <div class="account"><a href="login.jsp"><span></span>Tài khoản của tôi</a></div>
                     <% } %>
