@@ -91,14 +91,14 @@ public class CheckoutController extends HttpServlet {
                             }
                             System.out.println("Aaaaaaaaaaaaaaaaaaa");
                             if (rcd.insertReceiptDetail(new ReceiptDetail(0, ds.getValue(), (ds.getKey().getProductPrice() * ds.getValue()) - (ds.getKey().getProductPrice() * ds.getValue() * ds.getKey().getDiscount()), new Receipt(new ReceiptDAOImpl().getLatestReceiptID(), new Timestamp(new Date().getTime()), "", "", new User("", "", "", true, 0, true, "", "", ""), 0), p, size))) {
-                                out.println("<script type=\"text/javascript\">");
-                                out.println("alert('User or password incorrect');");
-                                out.println("location='index.jsp';");
-                                out.println("</script>");
-                                deleteCookie.setValue(null);
-                                deleteCookie.setMaxAge(0);
+                              //  out.println("<script type=\"text/javascript\">");
+                              //  out.println("alert('User or password incorrect');");
+                              //  out.println("location='index.jsp';");
+                              //  out.println("</script>");
+                              //  deleteCookie.setValue(null);
+                               // deleteCookie.setMaxAge(0);
 
-                                response.addCookie(deleteCookie);
+                               // response.addCookie(deleteCookie);
                             }
                         });
                     }
@@ -117,15 +117,15 @@ public class CheckoutController extends HttpServlet {
                                 }
                             }
                             if (rcd.insertReceiptDetail(new ReceiptDetail(0, ds.getValue(), (ds.getKey().getProductPrice() * ds.getValue()) - (ds.getKey().getProductPrice() * ds.getValue() * ds.getKey().getDiscount()), new Receipt(new ReceiptDAOImpl().getLatestReceiptID(), new Timestamp(new Date().getTime()), "", "", new User("", "", "", true, 0, true, "", "", ""), 0), p, size))) {
-                                out.println("<script type=\"text/javascript\">");
-                                out.println("alert('User or password incorrect');");
-                                out.println("location='index.jsp';");
-                                out.println("</script>");
+                              //  out.println("<script type=\"text/javascript\">");
+                              //  out.println("alert('User or password incorrect');");
+                              //  out.println("location='index.jsp';");
+                             //   out.println("</script>");
 
-                                deleteCookie.setValue(null);
-                                deleteCookie.setMaxAge(0);
+                              //  deleteCookie.setValue(null);
+                              //  deleteCookie.setMaxAge(0);
 
-                                response.addCookie(deleteCookie);
+                                //response.addCookie(deleteCookie);
                             }
                         });
 
