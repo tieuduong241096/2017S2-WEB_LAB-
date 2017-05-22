@@ -409,7 +409,7 @@
                     
                     <%---- Div here for recommend items -----%>
                     <div class="row">
-                        
+                        <div class="col-sm-12 padding-right" id="recommendit"></div>
                         
                     </div>
                     <%---- End Div for recommend items ----%>
