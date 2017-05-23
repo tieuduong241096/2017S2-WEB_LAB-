@@ -70,7 +70,7 @@
         
         
         <div class="row">
-            <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configuratorshoeStore" data-width="600" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configuratorshoeStore<%=pr.getProductID()%>" data-width="600" data-numposts="5"></div>
         </div>
         
     </div>
